@@ -5,8 +5,9 @@ extracted field carries a calibrated confidence + a source link, and the system 
 on low-confidence fields instead of hallucinating. See `PRD.md` for scope, `PROJECT_SPEC.md`
 for the full vision.
 
-**Status:** M0 in progress. Walking skeleton is runnable (`scripts/extract_invoice.py`).
-Next: **M0.F5 — eval harness + baseline number** on ~10 labeled invoices.
+**Status:** M0 complete. Walking skeleton + eval harness committed (commit `2a39ef3`).
+Next: **M1 — Structured extraction** (Instructor/Pydantic invoice schema, bounded retries, Langfuse tracing, bank-statement ingestion).
+Baseline: run `uv run python -m eval.run` after labeling ~10 Kaggle invoices to record the M0 number.
 
 ## Environment & constraints (fixed)
 
