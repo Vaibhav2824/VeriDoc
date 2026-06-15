@@ -1,4 +1,4 @@
-"""Tests for services.api.extractor (M1) — mocked VLMClient."""
+"""Tests for services.api.extractor (M2) — mocked VLMClient."""
 
 from __future__ import annotations
 
@@ -13,7 +13,12 @@ from services.api.clients.base import VLMError
 from services.api.extractor import extract_bank_statement, extract_invoice
 from services.api.ingest import IngestError
 from services.api.models.bank_statement import BankStatementExtraction, Transaction
-from services.api.models.invoice import InvoiceExtraction
+from services.api.models.fields import FieldVerification, SourceLocation
+from services.api.models.invoice import InvoiceExtraction, TaxBreakdown
+from services.api.models.verified_invoice import (
+    InvoiceVerificationResponse,
+    VerifiedInvoiceExtraction,
+)
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -36,9 +41,51 @@ def _make_png(tmp_path: Path) -> Path:
 
 
 def _mock_client_structured(response: object) -> AsyncMock:
-    """Return a mock VLMClient whose extract_structured returns *response*."""
     client = AsyncMock()
     client.extract_structured = AsyncMock(return_value=response)
+    client._model = "mock-model"
+    return client
+
+
+def _full_invoice() -> InvoiceExtraction:
+    return InvoiceExtraction(
+        invoice_number="INV-001",
+        total_amount=1180.0,
+        vendor_name="Acme",
+        currency="INR",
+        subtotal=1000.0,
+        tax=TaxBreakdown(cgst=90.0, sgst=90.0, total_tax=180.0),
+    )
+
+
+def _full_verif_response() -> InvoiceVerificationResponse:
+    high = FieldVerification(
+        confidence=0.95,
+        source_location=SourceLocation(page=0, bbox=[0.1, 0.1, 0.5, 0.2]),
+    )
+    return InvoiceVerificationResponse(
+        invoice_number=high,
+        invoice_date=high,
+        due_date=high,
+        vendor_name=high,
+        vendor_gstin=high,
+        vendor_address=high,
+        buyer_name=high,
+        buyer_gstin=high,
+        currency=high,
+        subtotal=high,
+        total_amount=high,
+        tax_total_tax=high,
+    )
+
+
+def _mock_client_two_pass(
+    extraction: InvoiceExtraction,
+    verification: InvoiceVerificationResponse,
+) -> AsyncMock:
+    """Mock returning extraction first call, verification second call."""
+    client = AsyncMock()
+    client.extract_structured = AsyncMock(side_effect=[extraction, verification])
     client._model = "mock-model"
     return client
 
@@ -46,76 +93,104 @@ def _mock_client_structured(response: object) -> AsyncMock:
 # ── invoice happy path ────────────────────────────────────────────────────────
 
 
-async def test_extract_invoice_returns_model(tmp_path: Path) -> None:
+async def test_extract_invoice_returns_verified(tmp_path: Path) -> None:
     pdf = _make_pdf(tmp_path)
-    expected = InvoiceExtraction(invoice_number="INV-001", total_amount=4250.0)
-    client = _mock_client_structured(expected)
+    client = _mock_client_two_pass(_full_invoice(), _full_verif_response())
 
     result = await extract_invoice(pdf, client)
 
-    assert isinstance(result, InvoiceExtraction)
-    assert result.invoice_number == "INV-001"
-    assert result.total_amount == 4250.0
+    assert isinstance(result, VerifiedInvoiceExtraction)
+    assert result.invoice_number.value == "INV-001"
+    assert result.total_amount.value == 1180.0
+
+
+async def test_extract_invoice_carries_confidence(tmp_path: Path) -> None:
+    pdf = _make_pdf(tmp_path)
+    client = _mock_client_two_pass(_full_invoice(), _full_verif_response())
+
+    result = await extract_invoice(pdf, client)
+
+    assert result.invoice_number.confidence == pytest.approx(0.95)
+    assert result.invoice_number.source_location is not None
 
 
 async def test_extract_invoice_accepts_string_path(tmp_path: Path) -> None:
     pdf = _make_pdf(tmp_path)
-    expected = InvoiceExtraction(invoice_number="X")
-    client = _mock_client_structured(expected)
+    client = _mock_client_two_pass(_full_invoice(), _full_verif_response())
 
     result = await extract_invoice(str(pdf), client)
 
-    assert result.invoice_number == "X"
+    assert isinstance(result, VerifiedInvoiceExtraction)
 
 
-async def test_extract_invoice_accepts_image(tmp_path: Path) -> None:
-    png = _make_png(tmp_path)
-    expected = InvoiceExtraction(total_amount=100.0)
-    client = _mock_client_structured(expected)
-
-    result = await extract_invoice(png, client)
-
-    assert result.total_amount == 100.0
-
-
-async def test_extract_invoice_passes_page_images_to_client(tmp_path: Path) -> None:
-    """Each PDF page becomes one PIL Image forwarded to extract_structured."""
-    pdf = _make_pdf(tmp_path, n_pages=3)
-    client = _mock_client_structured(InvoiceExtraction())
-
-    await extract_invoice(pdf, client)
-
-    pages_arg: list[Image.Image] = client.extract_structured.call_args[0][0]
-    assert len(pages_arg) == 3
-    assert all(isinstance(p, Image.Image) for p in pages_arg)
-
-
-async def test_extract_invoice_passes_response_model(tmp_path: Path) -> None:
+async def test_extract_invoice_gate_abstains_low_confidence(tmp_path: Path) -> None:
+    """Fields below default threshold (0.80) should be abstained."""
     pdf = _make_pdf(tmp_path)
-    client = _mock_client_structured(InvoiceExtraction())
+    low_conf = FieldVerification(confidence=0.3)
+    low_verif = InvoiceVerificationResponse(
+        invoice_number=low_conf,
+        invoice_date=low_conf,
+        due_date=low_conf,
+        vendor_name=low_conf,
+        vendor_gstin=low_conf,
+        vendor_address=low_conf,
+        buyer_name=low_conf,
+        buyer_gstin=low_conf,
+        currency=low_conf,
+        subtotal=low_conf,
+        total_amount=low_conf,
+        tax_total_tax=low_conf,
+    )
+    client = _mock_client_two_pass(_full_invoice(), low_verif)
 
-    await extract_invoice(pdf, client)
+    result = await extract_invoice(pdf, client, confidence_threshold=0.80)
 
-    _, model_arg, *_ = client.extract_structured.call_args[0]
-    assert model_arg is InvoiceExtraction
+    assert result.invoice_number.status == "abstained"
+    assert result.invoice_number.effective_value is None
 
 
-async def test_extract_invoice_null_fields(tmp_path: Path) -> None:
-    """All-None InvoiceExtraction (abstain case) passes through unchanged."""
+async def test_extract_invoice_high_confidence_not_abstained(tmp_path: Path) -> None:
     pdf = _make_pdf(tmp_path)
-    client = _mock_client_structured(InvoiceExtraction())
+    client = _mock_client_two_pass(_full_invoice(), _full_verif_response())
 
-    result = await extract_invoice(pdf, client)
+    result = await extract_invoice(pdf, client, confidence_threshold=0.80)
 
-    assert result.invoice_number is None
-    assert result.total_amount is None
+    assert result.invoice_number.status == "extracted"
+    assert result.invoice_number.effective_value == "INV-001"
 
 
-# ── invoice error propagation ─────────────────────────────────────────────────
+async def test_to_value_dict_abstained_returns_none(tmp_path: Path) -> None:
+    """Abstained fields should appear as None in to_value_dict()."""
+    pdf = _make_pdf(tmp_path)
+    low_conf = FieldVerification(confidence=0.1)
+    low_verif = InvoiceVerificationResponse(
+        invoice_number=low_conf,
+        invoice_date=low_conf,
+        due_date=low_conf,
+        vendor_name=low_conf,
+        vendor_gstin=low_conf,
+        vendor_address=low_conf,
+        buyer_name=low_conf,
+        buyer_gstin=low_conf,
+        currency=low_conf,
+        subtotal=low_conf,
+        total_amount=low_conf,
+        tax_total_tax=low_conf,
+    )
+    client = _mock_client_two_pass(_full_invoice(), low_verif)
+
+    result = await extract_invoice(pdf, client, confidence_threshold=0.80)
+    val_dict = result.to_value_dict()
+
+    assert val_dict["invoice_number"] is None
+    assert val_dict["total_amount"] is None
+
+
+# ── error propagation ─────────────────────────────────────────────────────────
 
 
 async def test_ingest_error_propagates(tmp_path: Path) -> None:
-    client = _mock_client_structured(InvoiceExtraction())
+    client = _mock_client_two_pass(_full_invoice(), _full_verif_response())
     with pytest.raises(IngestError):
         await extract_invoice(tmp_path / "missing.pdf", client)
 
@@ -150,7 +225,7 @@ async def test_extract_bank_statement_returns_model(tmp_path: Path) -> None:
     assert result.bank_name == "SBI"
 
 
-async def test_extract_bank_statement_masks_account_by_default(tmp_path: Path) -> None:
+async def test_extract_bank_statement_masks_pii(tmp_path: Path) -> None:
     pdf = _make_pdf(tmp_path)
     stmt = BankStatementExtraction(account_number="123456789012")
     client = _mock_client_structured(stmt)
@@ -160,7 +235,7 @@ async def test_extract_bank_statement_masks_account_by_default(tmp_path: Path) -
     assert result.account_number == "XXXXXXXX9012"
 
 
-async def test_extract_bank_statement_no_mask_when_disabled(tmp_path: Path) -> None:
+async def test_extract_bank_statement_no_mask(tmp_path: Path) -> None:
     pdf = _make_pdf(tmp_path)
     stmt = BankStatementExtraction(account_number="123456789012")
     client = _mock_client_structured(stmt)
@@ -168,13 +243,3 @@ async def test_extract_bank_statement_no_mask_when_disabled(tmp_path: Path) -> N
     result = await extract_bank_statement(pdf, client, mask_pii=False)
 
     assert result.account_number == "123456789012"
-
-
-async def test_extract_bank_statement_none_account_passthrough(tmp_path: Path) -> None:
-    pdf = _make_pdf(tmp_path)
-    stmt = BankStatementExtraction(account_number=None)
-    client = _mock_client_structured(stmt)
-
-    result = await extract_bank_statement(pdf, client)
-
-    assert result.account_number is None

@@ -44,6 +44,7 @@ class VLMClient(Protocol):
         pages: list[Image.Image],
         response_model: type[T],
         max_retries: int = 3,
+        instruction: str | None = None,
     ) -> T:
         """Extract and validate against *response_model* (M1 structured path).
 
@@ -56,6 +57,8 @@ class VLMClient(Protocol):
             pages: Per-page PIL Images.
             response_model: Pydantic BaseModel subclass describing the schema.
             max_retries: Maximum extraction attempts before raising VLMError.
+            instruction: Optional custom instruction text prepended to the prompt.
+                If None, a generic extraction instruction is used.
 
         Returns:
             A validated instance of *response_model*.

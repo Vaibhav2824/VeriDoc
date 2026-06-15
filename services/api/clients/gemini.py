@@ -135,11 +135,19 @@ class GeminiClient:
 
         raise VLMError(f"Gemini API call failed after {max_retries} retries")
 
+    _DEFAULT_INSTRUCTION = (
+        "Extract the requested fields from all pages of this document. "
+        "Use null for any field that is absent or cannot be read. "
+        "Amounts must be plain numbers (no currency symbols or commas). "
+        "Dates must be ISO 8601 strings: YYYY-MM-DD."
+    )
+
     async def extract_structured(
         self,
         pages: list[Image.Image],
         response_model: type[T],
         max_retries: int = 3,
+        instruction: str | None = None,
     ) -> T:
         """Pydantic-validate-with-retry structured path for Gemini.
 
@@ -148,8 +156,9 @@ class GeminiClient:
         Raises VLMError if all retries are exhausted.
         """
         schema_json = json.dumps(response_model.model_json_schema(), indent=2)
+        custom = instruction or self._DEFAULT_INSTRUCTION
         base_prompt = (
-            "Extract the requested fields from all pages of this document.\n"
+            f"{custom}\n"
             "Return a single JSON object matching this schema exactly:\n"
             f"{schema_json}\n\n"
             "Rules:\n"

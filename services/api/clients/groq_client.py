@@ -94,11 +94,19 @@ class GroqClient:
 
         return result
 
+    _DEFAULT_INSTRUCTION = (
+        "Extract the requested fields from all pages of this document. "
+        "Use null for any field that is absent or cannot be read. "
+        "Amounts must be plain numbers (no currency symbols or commas). "
+        "Dates must be ISO 8601 strings: YYYY-MM-DD."
+    )
+
     async def extract_structured(
         self,
         pages: list[Image.Image],
         response_model: type[T],
         max_retries: int = 3,
+        instruction: str | None = None,
     ) -> T:
         """Instructor-backed structured extraction with automatic schema retries."""
         if not pages:
@@ -107,12 +115,7 @@ class GroqClient:
         content: list[dict[str, Any]] = _image_content_blocks(pages)
         content.append({
             "type": "text",
-            "text": (
-                "Extract the requested fields from all pages of this document. "
-                "Use null for any field that is absent or cannot be read. "
-                "Amounts must be plain numbers (no currency symbols or commas). "
-                "Dates must be ISO 8601 strings: YYYY-MM-DD."
-            ),
+            "text": instruction if instruction is not None else self._DEFAULT_INSTRUCTION,
         })
 
         try:

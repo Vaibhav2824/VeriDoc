@@ -4,7 +4,8 @@ Usage:
     uv run python -m eval.run
 
 Reads labels from eval/labels/*.json, finds matching docs in eval/docs/,
-runs extract_invoice on each, computes metrics, and updates eval/REPORT.md.
+runs extract_invoice on each, computes accuracy + M2 trust metrics, and
+updates eval/REPORT.md.
 
 Requires GROQ_API_KEY or GEMINI_API_KEY in environment or .env file.
 """
@@ -20,11 +21,18 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from eval.metrics import corpus_metrics, doc_accuracy
+from eval.metrics import (
+    auto_processing_rate,
+    calibration_metrics,
+    corpus_metrics,
+    doc_accuracy,
+    hallucination_rate,
+)
 from services.api.clients import make_client
 from services.api.clients.base import VLMClient, VLMError
 from services.api.extractor import extract_invoice
 from services.api.ingest import IngestError
+from services.api.models.verified_invoice import VerifiedInvoiceExtraction
 
 _REPO_ROOT = Path(__file__).parent.parent
 _LABELS_DIR = _REPO_ROOT / "eval" / "labels"
@@ -63,80 +71,90 @@ def load_labels(labels_dir: Path) -> list[tuple[Path, dict]]:
 async def run_eval(
     client: VLMClient,
     pairs: list[tuple[Path, dict]],
-) -> tuple[list[dict], list[str]]:
+) -> tuple[list[dict], list[VerifiedInvoiceExtraction], list[str]]:
     """Extract + score each (doc, label) pair.
 
     Returns:
-        (doc_results, errors) where doc_results is a list of per-field accuracy
-        dicts ready for corpus_metrics(), and errors is a list of error strings.
+        (doc_accuracy_results, verified_extractions, errors)
     """
-    doc_results = []
-    errors = []
-    # Respect free-tier RPM: sleep between requests (default 4s ≈ 15 RPM headroom).
-    # Set EVAL_RATE_LIMIT_SLEEP=0 to disable, or raise it if you hit 429s.
+    doc_results: list[dict] = []
+    extractions: list[VerifiedInvoiceExtraction] = []
+    errors: list[str] = []
     sleep_s = float(os.environ.get("EVAL_RATE_LIMIT_SLEEP", "4"))
 
     for i, (doc_path, ground_truth) in enumerate(pairs, start=1):
         if i > 1 and sleep_s > 0:
             await asyncio.sleep(sleep_s)
-        print(f"  [{i}/{len(pairs)}] {doc_path.name} … ", end="", flush=True)
+        print(f"  [{i}/{len(pairs)}] {doc_path.name} ... ", end="", flush=True)
         try:
-            extraction = await extract_invoice(doc_path, client, max_retries=3)
-            predicted = extraction.model_dump()
+            verified = await extract_invoice(doc_path, client, max_retries=3)
+            predicted = verified.to_value_dict()
             result = doc_accuracy(predicted, ground_truth)
             doc_results.append(result)
+            extractions.append(verified)
             scored = [v for v in result.values() if v is not None]
             n_match = sum(scored)
-            print(f"{n_match}/{len(scored)} fields matched")
+            n_abstained = len(verified.abstained_fields())
+            abstain_note = f" ({n_abstained} abstained)" if n_abstained else ""
+            print(f"{n_match}/{len(scored)} fields matched{abstain_note}")
         except (IngestError, VLMError) as exc:
             msg = f"{doc_path.name}: {exc}"
             errors.append(msg)
-            print(f"ERROR — {exc}")
+            print(f"ERROR -- {exc}")
 
-    return doc_results, errors
+    return doc_results, extractions, errors
 
 
 # ── report writing ────────────────────────────────────────────────────────────
 
-_REPORT_SECTION_HEADER = "## Baseline (M0)"
-_REPORT_PENDING_MARKER = "**Status: PENDING**"
+_M2_SECTION_HEADER = "## M2 — Verifier + confidence"
 
 
-def _format_report_section(metrics: dict, n_docs: int, errors: list[str]) -> str:
+def _format_m2_section(
+    acc_metrics: dict,
+    trust_metrics: dict,
+    n_docs: int,
+    errors: list[str],
+) -> str:
     ts = datetime.now(UTC).strftime("%Y-%m-%d %H:%M UTC")
-    macro = metrics["macro_accuracy"]
+    macro = acc_metrics["macro_accuracy"]
     macro_str = f"{macro:.1%}" if macro is not None else "—"
+    ece = trust_metrics.get("ece")
+    ece_str = f"{ece:.4f}" if ece is not None else "—"
+    hlr = trust_metrics.get("hallucination_rate")
+    hlr_str = f"{hlr:.1%}" if hlr is not None else "—"
+    apr = trust_metrics.get("auto_processing_rate_99pct")
+    apr_str = f"{apr:.1%}" if apr is not None else "—"
+    abs_rate = trust_metrics.get("abstention_rate")
+    abs_str = f"{abs_rate:.1%}" if abs_rate is not None else "—"
 
     lines = [
-        "## Baseline (M0)",
+        "## M2 — Verifier + confidence",
         "",
         f"**Last run:** {ts} · **Docs evaluated:** {n_docs}",
         "",
         "| Metric | Value | Notes |",
         "|---|---|---|",
-        f"| **Macro field accuracy** | **{macro_str}** | M0 — the baseline number |",
-        "| Hallucination rate | — | Not measured at M0 (no source-grounding yet) |",
-        "| ECE | — | Not applicable at M0 (no calibrated confidence yet) |",
-        "| % auto-processed @ 99% precision | — | Not applicable at M0 (no abstention yet) |",
-        "| Cost per doc | — | Wire Langfuse in M1 |",
-        "| p95 latency (s) | — | Wire Langfuse in M1 |",
+        f"| **Macro field accuracy** | **{macro_str}** | After gate (abstained = miss) |",
+        f"| Hallucination rate | {hlr_str} | Non-null value with no source location |",
+        f"| ECE | {ece_str} | Expected Calibration Error (lower is better) |",
+        f"| % auto-processed @ 99% precision | {apr_str} | Coverage at 99% precision threshold |",
+        f"| Abstention rate | {abs_str} | Fields routed to human review |",
+        "| Cost per doc | — | Wire Langfuse keys in .env for real numbers |",
         "",
-        "### Per-field accuracy",
+        "### Per-field accuracy (after gate)",
         "",
         "| Field | Accuracy | Docs scored |",
         "|---|---|---|",
     ]
 
-    field_acc = metrics.get("field_accuracy", {})
-    n_scored = metrics.get("n_scored_pairs", 0)
+    field_acc = acc_metrics.get("field_accuracy", {})
     for field in sorted(field_acc):
         acc = field_acc[field]
         lines.append(f"| `{field}` | {acc:.1%} | (of {n_docs}) |")
 
-    lines += [
-        "",
-        f"Total scored (field x doc) pairs: {n_scored}",
-    ]
+    n_scored = acc_metrics.get("n_scored_pairs", 0)
+    lines += ["", f"Total scored (field x doc) pairs: {n_scored}"]
 
     if errors:
         lines += ["", "### Extraction errors", ""]
@@ -146,14 +164,17 @@ def _format_report_section(metrics: dict, n_docs: int, errors: list[str]) -> str
     return "\n".join(lines)
 
 
-def update_report(metrics: dict, n_docs: int, errors: list[str]) -> None:
+def update_report(
+    acc_metrics: dict,
+    trust_metrics: dict,
+    n_docs: int,
+    errors: list[str],
+) -> None:
     report = _REPORT_PATH.read_text(encoding="utf-8")
-    new_section = _format_report_section(metrics, n_docs, errors)
+    new_section = _format_m2_section(acc_metrics, trust_metrics, n_docs, errors)
 
-    if _REPORT_SECTION_HEADER in report:
-        # Replace existing M0 section (everything up to the next ## header or EOF)
-        before, _, rest = report.partition(_REPORT_SECTION_HEADER)
-        # Find the next section
+    if _M2_SECTION_HEADER in report:
+        before, _, rest = report.partition(_M2_SECTION_HEADER)
         next_section = rest.find("\n## ", 1)
         after = rest[next_section:] if next_section != -1 else ""
         report = before + new_section + "\n\n---\n" + after
@@ -174,8 +195,7 @@ async def main() -> int:
     if not pairs:
         print(
             "No labels found in eval/labels/.\n"
-            "Run: uv run python scripts/create_label.py eval/docs/<invoice.pdf>\n"
-            "then edit the generated JSON file to correct any mistakes."
+            "Run: uv run python scripts/create_label.py eval/docs/<invoice.pdf>"
         )
         return 0
 
@@ -187,28 +207,47 @@ async def main() -> int:
         print(f"[error] {exc}", file=sys.stderr)
         return 1
 
-    doc_results, errors = await run_eval(client, pairs)
+    doc_results, extractions, errors = await run_eval(client, pairs)
 
     if not doc_results:
         print("\nNo documents successfully evaluated.")
         return 1
 
-    metrics = corpus_metrics(doc_results)
-    macro = metrics["macro_accuracy"]
+    acc_metrics = corpus_metrics(doc_results)
+    macro = acc_metrics["macro_accuracy"]
+
+    # M2 trust metrics from verified extractions
+    trust_metrics = {
+        "ece": calibration_metrics(doc_results, extractions).get("ece"),
+        "hallucination_rate": hallucination_rate(extractions),
+        "auto_processing_rate_99pct": auto_processing_rate(doc_results, extractions, 0.99),
+        "abstention_rate": (
+            sum(len(v.abstained_fields()) for v in extractions)
+            / max(1, acc_metrics["n_scored_pairs"])
+        ),
+    }
 
     print(f"\n{'-' * 50}")
     print(f"  Macro field accuracy : {macro:.1%}" if macro is not None else "  Macro: N/A")
-    print(f"  Docs evaluated       : {metrics['n_docs']}")
-    print(f"  Scored (field x doc) : {metrics['n_scored_pairs']}")
+    print(f"  Docs evaluated       : {acc_metrics['n_docs']}")
+    print(f"  Scored (field x doc) : {acc_metrics['n_scored_pairs']}")
+    ece = trust_metrics["ece"]
+    print(f"  ECE                  : {ece:.4f}" if ece is not None else "  ECE: —")
+    hlr = trust_metrics["hallucination_rate"]
+    print(f"  Hallucination rate   : {hlr:.1%}" if hlr is not None else "  Hallucination: —")
+    apr = trust_metrics["auto_processing_rate_99pct"]
+    print(
+        f"  Auto-process @99%p   : {apr:.1%}" if apr is not None else "  Auto-process: —"
+    )
     if errors:
         print(f"  Errors               : {len(errors)}")
     print(f"{'-' * 50}")
     print("\nPer-field accuracy:")
-    for field, acc in sorted(metrics["field_accuracy"].items()):
+    for field, acc in sorted(acc_metrics["field_accuracy"].items()):
         bar = "#" * round(acc * 20)
         print(f"  {field:<25} {acc:.1%}  {bar}")
 
-    update_report(metrics, len(doc_results), errors)
+    update_report(acc_metrics, trust_metrics, len(doc_results), errors)
     return 0
 
 
