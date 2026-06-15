@@ -86,6 +86,14 @@ class GeminiClient:
             except Exception as exc:
                 exc_str = str(exc)
                 is_rate_limited = "429" in exc_str or "RESOURCE_EXHAUSTED" in exc_str
+                # "limit: 0" means permanent zero quota — no amount of waiting helps.
+                # Only retry for transient limits where the quota is > 0 but momentarily hit.
+                is_zero_quota = "limit: 0" in exc_str
+                if is_zero_quota:
+                    raise VLMError(
+                        f"Model '{self._model}' has zero quota on this API key. "
+                        "Add GEMINI_MODEL=gemini-1.5-flash to your .env and retry."
+                    ) from exc
                 if is_rate_limited and attempt < max_retries:
                     delay = 65.0  # conservative default: wait out a 1-min window
                     m = _RETRY_DELAY_RE.search(exc_str)
