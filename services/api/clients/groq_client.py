@@ -11,12 +11,16 @@ import base64
 import io
 import json
 import os
-from typing import Any
+from typing import Any, TypeVar
 
+import instructor
 from groq import AsyncGroq
 from PIL import Image
+from pydantic import BaseModel
 
 from services.api.clients.base import VLMError
+
+T = TypeVar("T", bound=BaseModel)
 
 _FALLBACK_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
 
@@ -26,6 +30,13 @@ def _pil_to_base64(img: Image.Image) -> str:
     buf = io.BytesIO()
     img.save(buf, format="PNG")
     return base64.b64encode(buf.getvalue()).decode("utf-8")
+
+
+def _image_content_blocks(pages: list[Image.Image]) -> list[dict[str, Any]]:
+    return [
+        {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{_pil_to_base64(p)}"}}
+        for p in pages
+    ]
 
 
 class GroqClient:
@@ -42,7 +53,8 @@ class GroqClient:
                 "GROQ_API_KEY is not set. "
                 "Get a free key at console.groq.com and add it to .env."
             )
-        self._client = AsyncGroq(api_key=key)
+        self._async_groq = AsyncGroq(api_key=key)
+        self._instructor = instructor.from_groq(self._async_groq, mode=instructor.Mode.JSON)
         self._model = model or os.environ.get("GROQ_MODEL", _FALLBACK_MODEL)
 
     async def extract(
@@ -50,28 +62,15 @@ class GroqClient:
         pages: list[Image.Image],
         prompt: str,
     ) -> dict[str, Any]:
-        """Send *pages* + *prompt* to Groq and return a parsed JSON dict.
-
-        Each page is sent as a base64 PNG image_url block; the prompt follows
-        as a text block. Uses JSON mode so the response is always parseable.
-
-        Raises:
-            VLMError: API failure or non-JSON response.
-        """
+        """Raw extraction path — returns parsed JSON dict (M0 compat)."""
         if not pages:
             raise VLMError("extract() requires at least one page image.")
 
-        content: list[dict[str, Any]] = [
-            {
-                "type": "image_url",
-                "image_url": {"url": f"data:image/png;base64,{_pil_to_base64(p)}"},
-            }
-            for p in pages
-        ]
+        content: list[dict[str, Any]] = _image_content_blocks(pages)
         content.append({"type": "text", "text": prompt})
 
         try:
-            response = await self._client.chat.completions.create(  # type: ignore[call-overload]
+            response = await self._async_groq.chat.completions.create(  # type: ignore[call-overload]
                 model=self._model,
                 messages=[{"role": "user", "content": content}],
                 response_format={"type": "json_object"},
@@ -92,5 +91,43 @@ class GroqClient:
             raise VLMError(
                 f"Expected a JSON object from Groq, got {type(result).__name__}."
             )
+
+        return result
+
+    async def extract_structured(
+        self,
+        pages: list[Image.Image],
+        response_model: type[T],
+        max_retries: int = 3,
+    ) -> T:
+        """Instructor-backed structured extraction with automatic schema retries."""
+        if not pages:
+            raise VLMError("extract_structured() requires at least one page image.")
+
+        content: list[dict[str, Any]] = _image_content_blocks(pages)
+        content.append({
+            "type": "text",
+            "text": (
+                "Extract the requested fields from all pages of this document. "
+                "Use null for any field that is absent or cannot be read. "
+                "Amounts must be plain numbers (no currency symbols or commas). "
+                "Dates must be ISO 8601 strings: YYYY-MM-DD."
+            ),
+        })
+
+        try:
+            result: T = await self._instructor.chat.completions.create(  # type: ignore[call-overload,misc]
+                model=self._model,
+                response_model=response_model,
+                messages=[{"role": "user", "content": content}],  # type: ignore[list-item,misc]
+                max_retries=max_retries,
+                max_tokens=4096,
+            )
+        except VLMError:
+            raise
+        except Exception as exc:
+            raise VLMError(
+                f"Groq structured extraction failed after {max_retries} retries: {exc}"
+            ) from exc
 
         return result

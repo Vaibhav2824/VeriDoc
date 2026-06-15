@@ -6,7 +6,7 @@ Usage:
 Reads labels from eval/labels/*.json, finds matching docs in eval/docs/,
 runs extract_invoice on each, computes metrics, and updates eval/REPORT.md.
 
-Requires GEMINI_API_KEY in environment or .env file.
+Requires GROQ_API_KEY or GEMINI_API_KEY in environment or .env file.
 """
 
 from __future__ import annotations
@@ -81,7 +81,8 @@ async def run_eval(
             await asyncio.sleep(sleep_s)
         print(f"  [{i}/{len(pairs)}] {doc_path.name} … ", end="", flush=True)
         try:
-            predicted = await extract_invoice(doc_path, client)
+            extraction = await extract_invoice(doc_path, client, max_retries=3)
+            predicted = extraction.model_dump()
             result = doc_accuracy(predicted, ground_truth)
             doc_results.append(result)
             scored = [v for v in result.values() if v is not None]
@@ -134,7 +135,7 @@ def _format_report_section(metrics: dict, n_docs: int, errors: list[str]) -> str
 
     lines += [
         "",
-        f"Total scored (field × doc) pairs: {n_scored}",
+        f"Total scored (field x doc) pairs: {n_scored}",
     ]
 
     if errors:
@@ -195,16 +196,16 @@ async def main() -> int:
     metrics = corpus_metrics(doc_results)
     macro = metrics["macro_accuracy"]
 
-    print(f"\n{'─' * 50}")
-    print(f"  Macro field accuracy : {macro:.1%}" if macro is not None else "  Macro: —")
+    print(f"\n{'-' * 50}")
+    print(f"  Macro field accuracy : {macro:.1%}" if macro is not None else "  Macro: N/A")
     print(f"  Docs evaluated       : {metrics['n_docs']}")
-    print(f"  Scored (field × doc) : {metrics['n_scored_pairs']}")
+    print(f"  Scored (field x doc) : {metrics['n_scored_pairs']}")
     if errors:
         print(f"  Errors               : {len(errors)}")
-    print(f"{'─' * 50}")
+    print(f"{'-' * 50}")
     print("\nPer-field accuracy:")
     for field, acc in sorted(metrics["field_accuracy"].items()):
-        bar = "█" * round(acc * 20)
+        bar = "#" * round(acc * 20)
         print(f"  {field:<25} {acc:.1%}  {bar}")
 
     update_report(metrics, len(doc_results), errors)

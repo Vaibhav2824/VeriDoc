@@ -7,11 +7,11 @@
 
 ## Baseline (M0)
 
-**Last run:** 2026-06-15 11:55 UTC · **Docs evaluated:** 10
+**Last run:** 2026-06-15 12:19 UTC · **Docs evaluated:** 10
 
 | Metric | Value | Notes |
 |---|---|---|
-| **Macro field accuracy** | **99.0%** | M0 — the baseline number |
+| **Macro field accuracy** | **98.0%** | M0 — the baseline number |
 | Hallucination rate | — | Not measured at M0 (no source-grounding yet) |
 | ECE | — | Not applicable at M0 (no calibrated confidence yet) |
 | % auto-processed @ 99% precision | — | Not applicable at M0 (no abstention yet) |
@@ -24,7 +24,7 @@
 |---|---|---|
 | `buyer_name` | 100.0% | (of 10) |
 | `currency` | 100.0% | (of 10) |
-| `invoice_date` | 90.0% | (of 10) |
+| `invoice_date` | 80.0% | (of 10) |
 | `invoice_number` | 100.0% | (of 10) |
 | `subtotal` | 100.0% | (of 10) |
 | `tax.total_tax` | 100.0% | (of 10) |
@@ -33,7 +33,7 @@
 | `vendor_gstin` | 100.0% | (of 10) |
 | `vendor_name` | 100.0% | (of 10) |
 
-Total scored (field × doc) pairs: 100
+Total scored (field x doc) pairs: 100
 
 ---
 

@@ -1,9 +1,8 @@
-"""Tests for services.api.extractor — mocked VLMClient, real synthetic PDF/image."""
+"""Tests for services.api.extractor (M1) — mocked VLMClient."""
 
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
 from unittest.mock import AsyncMock
 
 import pypdfium2 as pdfium
@@ -11,8 +10,10 @@ import pytest
 from PIL import Image
 
 from services.api.clients.base import VLMError
-from services.api.extractor import NAIVE_INVOICE_PROMPT, extract_invoice
+from services.api.extractor import extract_bank_statement, extract_invoice
 from services.api.ingest import IngestError
+from services.api.models.bank_statement import BankStatementExtraction, Transaction
+from services.api.models.invoice import InvoiceExtraction
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -34,95 +35,87 @@ def _make_png(tmp_path: Path) -> Path:
     return out
 
 
-def _mock_client(response: dict[str, Any]) -> AsyncMock:
+def _mock_client_structured(response: object) -> AsyncMock:
+    """Return a mock VLMClient whose extract_structured returns *response*."""
     client = AsyncMock()
-    client.extract = AsyncMock(return_value=response)
+    client.extract_structured = AsyncMock(return_value=response)
+    client._model = "mock-model"
     return client
 
 
-# ── happy-path tests ──────────────────────────────────────────────────────────
+# ── invoice happy path ────────────────────────────────────────────────────────
 
 
-async def test_extract_invoice_returns_dict(tmp_path: Path) -> None:
+async def test_extract_invoice_returns_model(tmp_path: Path) -> None:
     pdf = _make_pdf(tmp_path)
-    expected = {"invoice_number": "INV-2024-001", "total_amount": 4250.0}
-    client = _mock_client(expected)
+    expected = InvoiceExtraction(invoice_number="INV-001", total_amount=4250.0)
+    client = _mock_client_structured(expected)
 
     result = await extract_invoice(pdf, client)
 
-    assert result == expected
+    assert isinstance(result, InvoiceExtraction)
+    assert result.invoice_number == "INV-001"
+    assert result.total_amount == 4250.0
 
 
 async def test_extract_invoice_accepts_string_path(tmp_path: Path) -> None:
     pdf = _make_pdf(tmp_path)
-    client = _mock_client({"invoice_number": "X"})
+    expected = InvoiceExtraction(invoice_number="X")
+    client = _mock_client_structured(expected)
 
-    result = await extract_invoice(str(pdf), client)  # str, not Path
+    result = await extract_invoice(str(pdf), client)
 
-    assert result["invoice_number"] == "X"
+    assert result.invoice_number == "X"
 
 
 async def test_extract_invoice_accepts_image(tmp_path: Path) -> None:
     png = _make_png(tmp_path)
-    client = _mock_client({"total_amount": 100.0})
+    expected = InvoiceExtraction(total_amount=100.0)
+    client = _mock_client_structured(expected)
 
     result = await extract_invoice(png, client)
 
-    assert result["total_amount"] == 100.0
+    assert result.total_amount == 100.0
 
 
 async def test_extract_invoice_passes_page_images_to_client(tmp_path: Path) -> None:
-    """Each PDF page must become one PIL Image forwarded to client.extract."""
+    """Each PDF page becomes one PIL Image forwarded to extract_structured."""
     pdf = _make_pdf(tmp_path, n_pages=3)
-    client = _mock_client({})
+    client = _mock_client_structured(InvoiceExtraction())
 
     await extract_invoice(pdf, client)
 
-    pages_arg: list[Image.Image] = client.extract.call_args[0][0]
+    pages_arg: list[Image.Image] = client.extract_structured.call_args[0][0]
     assert len(pages_arg) == 3
     assert all(isinstance(p, Image.Image) for p in pages_arg)
 
 
-async def test_extract_invoice_passes_naive_prompt(tmp_path: Path) -> None:
-    """The naive prompt must be forwarded verbatim (M0 contract)."""
+async def test_extract_invoice_passes_response_model(tmp_path: Path) -> None:
     pdf = _make_pdf(tmp_path)
-    client = _mock_client({})
+    client = _mock_client_structured(InvoiceExtraction())
 
     await extract_invoice(pdf, client)
 
-    prompt_arg: str = client.extract.call_args[0][1]
-    assert prompt_arg == NAIVE_INVOICE_PROMPT
+    _, model_arg, *_ = client.extract_structured.call_args[0]
+    assert model_arg is InvoiceExtraction
 
 
-# ── prompt content sanity checks ──────────────────────────────────────────────
+async def test_extract_invoice_null_fields(tmp_path: Path) -> None:
+    """All-None InvoiceExtraction (abstain case) passes through unchanged."""
+    pdf = _make_pdf(tmp_path)
+    client = _mock_client_structured(InvoiceExtraction())
+
+    result = await extract_invoice(pdf, client)
+
+    assert result.invoice_number is None
+    assert result.total_amount is None
 
 
-def test_naive_prompt_covers_all_prd_fields() -> None:
-    """NAIVE_INVOICE_PROMPT must reference every field from PRD §8.1."""
-    required_fields = [
-        "invoice_number",
-        "invoice_date",
-        "due_date",
-        "vendor_name",
-        "vendor_gstin",
-        "vendor_address",
-        "buyer_name",
-        "buyer_gstin",
-        "currency",
-        "subtotal",
-        "total_amount",
-        "line_items",
-        "tax",
-    ]
-    for field in required_fields:
-        assert field in NAIVE_INVOICE_PROMPT, f"Prompt missing field: {field}"
-
-
-# ── error propagation tests ───────────────────────────────────────────────────
+# ── invoice error propagation ─────────────────────────────────────────────────
 
 
 async def test_ingest_error_propagates(tmp_path: Path) -> None:
-    client = _mock_client({})
+    client = _mock_client_structured(InvoiceExtraction())
     with pytest.raises(IngestError):
         await extract_invoice(tmp_path / "missing.pdf", client)
 
@@ -130,19 +123,58 @@ async def test_ingest_error_propagates(tmp_path: Path) -> None:
 async def test_vlm_error_propagates(tmp_path: Path) -> None:
     pdf = _make_pdf(tmp_path)
     client = AsyncMock()
-    client.extract = AsyncMock(side_effect=VLMError("quota exceeded"))
+    client.extract_structured = AsyncMock(side_effect=VLMError("quota exceeded"))
+    client._model = "mock-model"
 
     with pytest.raises(VLMError, match="quota exceeded"):
         await extract_invoice(pdf, client)
 
 
-async def test_returns_null_fields_unchanged(tmp_path: Path) -> None:
-    """VLM may return null values; extractor must pass them through as-is."""
+# ── bank statement happy path ─────────────────────────────────────────────────
+
+
+async def test_extract_bank_statement_returns_model(tmp_path: Path) -> None:
     pdf = _make_pdf(tmp_path)
-    response = {"invoice_number": None, "total_amount": None, "line_items": None}
-    client = _mock_client(response)
+    stmt = BankStatementExtraction(
+        account_number="123456789012",
+        bank_name="SBI",
+        opening_balance=1000.0,
+        closing_balance=2500.0,
+        transactions=[Transaction(date="2024-01-10", credit=1500.0, balance=2500.0)],
+    )
+    client = _mock_client_structured(stmt)
 
-    result = await extract_invoice(pdf, client)
+    result = await extract_bank_statement(pdf, client)
 
-    assert result["invoice_number"] is None
-    assert result["total_amount"] is None
+    assert isinstance(result, BankStatementExtraction)
+    assert result.bank_name == "SBI"
+
+
+async def test_extract_bank_statement_masks_account_by_default(tmp_path: Path) -> None:
+    pdf = _make_pdf(tmp_path)
+    stmt = BankStatementExtraction(account_number="123456789012")
+    client = _mock_client_structured(stmt)
+
+    result = await extract_bank_statement(pdf, client, mask_pii=True)
+
+    assert result.account_number == "XXXXXXXX9012"
+
+
+async def test_extract_bank_statement_no_mask_when_disabled(tmp_path: Path) -> None:
+    pdf = _make_pdf(tmp_path)
+    stmt = BankStatementExtraction(account_number="123456789012")
+    client = _mock_client_structured(stmt)
+
+    result = await extract_bank_statement(pdf, client, mask_pii=False)
+
+    assert result.account_number == "123456789012"
+
+
+async def test_extract_bank_statement_none_account_passthrough(tmp_path: Path) -> None:
+    pdf = _make_pdf(tmp_path)
+    stmt = BankStatementExtraction(account_number=None)
+    client = _mock_client_structured(stmt)
+
+    result = await extract_bank_statement(pdf, client)
+
+    assert result.account_number is None

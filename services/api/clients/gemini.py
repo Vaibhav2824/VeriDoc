@@ -3,7 +3,9 @@
 Default VLM for VeriDoc (free tier, dev + prod).
 Wraps google-genai SDK; requests JSON output via response_mime_type so
 the raw response is always parseable without schema enforcement (M0).
-Schema enforcement via Instructor/Pydantic is added in M1.
+
+M1 structured extraction: uses Pydantic post-validation with bounded retry
+(Gemini-native Instructor async integration is deferred to a later milestone).
 """
 
 from __future__ import annotations
@@ -13,13 +15,16 @@ import io
 import json
 import os
 import re
-from typing import Any
+from typing import Any, TypeVar
 
 from google import genai
 from google.genai import types
 from PIL import Image
+from pydantic import BaseModel, ValidationError
 
 from services.api.clients.base import VLMError
+
+T = TypeVar("T", bound=BaseModel)
 
 _FALLBACK_MODEL = "gemini-2.0-flash-lite"
 # matches e.g. 'retryDelay': '9s' or "retryDelay": "9.3s"
@@ -129,3 +134,46 @@ class GeminiClient:
             return result
 
         raise VLMError(f"Gemini API call failed after {max_retries} retries")
+
+    async def extract_structured(
+        self,
+        pages: list[Image.Image],
+        response_model: type[T],
+        max_retries: int = 3,
+    ) -> T:
+        """Pydantic-validate-with-retry structured path for Gemini.
+
+        Calls extract() then validates the result against *response_model*.
+        On ValidationError, injects the error into the next prompt attempt.
+        Raises VLMError if all retries are exhausted.
+        """
+        schema_json = json.dumps(response_model.model_json_schema(), indent=2)
+        base_prompt = (
+            "Extract the requested fields from all pages of this document.\n"
+            "Return a single JSON object matching this schema exactly:\n"
+            f"{schema_json}\n\n"
+            "Rules:\n"
+            "- Use null for any field absent or unreadable.\n"
+            "- Amounts: plain numbers only (no currency symbols, no commas).\n"
+            "- Dates: ISO 8601 strings (YYYY-MM-DD).\n"
+            "- Output ONLY the JSON object, no markdown fences."
+        )
+        prompt = base_prompt
+
+        for attempt in range(max_retries):
+            raw = await self.extract(pages, prompt)
+            try:
+                return response_model.model_validate(raw)
+            except ValidationError as exc:
+                if attempt < max_retries - 1:
+                    prompt = (
+                        f"{base_prompt}\n\n"
+                        f"Previous attempt failed schema validation:\n{exc}\n"
+                        "Fix the errors and return a valid JSON object."
+                    )
+                else:
+                    raise VLMError(
+                        f"Gemini structured extraction failed after {max_retries} retries: {exc}"
+                    ) from exc
+
+        raise VLMError(f"Gemini structured extraction failed after {max_retries} retries")

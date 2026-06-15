@@ -43,7 +43,7 @@ async def _run(path: str) -> int:
         print(f"[error] VLM extraction failed: {exc}", file=sys.stderr)
         return 1
 
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    print(json.dumps(result.model_dump(), indent=2, ensure_ascii=False))
     return 0
 
 
