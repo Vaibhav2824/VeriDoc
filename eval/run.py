@@ -232,12 +232,12 @@ async def main() -> int:
     print(f"  Docs evaluated       : {acc_metrics['n_docs']}")
     print(f"  Scored (field x doc) : {acc_metrics['n_scored_pairs']}")
     ece = trust_metrics["ece"]
-    print(f"  ECE                  : {ece:.4f}" if ece is not None else "  ECE: —")
+    print(f"  ECE                  : {ece:.4f}" if ece is not None else "  ECE: N/A")
     hlr = trust_metrics["hallucination_rate"]
-    print(f"  Hallucination rate   : {hlr:.1%}" if hlr is not None else "  Hallucination: —")
+    print(f"  Hallucination rate   : {hlr:.1%}" if hlr is not None else "  Hallucination: N/A")
     apr = trust_metrics["auto_processing_rate_99pct"]
     print(
-        f"  Auto-process @99%p   : {apr:.1%}" if apr is not None else "  Auto-process: —"
+        f"  Auto-process @99%p   : {apr:.1%}" if apr is not None else "  Auto-process @99%p: N/A"
     )
     if errors:
         print(f"  Errors               : {len(errors)}")
