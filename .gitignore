@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environments
+.env
+.venv/
+venv/
+
+# Tool caches
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs & temp
+*.log
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Frontend (deferred)
+web/node_modules/
+web/.next/
+web/out/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Eval docs (don't commit raw PDFs to git; store separately or use Git LFS)
+eval/docs/*.pdf
+eval/docs/*.png
+eval/docs/*.jpg
+eval/docs/*.jpeg
+
+# Claude Code internal state
+.claude/
+
+# Secrets / local overrides
+*.local
