@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
@@ -71,8 +72,13 @@ async def run_eval(
     """
     doc_results = []
     errors = []
+    # Respect free-tier RPM: sleep between requests (default 4s ≈ 15 RPM headroom).
+    # Set EVAL_RATE_LIMIT_SLEEP=0 to disable, or raise it if you hit 429s.
+    sleep_s = float(os.environ.get("EVAL_RATE_LIMIT_SLEEP", "4"))
 
     for i, (doc_path, ground_truth) in enumerate(pairs, start=1):
+        if i > 1 and sleep_s > 0:
+            await asyncio.sleep(sleep_s)
         print(f"  [{i}/{len(pairs)}] {doc_path.name} … ", end="", flush=True)
         try:
             predicted = await extract_invoice(doc_path, client)
