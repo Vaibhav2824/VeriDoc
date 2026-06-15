@@ -47,5 +47,8 @@ eval/docs/*.jpeg
 # Claude Code internal state
 .claude/
 
+# Graphify generated artifacts
+graphify-out/
+
 # Secrets / local overrides
 *.local
