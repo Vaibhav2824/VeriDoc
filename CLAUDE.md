@@ -5,8 +5,8 @@ extracted field carries a calibrated confidence + a source link, and the system 
 on low-confidence fields instead of hallucinating. See `PRD.md` for scope, `PROJECT_SPEC.md`
 for the full vision.
 
-**Status:** Planning complete. Next: **M0 — walking skeleton** (one invoice → naive
-Gemini→JSON → minimal display → baseline number). No application code exists yet.
+**Status:** M0 in progress. Walking skeleton is runnable (`scripts/extract_invoice.py`).
+Next: **M0.F5 — eval harness + baseline number** on ~10 labeled invoices.
 
 ## Environment & constraints (fixed)
 
@@ -70,7 +70,8 @@ PRD.md  PROJECT_SPEC.md  README.md  CLAUDE.md
 | Purpose | Command |
 |---|---|
 | Setup env | `uv sync` |
-| Run API | `uv run uvicorn services.api.main:app --reload` |
+| Extract invoice (M0 CLI) | `uv run python scripts/extract_invoice.py <path>` |
+| Run API | `uv run uvicorn services.api.main:app --reload` *(placeholder — M1)* |
 | Tests | `uv run pytest` |
 | Lint | `uv run ruff check .` |
 | Typecheck | `uv run mypy .` |
