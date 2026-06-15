@@ -21,7 +21,7 @@ from PIL import Image
 
 from services.api.clients.base import VLMError
 
-_FALLBACK_MODEL = "gemini-2.0-flash"
+_FALLBACK_MODEL = "gemini-2.5-flash"
 # matches e.g. 'retryDelay': '9s' or "retryDelay": "9.3s"
 _RETRY_DELAY_RE = re.compile(r"retryDelay['\"]?\s*:\s*['\"](\d+(?:\.\d+)?)s")
 
