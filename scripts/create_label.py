@@ -27,8 +27,8 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from services.api.clients import make_client
 from services.api.clients.base import VLMError
-from services.api.clients.gemini import GeminiClient
 from services.api.extractor import extract_invoice
 from services.api.ingest import IngestError
 
@@ -39,7 +39,7 @@ async def _run(doc_path: Path) -> int:
     load_dotenv()
 
     try:
-        client = GeminiClient()
+        client = make_client()
     except VLMError as exc:
         print(f"[error] {exc}", file=sys.stderr)
         return 1

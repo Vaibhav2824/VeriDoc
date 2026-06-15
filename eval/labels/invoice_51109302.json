@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109302.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-15",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109302",
+  "invoice_date": "2023-09-25",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Sharma Tech Solutions",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1780513.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 178051.3
+  },
+  "total_amount": 1958564.3,
+  "line_items": [
+    {
+      "description": "Apple MacBook Air M2 8GB 256GB Silver",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 102933.0,
+      "line_total": 720531.0
+    },
+    {
+      "description": "TP-Link Archer AX73 WiFi 6 Router",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 15075.0,
+      "line_total": 75375.0
+    },
+    {
+      "description": "Samsung Galaxy Tab S9 256GB Graphite",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 76786.0,
+      "line_total": 76786.0
+    },
+    {
+      "description": "LG UltraGear 27 inch 165Hz Gaming Monitor",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 28169.0,
+      "line_total": 140845.0
+    },
+    {
+      "description": "JBL Flip 6 Portable Bluetooth Speaker",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 11692.0,
+      "line_total": 46768.0
+    },
+    {
+      "description": "Vivo X100 Pro 256GB Asteroid Black",
+      "hsn_sac": null,
+      "quantity": 8.0,
+      "unit_price": 90026.0,
+      "line_total": 720208.0
+    }
+  ]
+}

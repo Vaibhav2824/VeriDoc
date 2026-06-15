@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109305.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-15",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109305",
+  "invoice_date": "2024-03-09",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Hyderabad IT Traders",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 2023625.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 202362.5
+  },
+  "total_amount": 2225987.5,
+  "line_items": [
+    {
+      "description": "Belkin MagSafe 3-in-1 Wireless Charger",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 8175.0,
+      "line_total": 73575.0
+    },
+    {
+      "description": "Sony Alpha ZV-E10 Mirrorless Kit 16-50",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 57931.0,
+      "line_total": 579310.0
+    },
+    {
+      "description": "Boat Rockerz 550 Bluetooth Headphones",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 1921.0,
+      "line_total": 7684.0
+    },
+    {
+      "description": "Western Digital 2TB My Passport HDD",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 6432.0,
+      "line_total": 57888.0
+    },
+    {
+      "description": "Samsung Galaxy S24 256GB Phantom Black",
+      "hsn_sac": null,
+      "quantity": 8.0,
+      "unit_price": 72370.0,
+      "line_total": 578960.0
+    },
+    {
+      "description": "Dell XPS 13 Intel i7 16GB 512GB",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 103744.0,
+      "line_total": 726208.0
+    }
+  ]
+}

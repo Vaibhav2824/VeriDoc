@@ -21,8 +21,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from eval.metrics import corpus_metrics, doc_accuracy
-from services.api.clients.base import VLMError
-from services.api.clients.gemini import GeminiClient
+from services.api.clients import make_client
+from services.api.clients.base import VLMClient, VLMError
 from services.api.extractor import extract_invoice
 from services.api.ingest import IngestError
 
@@ -61,7 +61,7 @@ def load_labels(labels_dir: Path) -> list[tuple[Path, dict]]:
 
 
 async def run_eval(
-    client: GeminiClient,
+    client: VLMClient,
     pairs: list[tuple[Path, dict]],
 ) -> tuple[list[dict], list[str]]:
     """Extract + score each (doc, label) pair.
@@ -181,7 +181,7 @@ async def main() -> int:
     print(f"Found {len(pairs)} labeled document(s). Running extraction...\n")
 
     try:
-        client = GeminiClient()
+        client = make_client()
     except VLMError as exc:
         print(f"[error] {exc}", file=sys.stderr)
         return 1

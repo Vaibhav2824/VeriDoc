@@ -4,7 +4,7 @@ Usage:
     uv run python scripts/extract_invoice.py <path/to/invoice.pdf>
     uv run python scripts/extract_invoice.py <path/to/invoice.png>
 
-Requires GEMINI_API_KEY in the environment or in a .env file at the repo root.
+Requires GROQ_API_KEY or GEMINI_API_KEY in the environment or .env file.
 Copy .env.example → .env and fill in your key before running.
 
 Exit codes:
@@ -20,8 +20,8 @@ import sys
 
 from dotenv import load_dotenv
 
+from services.api.clients import make_client
 from services.api.clients.base import VLMError
-from services.api.clients.gemini import GeminiClient
 from services.api.extractor import extract_invoice
 from services.api.ingest import IngestError
 
@@ -29,7 +29,7 @@ from services.api.ingest import IngestError
 async def _run(path: str) -> int:
     load_dotenv()
     try:
-        client = GeminiClient()
+        client = make_client()
     except VLMError as exc:
         print(f"[error] {exc}", file=sys.stderr)
         return 1

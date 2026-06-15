@@ -7,21 +7,39 @@
 
 ## Baseline (M0)
 
-**Status: PENDING** — M0 walking skeleton not yet built; baseline not yet run.
-
-Run the following after M0.F4–M0.F5 are complete:
-```
-uv run python -m eval.run --split m0_baseline
-```
+**Last run:** 2026-06-15 11:25 UTC · **Docs evaluated:** 7
 
 | Metric | Value | Notes |
 |---|---|---|
-| Macro field-F1 | — | "before" number; all later milestones beat this |
-| Hallucination rate | — | % accepted values not grounded in source |
-| ECE | — | Expected Calibration Error; not applicable at M0 (no confidence yet) |
+| **Macro field accuracy** | **90.0%** | M0 — the baseline number |
+| Hallucination rate | — | Not measured at M0 (no source-grounding yet) |
+| ECE | — | Not applicable at M0 (no calibrated confidence yet) |
 | % auto-processed @ 99% precision | — | Not applicable at M0 (no abstention yet) |
-| Cost per doc | — | From Langfuse traces (not wired at M0) |
-| p95 latency (s) | — | Per document |
+| Cost per doc | — | Wire Langfuse in M1 |
+| p95 latency (s) | — | Wire Langfuse in M1 |
+
+### Per-field accuracy
+
+| Field | Accuracy | Docs scored |
+|---|---|---|
+| `buyer_name` | 100.0% | (of 7) |
+| `currency` | 100.0% | (of 7) |
+| `invoice_date` | 100.0% | (of 7) |
+| `invoice_number` | 100.0% | (of 7) |
+| `subtotal` | 100.0% | (of 7) |
+| `tax.total_tax` | 100.0% | (of 7) |
+| `total_amount` | 100.0% | (of 7) |
+| `vendor_address` | 0.0% | (of 7) |
+| `vendor_gstin` | 100.0% | (of 7) |
+| `vendor_name` | 100.0% | (of 7) |
+
+Total scored (field × doc) pairs: 70
+
+### Extraction errors
+
+- invoice_51109303.pdf: Gemini API call failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+- invoice_51109304.pdf: Gemini API call failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+- invoice_51109306.pdf: Gemini API call failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
 
 ---
 
