@@ -33,6 +33,9 @@ SCORED_FIELDS: list[str] = [
 
 _DATE_FIELDS = {"invoice_date", "due_date"}
 _NUMBER_FIELDS = {"subtotal", "total_amount", "tax.total_tax"}
+# Address fields: strip all punctuation before comparing — models use newlines
+# or commas interchangeably as address-part separators.
+_ADDRESS_FIELDS = {"vendor_address", "buyer_address"}
 _DATE_FORMATS = (
     "%Y-%m-%d",
     "%d/%m/%Y",
@@ -50,6 +53,16 @@ _DATE_FORMATS = (
 def normalize_string(value: str) -> str:
     """Lowercase and collapse internal whitespace."""
     return " ".join(value.strip().lower().split())
+
+
+def normalize_address(value: str) -> str:
+    """Strip punctuation and collapse whitespace for address comparison.
+
+    Models often use newlines where ground truth has commas (or vice versa),
+    so we compare the bare word sequence rather than punctuated form.
+    """
+    stripped = re.sub(r"[^\w\s]", " ", value.lower())
+    return " ".join(stripped.split())
 
 
 def normalize_number(value: Any) -> float | None:
@@ -100,6 +113,9 @@ def field_match(predicted: Any, ground_truth: Any, field: str) -> bool:
         if p is None or g is None:
             return False
         return abs(p - g) < 0.011  # allow rounding differences up to ~1 cent
+
+    if field in _ADDRESS_FIELDS:
+        return normalize_address(str(predicted)) == normalize_address(str(ground_truth))
 
     # Default: string comparison
     return normalize_string(str(predicted)) == normalize_string(str(ground_truth))

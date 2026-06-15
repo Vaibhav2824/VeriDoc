@@ -8,6 +8,7 @@ from eval.metrics import (
     corpus_metrics,
     doc_accuracy,
     field_match,
+    normalize_address,
     normalize_date,
     normalize_number,
     normalize_string,
@@ -74,6 +75,23 @@ def test_normalize_date_strips_whitespace() -> None:
     assert normalize_date("  2024-03-15  ") == "2024-03-15"
 
 
+# ── normalize_address ─────────────────────────────────────────────────────────
+
+
+def test_normalize_address_strips_commas_and_newlines() -> None:
+    a = "Plot 14, MIDC Industrial Area, Andheri East\nMumbai, Maharashtra - 400093"
+    b = "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093"
+    assert normalize_address(a) == normalize_address(b)
+
+
+def test_normalize_address_lowercases() -> None:
+    assert normalize_address("MUMBAI") == "mumbai"
+
+
+def test_normalize_address_mismatch() -> None:
+    assert normalize_address("Mumbai") != normalize_address("Delhi")
+
+
 # ── field_match ───────────────────────────────────────────────────────────────
 
 
@@ -115,6 +133,16 @@ def test_field_match_date_different_formats() -> None:
 
 def test_field_match_date_mismatch() -> None:
     assert field_match("2024-03-14", "2024-03-15", "invoice_date") is False
+
+
+def test_field_match_address_newline_vs_comma() -> None:
+    model = "Plot 14, MIDC Area\nMumbai, Maharashtra - 400093"
+    gt = "Plot 14, MIDC Area, Mumbai, Maharashtra - 400093"
+    assert field_match(model, gt, "vendor_address") is True
+
+
+def test_field_match_address_mismatch() -> None:
+    assert field_match("123 Main St, Delhi", "456 MG Road, Mumbai", "vendor_address") is False
 
 
 # ── doc_accuracy ──────────────────────────────────────────────────────────────

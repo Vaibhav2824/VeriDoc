@@ -21,7 +21,7 @@ from PIL import Image
 
 from services.api.clients.base import VLMError
 
-_FALLBACK_MODEL = "gemini-2.5-flash"
+_FALLBACK_MODEL = "gemini-2.0-flash-lite"
 # matches e.g. 'retryDelay': '9s' or "retryDelay": "9.3s"
 _RETRY_DELAY_RE = re.compile(r"retryDelay['\"]?\s*:\s*['\"](\d+(?:\.\d+)?)s")
 
@@ -86,22 +86,26 @@ class GeminiClient:
             except Exception as exc:
                 exc_str = str(exc)
                 is_rate_limited = "429" in exc_str or "RESOURCE_EXHAUSTED" in exc_str
-                # "limit: 0" means permanent zero quota — no amount of waiting helps.
-                # Only retry for transient limits where the quota is > 0 but momentarily hit.
+                is_server_busy = "503" in exc_str or "UNAVAILABLE" in exc_str
+                # Daily quota exhausted — retrying is pointless until midnight.
+                is_daily_quota = "PerDay" in exc_str and is_rate_limited
+                # Permanent zero quota — this project has no access to this model.
                 is_zero_quota = "limit: 0" in exc_str
-                if is_zero_quota:
+                if is_zero_quota or is_daily_quota:
                     raise VLMError(
-                        f"Model '{self._model}' has zero quota on this API key. "
-                        "Add GEMINI_MODEL=gemini-1.5-flash to your .env and retry."
+                        f"Model '{self._model}' quota exhausted for today on this key. "
+                        "Try GEMINI_MODEL=gemini-2.0-flash-lite or wait until tomorrow."
                     ) from exc
-                if is_rate_limited and attempt < max_retries:
-                    delay = 65.0  # conservative default: wait out a 1-min window
+                if (is_rate_limited or is_server_busy) and attempt < max_retries:
+                    # 503: server overload — shorter default wait; no retryDelay hint
+                    delay = 20.0 if is_server_busy else 65.0
                     m = _RETRY_DELAY_RE.search(exc_str)
                     if m:
                         delay = float(m.group(1)) + 2.0
+                    reason = "server busy" if is_server_busy else "rate-limited"
                     print(
                         f"\n    [retry {attempt + 1}/{max_retries}] "
-                        f"rate-limited — sleeping {delay:.0f}s…",
+                        f"{reason} — sleeping {delay:.0f}s…",
                         end="",
                         flush=True,
                     )
