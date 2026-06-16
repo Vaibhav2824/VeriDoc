@@ -1,0 +1,1366 @@
+{
+  "_meta": {
+    "doc_file": "bankstmt_digital_type2_00010.pdf",
+    "doc_type": "bank_statement",
+    "labeled_by": "huggingface_ground_truth",
+    "labeled_at": "2026-06-17",
+    "note": "Auto-generated from AgamiAI/Indian-Bank-Statements ground truth"
+  },
+  "account_holder_name": "INFOCORE TECHNOLOGIES",
+  "account_number": "20991457357",
+  "bank_name": "INDUSBANK LIMITED",
+  "ifsc": "INDU0610355",
+  "statement_period": {
+    "start": "2024-01-01",
+    "end": "2024-03-31"
+  },
+  "opening_balance": 2884251.0,
+  "closing_balance": 7321502.32,
+  "currency": "INR",
+  "transactions": [
+    {
+      "date": "2024-01-01",
+      "narration": "CLG-CONSTRUCTION SOLUTIONS LTD",
+      "debit": null,
+      "credit": 762850.22,
+      "balance": 3647101.22,
+      "ref_no": "152466"
+    },
+    {
+      "date": "2024-01-02",
+      "narration": "IMPS-931451881298-Mehul Parekh",
+      "debit": 369290.84,
+      "credit": null,
+      "balance": 3277810.38,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-02",
+      "narration": "NEFT-277464995543-Bhavesh Shah",
+      "debit": 851388.66,
+      "credit": null,
+      "balance": 2426421.72,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-02",
+      "narration": "UPI/CR/534599525313/Nisha Shah/9525637477@pay",
+      "debit": null,
+      "credit": 44036.83,
+      "balance": 2470458.55,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-03",
+      "narration": "NEFT-333977675495-NETPULSE SYSTEMS",
+      "debit": null,
+      "credit": 655458.58,
+      "balance": 3125917.13,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-04",
+      "narration": "RTGS-ICICR156983953945-Jayesh Modi",
+      "debit": 988440.1,
+      "credit": null,
+      "balance": 2137477.03,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-04",
+      "narration": "CLG-FASHION TEXTILES LTD",
+      "debit": null,
+      "credit": 178407.53,
+      "balance": 2315884.56,
+      "ref_no": "734290"
+    },
+    {
+      "date": "2024-01-05",
+      "narration": "NEFT Dr-959503638665-RENT PAYMENT-MONTHLY RENT",
+      "debit": 347944.7,
+      "credit": null,
+      "balance": 3890216.71,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-05",
+      "narration": "NEFT-211270407152-SOFTWAVE TECHNOLOGIES",
+      "debit": null,
+      "credit": 503682.69,
+      "balance": 2819567.25,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-05",
+      "narration": "IMPS-837361654417-INDUSTRIAL COMPONENTS INDIA",
+      "debit": null,
+      "credit": 563793.66,
+      "balance": 3383360.91,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-06",
+      "narration": "SERVICE CHARGES-Demat Account AMC",
+      "debit": 113.57,
+      "credit": null,
+      "balance": 3383247.34,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-08",
+      "narration": "NEFT Dr-173008105294-INSURANCE SUBSCRIPTION",
+      "debit": 4107.28,
+      "credit": null,
+      "balance": 3886109.43,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-08",
+      "narration": "IMPS-755080581750-APEX HEAVY INDUSTRIES",
+      "debit": null,
+      "credit": 54121.35,
+      "balance": 3437368.69,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-08",
+      "narration": "ATM WDL-63655",
+      "debit": 9311.62,
+      "credit": null,
+      "balance": 3428057.07,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-08",
+      "narration": "SERVICE CHARGES-Foreign Currency Markup",
+      "debit": 260.66,
+      "credit": null,
+      "balance": 3427796.41,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-08",
+      "narration": "CASH WITHDRAWAL-Nilesh Parekh",
+      "debit": 142380.13,
+      "credit": null,
+      "balance": 3285416.28,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-09",
+      "narration": "SERVICE CHARGES-SMS Alert Charges",
+      "debit": 253.11,
+      "credit": null,
+      "balance": 3285163.17,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-10",
+      "narration": "NEFT Dr-795221599039-LOAN EMI-MONTHLY INSTALLMENT",
+      "debit": 553548.59,
+      "credit": null,
+      "balance": 3332560.84,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-11",
+      "narration": "RTGS-ICICR497014206021-Jayesh Trivedi",
+      "debit": 2391408.55,
+      "credit": null,
+      "balance": 893754.62,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-11",
+      "narration": "RTGS-ICICR500480522753-CODEBASE SOLUTIONS",
+      "debit": null,
+      "credit": 1546009.05,
+      "balance": 2439763.67,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-12",
+      "narration": "UPI/CR/796416958824/Hitesh Trivedi/9663330566@pay",
+      "debit": null,
+      "credit": 84433.79,
+      "balance": 2524197.46,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-12",
+      "narration": "NEFT-517752383178-WELLNESS BRANDS INDIA",
+      "debit": null,
+      "credit": 582086.24,
+      "balance": 3106283.7,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-13",
+      "narration": "UPI/CR/917963721002/Bhavesh Parekh/6167246401@pay",
+      "debit": null,
+      "credit": 118349.47,
+      "balance": 3224633.17,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-13",
+      "narration": "RTGS-ICICR160041281695-COTTON MILLS CORP",
+      "debit": null,
+      "credit": 1020200.83,
+      "balance": 4244834.0,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-15",
+      "narration": "UPI/CR/847831909684/Hitesh Patel/8939142515@pay",
+      "debit": null,
+      "credit": 127164.62,
+      "balance": 4371998.62,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-15",
+      "narration": "CASH WITHDRAWAL-Paresh Desai",
+      "debit": 65551.68,
+      "credit": null,
+      "balance": 4306446.94,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-15",
+      "narration": "NEFT-170586112893-WELLNESS BRANDS INDIA",
+      "debit": null,
+      "credit": 2084182.29,
+      "balance": 6390629.23,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-16",
+      "narration": "UPI/DR/393496684399/Mehul Parekh/7197131851@pay",
+      "debit": 89935.37,
+      "credit": null,
+      "balance": 6300693.86,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-16",
+      "narration": "IMPS-949494019372-FASHION TEXTILES LTD",
+      "debit": null,
+      "credit": 1136421.17,
+      "balance": 7437115.03,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-16",
+      "narration": "RTGS-ICICR100008576371-CONSUMER PRODUCTS INDIA",
+      "debit": null,
+      "credit": 6437970.61,
+      "balance": 13875085.64,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-16",
+      "narration": "NEFT-562034863118-Paresh Trivedi",
+      "debit": 1241416.31,
+      "credit": null,
+      "balance": 12633669.33,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-17",
+      "narration": "FAILED-INSUFFICIENT FUNDS-IMPS-792056188561-Nisha Trivedi",
+      "debit": 0.0,
+      "credit": null,
+      "balance": 12633669.33,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-17",
+      "narration": "IMPS-102626224609-CARGO SOLUTIONS LTD",
+      "debit": null,
+      "credit": 941192.32,
+      "balance": 13574861.65,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-17",
+      "narration": "IMPS-778599222771-NETPULSE SYSTEMS",
+      "debit": null,
+      "credit": 716780.45,
+      "balance": 14291642.1,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-18",
+      "narration": "NEFT-652695340120-INDUSTRIAL COMPONENTS INDIA",
+      "debit": null,
+      "credit": 3158253.52,
+      "balance": 17449895.62,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-18",
+      "narration": "ATM WDL-11231",
+      "debit": 6450.94,
+      "credit": null,
+      "balance": 17443444.68,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-19",
+      "narration": "UPI/DR/133494429229/Mehul Parekh/9406934265@pay",
+      "debit": 500954.29,
+      "credit": null,
+      "balance": 16942490.39,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-19",
+      "narration": "IMPS-388856085584-CAPITAL VENTURES INDIA",
+      "debit": null,
+      "credit": 1000050.72,
+      "balance": 17942541.11,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-20",
+      "narration": "RTGS-ICICR528719202111-Nisha Shah",
+      "debit": 9061091.51,
+      "credit": null,
+      "balance": 8881449.6,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-20",
+      "narration": "CASH WITHDRAWAL-Bhavesh Desai",
+      "debit": 430313.01,
+      "credit": null,
+      "balance": 8451136.59,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-20",
+      "narration": "CLG-INDUSTRIAL COMPONENTS INDIA",
+      "debit": null,
+      "credit": 831909.25,
+      "balance": 9283045.84,
+      "ref_no": "801949"
+    },
+    {
+      "date": "2024-01-20",
+      "narration": "NEFT-428187885391-Mehul Amin",
+      "debit": 663382.17,
+      "credit": null,
+      "balance": 8619663.67,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-20",
+      "narration": "ATM WDL-22857",
+      "debit": 10151.54,
+      "credit": null,
+      "balance": 8609512.13,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-22",
+      "narration": "NEFT Dr-551894922637-UTILITY SUBSCRIPTION",
+      "debit": 2461.85,
+      "credit": null,
+      "balance": 3330098.99,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-22",
+      "narration": "FAILED-INSUFFICIENT FUNDS-UPI/DR/814618664470/Nilesh Desai/7424960774@pay",
+      "debit": 0.0,
+      "credit": null,
+      "balance": 8609512.13,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-22",
+      "narration": "REVERSAL-CLG-INDUSTRIAL COMPONENTS INDIA",
+      "debit": 831909.25,
+      "credit": null,
+      "balance": 6489593.07,
+      "ref_no": "801949"
+    },
+    {
+      "date": "2024-01-22",
+      "narration": "NEFT-645300270033-INDUSTRIAL COMPONENTS INDIA",
+      "debit": null,
+      "credit": 1636337.01,
+      "balance": 10245849.14,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-22",
+      "narration": "RTGS-ICICR181939507110-Nilesh Shah",
+      "debit": 3959145.39,
+      "credit": null,
+      "balance": 6286703.75,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-23",
+      "narration": "IMPS-854917827058-SUPPLY CHAIN CORP",
+      "debit": null,
+      "credit": 361172.18,
+      "balance": 6647875.93,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-23",
+      "narration": "ATM WDL-24690",
+      "debit": 18620.09,
+      "credit": null,
+      "balance": 6629255.84,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-24",
+      "narration": "NEFT-723201843848-CODEBASE SOLUTIONS",
+      "debit": null,
+      "credit": 1013709.66,
+      "balance": 7642965.5,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-24",
+      "narration": "CASH DEPOSIT-Jayesh Amin",
+      "debit": null,
+      "credit": 572241.74,
+      "balance": 8215207.24,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-25",
+      "narration": "SERVICE CHARGES-Cheque Book Charges",
+      "debit": 153.11,
+      "credit": null,
+      "balance": 8215054.13,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-27",
+      "narration": "CLG-COTTON MILLS CORP",
+      "debit": null,
+      "credit": 924271.25,
+      "balance": 9139325.38,
+      "ref_no": "746527"
+    },
+    {
+      "date": "2024-01-27",
+      "narration": "ATM WDL-77597",
+      "debit": 7004.41,
+      "credit": null,
+      "balance": 9132320.97,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-27",
+      "narration": "CASH WITHDRAWAL-Hitesh Trivedi",
+      "debit": 157381.26,
+      "credit": null,
+      "balance": 8974939.71,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-27",
+      "narration": "NEFT-458159025428-Mehul Modi",
+      "debit": 1247591.78,
+      "credit": null,
+      "balance": 7727347.93,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-29",
+      "narration": "UPI/CR/319828076298/Mehul Vora/8875241751@pay",
+      "debit": null,
+      "credit": 341769.82,
+      "balance": 8069117.75,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-29",
+      "narration": "UPI/CR/119268700649/Nisha Parekh/8777504910@pay",
+      "debit": null,
+      "credit": 186347.99,
+      "balance": 8255465.74,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-29",
+      "narration": "ATM WDL-86060",
+      "debit": 7861.62,
+      "credit": null,
+      "balance": 8247604.12,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-30",
+      "narration": "UPI/CR/352552999125/Bhavesh Shah/8454505828@pay",
+      "debit": null,
+      "credit": 206421.85,
+      "balance": 8454025.97,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-30",
+      "narration": "CLG-SUPPLY CHAIN CORP",
+      "debit": null,
+      "credit": 2176776.98,
+      "balance": 10630802.95,
+      "ref_no": "337792"
+    },
+    {
+      "date": "2024-01-30",
+      "narration": "ATM WDL-97043",
+      "debit": 15074.55,
+      "credit": null,
+      "balance": 10615728.4,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-30",
+      "narration": "CHQ PAID-Mehul Shah-MICR",
+      "debit": 2849480.29,
+      "credit": null,
+      "balance": 7766248.11,
+      "ref_no": "345531"
+    },
+    {
+      "date": "2024-01-31",
+      "narration": "CLG-HEALTHCARE PRODUCTS LTD",
+      "debit": null,
+      "credit": 2289886.69,
+      "balance": 10056134.8,
+      "ref_no": "184866"
+    },
+    {
+      "date": "2024-01-31",
+      "narration": "IMPS-583961591714-Nisha Patel",
+      "debit": 206331.07,
+      "credit": null,
+      "balance": 9849803.73,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-01",
+      "narration": "ATM WDL-62996",
+      "debit": 14392.54,
+      "credit": null,
+      "balance": 9835411.19,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-03",
+      "narration": "NEFT-767444840334-PRECISION ENGINEERING WORKS",
+      "debit": null,
+      "credit": 1027334.53,
+      "balance": 10862745.72,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-03",
+      "narration": "CASH WITHDRAWAL-Hitesh Shah",
+      "debit": 169754.62,
+      "credit": null,
+      "balance": 10692991.1,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-05",
+      "narration": "NEFT Dr-607051600697-RENT PAYMENT-MONTHLY RENT",
+      "debit": 338921.74,
+      "credit": null,
+      "balance": 2991177.25,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-05",
+      "narration": "ATM WDL-69019",
+      "debit": 5285.09,
+      "credit": null,
+      "balance": 10687706.01,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-05",
+      "narration": "IMPS-913236943041-Bhavesh Patel",
+      "debit": 488924.46,
+      "credit": null,
+      "balance": 10198781.55,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-06",
+      "narration": "CLG-METROPOLITAN BUILDERS",
+      "debit": null,
+      "credit": 1217142.1,
+      "balance": 11415923.65,
+      "ref_no": "158694"
+    },
+    {
+      "date": "2024-02-06",
+      "narration": "UPI/DR/681516448814/Ketan Modi/7999732710@pay",
+      "debit": 168280.57,
+      "credit": null,
+      "balance": 11247643.08,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-06",
+      "narration": "IMPS-413046656151-Hitesh Desai",
+      "debit": 1506316.17,
+      "credit": null,
+      "balance": 9741326.91,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-06",
+      "narration": "NEFT-748378887288-INFOCORE TECHNOLOGIES",
+      "debit": null,
+      "credit": 776185.5,
+      "balance": 10517512.41,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-07",
+      "narration": "CHQ PAID-Nisha Shah-MICR",
+      "debit": 4267777.17,
+      "credit": null,
+      "balance": 6249735.24,
+      "ref_no": "397608"
+    },
+    {
+      "date": "2024-02-07",
+      "narration": "RTGS-ICICR611794866219-PREMIUM INFRASTRUCTURE",
+      "debit": null,
+      "credit": 2840169.01,
+      "balance": 9089904.25,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-08",
+      "narration": "NEFT Dr-793040575081-CLOUD SUBSCRIPTION",
+      "debit": 3053.08,
+      "credit": null,
+      "balance": 2988124.17,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-09",
+      "narration": "NEFT-321721268642-Jayesh Amin",
+      "debit": 2780000.07,
+      "credit": null,
+      "balance": 6309904.18,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "RTGS-ICICR356968717749-MINDWAVE CONSULTING",
+      "debit": null,
+      "credit": 12391053.24,
+      "balance": 18700957.42,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "NEFT Dr-815549145547-LOAN EMI-MONTHLY INSTALLMENT",
+      "debit": 570003.96,
+      "credit": null,
+      "balance": 2418120.21,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "CASH DEPOSIT-Mehul Trivedi",
+      "debit": null,
+      "credit": 1653376.09,
+      "balance": 20354333.51,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "UPI/CR/537799419626/Mehul Shah/9182606094@pay",
+      "debit": null,
+      "credit": 884744.98,
+      "balance": 21239078.49,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "CLG-EXPRESS LOGISTICS INDIA",
+      "debit": null,
+      "credit": 1980473.23,
+      "balance": 23219551.72,
+      "ref_no": "670185"
+    },
+    {
+      "date": "2024-02-13",
+      "narration": "CLG-URBAN ESTATES INDIA",
+      "debit": null,
+      "credit": 6317017.92,
+      "balance": 29536569.64,
+      "ref_no": "855512"
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "CASH WITHDRAWAL-Paresh Amin",
+      "debit": 489554.69,
+      "credit": null,
+      "balance": 29047014.95,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "NEFT-410700293695-Ketan Trivedi",
+      "debit": 7502616.17,
+      "credit": null,
+      "balance": 21544398.78,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "CHQ PAID-Mehul Modi-MICR",
+      "debit": 6990285.89,
+      "credit": null,
+      "balance": 14554112.89,
+      "ref_no": "220254"
+    },
+    {
+      "date": "2024-02-15",
+      "narration": "IMPS-873792673075-Hitesh Vora",
+      "debit": 1878952.72,
+      "credit": null,
+      "balance": 12675160.17,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-16",
+      "narration": "RTGS-ICICR940133866886-Bhavesh Vora",
+      "debit": 2847277.18,
+      "credit": null,
+      "balance": 9827882.99,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-16",
+      "narration": "NEFT-723381103247-Jayesh Amin",
+      "debit": 1088084.1,
+      "credit": null,
+      "balance": 8739798.89,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-16",
+      "narration": "UPI/DR/819907186262/Nilesh Desai/9090248269@pay",
+      "debit": 58330.44,
+      "credit": null,
+      "balance": 8681468.45,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-17",
+      "narration": "IMPS-953980676648-Nilesh Amin",
+      "debit": 512420.75,
+      "credit": null,
+      "balance": 8169047.7,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-17",
+      "narration": "IMPS-447349008234-APEX HEAVY INDUSTRIES",
+      "debit": null,
+      "credit": 1605369.9,
+      "balance": 9774417.6,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-17",
+      "narration": "IMPS-298698915285-Paresh Vora",
+      "debit": 595143.38,
+      "credit": null,
+      "balance": 9179274.22,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-19",
+      "narration": "RTGS-ICICR481913837446-Paresh Shah",
+      "debit": 3513529.75,
+      "credit": null,
+      "balance": 5665744.47,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-20",
+      "narration": "NEFT-172574676849-Jayesh Modi",
+      "debit": 858698.45,
+      "credit": null,
+      "balance": 4807046.02,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-20",
+      "narration": "CLG-TECHVISION SYSTEMS",
+      "debit": null,
+      "credit": 1273819.94,
+      "balance": 6080865.96,
+      "ref_no": "430450"
+    },
+    {
+      "date": "2024-02-22",
+      "narration": "NEFT Dr-175714686547-INSURANCE SUBSCRIPTION",
+      "debit": 3117.42,
+      "credit": null,
+      "balance": 2415002.79,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-22",
+      "narration": "CASH WITHDRAWAL-Nisha Modi",
+      "debit": 30868.52,
+      "credit": null,
+      "balance": 6049997.44,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-22",
+      "narration": "RTGS-ICICR823531422360-PRECISION ENGINEERING WORKS",
+      "debit": null,
+      "credit": 7431249.45,
+      "balance": 13481246.89,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-23",
+      "narration": "CHQ PAID-Ketan Vora-MICR",
+      "debit": 4182983.41,
+      "credit": null,
+      "balance": 9298263.48,
+      "ref_no": "644296"
+    },
+    {
+      "date": "2024-02-24",
+      "narration": "IMPS-902431841795-Hitesh Desai",
+      "debit": 980478.39,
+      "credit": null,
+      "balance": 8317785.09,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-27",
+      "narration": "UPI/DR/216743891501/Mehul Amin/8883826133@pay",
+      "debit": 59423.24,
+      "credit": null,
+      "balance": 8258361.85,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-27",
+      "narration": "CLG-WELLNESS BRANDS INDIA",
+      "debit": null,
+      "credit": 1487900.07,
+      "balance": 9746261.92,
+      "ref_no": "856457"
+    },
+    {
+      "date": "2024-02-28",
+      "narration": "UPI/DR/186798945861/Nilesh Vora/7841456237@pay",
+      "debit": 144511.6,
+      "credit": null,
+      "balance": 9601750.32,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-28",
+      "narration": "UPI/DR/771771377001/Jayesh Trivedi/6433194839@pay",
+      "debit": 248606.74,
+      "credit": null,
+      "balance": 9353143.58,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-28",
+      "narration": "NEFT-424432020745-NETFORGE TECHNOLOGIES",
+      "debit": null,
+      "credit": 3550017.0,
+      "balance": 12903160.58,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-28",
+      "narration": "Service Charges-Demat Account AMC",
+      "debit": 544.88,
+      "credit": null,
+      "balance": 2414316.44,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-28",
+      "narration": "Service Charges-Statement Charges",
+      "debit": 141.47,
+      "credit": null,
+      "balance": 2414861.32,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-28",
+      "narration": "Service Charges-Foreign Currency Markup",
+      "debit": 301.36,
+      "credit": null,
+      "balance": 2414015.08,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-29",
+      "narration": "NEFT-746633786454-Bhavesh Vora",
+      "debit": 4305648.9,
+      "credit": null,
+      "balance": 8597511.68,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-01",
+      "narration": "ATM WDL-61120",
+      "debit": 17644.88,
+      "credit": null,
+      "balance": 8579866.8,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-02",
+      "narration": "IMPS-472454471120-CONSUMER PRODUCTS INDIA",
+      "debit": null,
+      "credit": 179670.5,
+      "balance": 8759537.3,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-02",
+      "narration": "UPI/DR/797053409785/Ketan Modi/8938277185@pay",
+      "debit": 97658.58,
+      "credit": null,
+      "balance": 8661878.72,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-02",
+      "narration": "UPI/DR/628561036353/Hitesh Vora/8303398745@pay",
+      "debit": 104041.25,
+      "credit": null,
+      "balance": 8557837.47,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-02",
+      "narration": "NEFT-218319358152-Mehul Parekh",
+      "debit": 2154032.29,
+      "credit": null,
+      "balance": 6403805.18,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-02",
+      "narration": "NEFT-551013184006-LIFELINE PHARMACEUTICAL",
+      "debit": null,
+      "credit": 2251431.66,
+      "balance": 8655236.84,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-02",
+      "narration": "NEFT-567668386925-Hitesh Parekh",
+      "debit": 814138.43,
+      "credit": null,
+      "balance": 7841098.41,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-04",
+      "narration": "CHQ PAID-Mehul Trivedi-MICR",
+      "debit": 2212679.99,
+      "credit": null,
+      "balance": 5628418.42,
+      "ref_no": "947337"
+    },
+    {
+      "date": "2024-03-04",
+      "narration": "REVERSAL-NEFT-551013184006-LIFELINE PHARMACEUTICAL",
+      "debit": 2251431.66,
+      "credit": null,
+      "balance": 4238161.41,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-05",
+      "narration": "NEFT Dr-454857694364-RENT PAYMENT-MONTHLY RENT",
+      "debit": 190200.13,
+      "credit": null,
+      "balance": 2223814.95,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-05",
+      "narration": "SERVICE CHARGES-Online Banking Charges",
+      "debit": 276.86,
+      "credit": null,
+      "balance": 5628141.56,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-06",
+      "narration": "IMPS-426499863561-PERSONAL CARE LTD",
+      "debit": null,
+      "credit": 846876.11,
+      "balance": 6475017.67,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-06",
+      "narration": "UPI/CR/856190127236/Paresh Parekh/8816336003@pay",
+      "debit": null,
+      "credit": 17018.59,
+      "balance": 6492036.26,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-06",
+      "narration": "UPI/CR/242508646772/Ketan Patel/8262039758@pay",
+      "debit": null,
+      "credit": 89203.41,
+      "balance": 6581239.67,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-06",
+      "narration": "NEFT-983960661759-URBAN CONSTRUCTIONS",
+      "debit": null,
+      "credit": 988083.24,
+      "balance": 7569322.91,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-07",
+      "narration": "UPI/CR/106918985452/Hitesh Shah/8483963966@pay",
+      "debit": null,
+      "credit": 256672.42,
+      "balance": 7825995.33,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-07",
+      "narration": "CASH DEPOSIT-Ketan Vora",
+      "debit": null,
+      "credit": 130516.86,
+      "balance": 7956512.19,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-09",
+      "narration": "UPI/CR/828381166194/Jayesh Modi/6547015511@pay",
+      "debit": null,
+      "credit": 89672.44,
+      "balance": 8046184.63,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-09",
+      "narration": "CLG-HEALTHCARE PRODUCTS LTD",
+      "debit": null,
+      "credit": 938762.24,
+      "balance": 8984946.87,
+      "ref_no": "276160"
+    },
+    {
+      "date": "2024-03-11",
+      "narration": "CLG-WEBSTREAM LIMITED",
+      "debit": null,
+      "credit": 1200511.62,
+      "balance": 10185458.49,
+      "ref_no": "789102"
+    },
+    {
+      "date": "2024-03-12",
+      "narration": "IMPS-455510667320-Hitesh Parekh",
+      "debit": 372123.99,
+      "credit": null,
+      "balance": 9813334.5,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-12",
+      "narration": "IMPS-965288406249-INVESTMENT SERVICES INDIA",
+      "debit": null,
+      "credit": 952461.18,
+      "balance": 10765795.68,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-13",
+      "narration": "RTGS-ICICR106522543158-DIGITAL SOLUTIONS INDIA",
+      "debit": null,
+      "credit": 5641105.12,
+      "balance": 16406900.8,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-13",
+      "narration": "CLG-FABRIC INDUSTRIES INDIA",
+      "debit": null,
+      "credit": 3919825.04,
+      "balance": 20326725.84,
+      "ref_no": "821370"
+    },
+    {
+      "date": "2024-03-14",
+      "narration": "IMPS-351783483307-Jayesh Patel",
+      "debit": 1565857.6,
+      "credit": null,
+      "balance": 18760868.24,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-14",
+      "narration": "CASH WITHDRAWAL-Nisha Desai",
+      "debit": 476666.12,
+      "credit": null,
+      "balance": 18284202.12,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-15",
+      "narration": "CASH WITHDRAWAL-Hitesh Trivedi",
+      "debit": 115510.61,
+      "credit": null,
+      "balance": 18168691.51,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-15",
+      "narration": "CHQ PAID-Nilesh Shah-MICR",
+      "debit": 1802659.75,
+      "credit": null,
+      "balance": 16366031.76,
+      "ref_no": "459155"
+    },
+    {
+      "date": "2024-03-15",
+      "narration": "CASH WITHDRAWAL-Ketan Amin",
+      "debit": 536501.97,
+      "credit": null,
+      "balance": 15829529.79,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-18",
+      "narration": "CHQ PAID-Ketan Shah-MICR",
+      "debit": 3689803.1,
+      "credit": null,
+      "balance": 12139726.69,
+      "ref_no": "990312"
+    },
+    {
+      "date": "2024-03-20",
+      "narration": "CHQ PAID-Jayesh Vora-MICR",
+      "debit": 5766358.89,
+      "credit": null,
+      "balance": 6373367.8,
+      "ref_no": "530191"
+    },
+    {
+      "date": "2024-03-21",
+      "narration": "CLG-REALTY VENTURES LTD",
+      "debit": null,
+      "credit": 1839285.07,
+      "balance": 8212652.87,
+      "ref_no": "583247"
+    },
+    {
+      "date": "2024-03-22",
+      "narration": "NEFT Dr-610197924331-INSURANCE SUBSCRIPTION",
+      "debit": 1556.18,
+      "credit": null,
+      "balance": 2222258.77,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-22",
+      "narration": "CLG-SUPPLY CHAIN CORP",
+      "debit": null,
+      "credit": 2452240.82,
+      "balance": 10664893.69,
+      "ref_no": "319451"
+    },
+    {
+      "date": "2024-03-22",
+      "narration": "UPI/DR/637641231131/Ketan Modi/8217693478@pay",
+      "debit": 312301.21,
+      "credit": null,
+      "balance": 10352592.48,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-22",
+      "narration": "IMPS-691147531667-Jayesh Vora",
+      "debit": 255482.53,
+      "credit": null,
+      "balance": 10097109.95,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-22",
+      "narration": "CHQ PAID-Jayesh Desai-MICR",
+      "debit": 3922605.54,
+      "credit": null,
+      "balance": 6174504.41,
+      "ref_no": "427297"
+    },
+    {
+      "date": "2024-03-22",
+      "narration": "FAILED-INSUFFICIENT FUNDS-NEFT-430098836400-Nisha Patel",
+      "debit": 0.0,
+      "credit": null,
+      "balance": 6174504.41,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-22",
+      "narration": "IMPS-716472575673-WEBSTREAM LIMITED",
+      "debit": null,
+      "credit": 374643.57,
+      "balance": 6549147.98,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-23",
+      "narration": "IMPS-634986094578-PREMIUM PROPERTIES LTD",
+      "debit": null,
+      "credit": 984156.86,
+      "balance": 7533304.84,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-23",
+      "narration": "RTGS-ICICR425769839475-DATABRIDGE INFOTECH",
+      "debit": null,
+      "credit": 13762590.33,
+      "balance": 21295895.17,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-23",
+      "narration": "RTGS-ICICR180561910917-Ketan Parekh",
+      "debit": 9140915.99,
+      "credit": null,
+      "balance": 12154979.18,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-23",
+      "narration": "IMPS-231950974562-FOOD INDUSTRIES CORP",
+      "debit": null,
+      "credit": 344247.58,
+      "balance": 12499226.76,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-26",
+      "narration": "NEFT-435055785494-Jayesh Parekh",
+      "debit": 2309777.11,
+      "credit": null,
+      "balance": 10189449.65,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-26",
+      "narration": "NEFT-981313417864-Nisha Vora",
+      "debit": 3413953.75,
+      "credit": null,
+      "balance": 6775495.9,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-26",
+      "narration": "CLG-PREMIUM PROPERTIES LTD",
+      "debit": null,
+      "credit": 743449.92,
+      "balance": 7518945.82,
+      "ref_no": "861672"
+    },
+    {
+      "date": "2024-03-26",
+      "narration": "CASH WITHDRAWAL-Nilesh Desai",
+      "debit": 225714.07,
+      "credit": null,
+      "balance": 7293231.75,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-27",
+      "narration": "NEFT-407491518444-Nisha Parekh",
+      "debit": 1147182.9,
+      "credit": null,
+      "balance": 6146048.85,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-27",
+      "narration": "Dividend Cr-DAILY NEEDS LIMITED-EQUITY SHARES",
+      "debit": null,
+      "credit": 34387.63,
+      "balance": 6180436.48,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "CASH DEPOSIT-Paresh Shah",
+      "debit": null,
+      "credit": 367358.47,
+      "balance": 6547794.95,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "Service Charges-Demat Account AMC",
+      "debit": 381.17,
+      "credit": null,
+      "balance": 2221659.46,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "Service Charges-SMS Alert Charges",
+      "debit": 92.03,
+      "credit": null,
+      "balance": 2221567.43,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "Service Charges-Online Banking Charges",
+      "debit": 218.14,
+      "credit": null,
+      "balance": 2222040.63,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-30",
+      "narration": "UPI/CR/757864850816/Bhavesh Modi/8419692434@pay",
+      "debit": null,
+      "credit": 176753.51,
+      "balance": 6724548.46,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-30",
+      "narration": "CASH DEPOSIT-Mehul Shah",
+      "debit": null,
+      "credit": 596953.86,
+      "balance": 7321502.32,
+      "ref_no": null
+    }
+  ]
+}

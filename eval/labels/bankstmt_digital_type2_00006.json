@@ -1,0 +1,1286 @@
+{
+  "_meta": {
+    "doc_file": "bankstmt_digital_type2_00006.pdf",
+    "doc_type": "bank_statement",
+    "labeled_by": "huggingface_ground_truth",
+    "labeled_at": "2026-06-17",
+    "note": "Auto-generated from AgamiAI/Indian-Bank-Statements ground truth"
+  },
+  "account_holder_name": "URBAN CONSTRUCTIONS",
+  "account_number": "34068224171",
+  "bank_name": "INDUSBANK LIMITED",
+  "ifsc": "INDU0516514",
+  "statement_period": {
+    "start": "2024-01-01",
+    "end": "2024-03-31"
+  },
+  "opening_balance": 4229637.41,
+  "closing_balance": 7201807.3,
+  "currency": "INR",
+  "transactions": [
+    {
+      "date": "2024-01-01",
+      "narration": "IMPS-332825958695-CONSTRUCTION SOLUTIONS LTD",
+      "debit": null,
+      "credit": 495577.22,
+      "balance": 4725214.63,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-01",
+      "narration": "SERVICE CHARGES-SMS Alert Charges",
+      "debit": 165.94,
+      "credit": null,
+      "balance": 4725048.69,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-02",
+      "narration": "RTGS-ICICR669789855869-Debashis Sen",
+      "debit": 3516344.83,
+      "credit": null,
+      "balance": 1208703.86,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-02",
+      "narration": "CLG-HEALTHCARE PRODUCTS LTD",
+      "debit": null,
+      "credit": 333076.69,
+      "balance": 1541780.55,
+      "ref_no": "539317"
+    },
+    {
+      "date": "2024-01-02",
+      "narration": "NEFT-726341209659-Debashis Chatterjee",
+      "debit": 425963.62,
+      "credit": null,
+      "balance": 1115816.93,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-03",
+      "narration": "CLG-CAPITAL VENTURES INDIA",
+      "debit": null,
+      "credit": 92145.06,
+      "balance": 1207961.99,
+      "ref_no": "522193"
+    },
+    {
+      "date": "2024-01-03",
+      "narration": "CHQ PAID-Sreya Mukherjee-MICR",
+      "debit": 200831.96,
+      "credit": null,
+      "balance": 1007130.03,
+      "ref_no": "109709"
+    },
+    {
+      "date": "2024-01-03",
+      "narration": "CLG-URBAN CONSTRUCTIONS",
+      "debit": null,
+      "credit": 87562.58,
+      "balance": 1094692.61,
+      "ref_no": "283417"
+    },
+    {
+      "date": "2024-01-03",
+      "narration": "CHQ PAID-Biplab Dutta-MICR",
+      "debit": 522726.4,
+      "credit": null,
+      "balance": 571966.21,
+      "ref_no": "733454"
+    },
+    {
+      "date": "2024-01-04",
+      "narration": "CLG-URBAN ESTATES INDIA",
+      "debit": null,
+      "credit": 64352.17,
+      "balance": 636318.38,
+      "ref_no": "228084"
+    },
+    {
+      "date": "2024-01-04",
+      "narration": "CLG-URBAN CONSTRUCTIONS",
+      "debit": null,
+      "credit": 153783.58,
+      "balance": 790101.96,
+      "ref_no": "639518"
+    },
+    {
+      "date": "2024-01-04",
+      "narration": "IMPS-450737107064-Biplab Chatterjee",
+      "debit": 11508.31,
+      "credit": null,
+      "balance": 778593.65,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-05",
+      "narration": "NEFT-460883934750-Sujit Sen",
+      "debit": 308545.06,
+      "credit": null,
+      "balance": 470048.59,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-05",
+      "narration": "CLG-SUPPLY CHAIN CORP",
+      "debit": null,
+      "credit": 97291.91,
+      "balance": 567340.5,
+      "ref_no": "216973"
+    },
+    {
+      "date": "2024-01-06",
+      "narration": "UPI/CR/663620378225/Sourav Dutta/6255452984@pay",
+      "debit": null,
+      "credit": 6137.69,
+      "balance": 573478.19,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-08",
+      "narration": "ATM WDL-22818",
+      "debit": 1830.95,
+      "credit": null,
+      "balance": 571647.24,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-09",
+      "narration": "UPI/CR/957586074964/Moumita Chatterjee/7827279887@pay",
+      "debit": null,
+      "credit": 4513.68,
+      "balance": 576160.92,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-09",
+      "narration": "RTGS-ICICR694152386411-MOTOR INDUSTRIES LTD",
+      "debit": null,
+      "credit": 210759.3,
+      "balance": 786920.22,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-09",
+      "narration": "CLG-HIGHWAY DEVELOPERS INDIA",
+      "debit": null,
+      "credit": 206593.95,
+      "balance": 993514.17,
+      "ref_no": "660466"
+    },
+    {
+      "date": "2024-01-11",
+      "narration": "CLG-THERMAL SYSTEMS LTD",
+      "debit": null,
+      "credit": 160919.89,
+      "balance": 1154434.06,
+      "ref_no": "475400"
+    },
+    {
+      "date": "2024-01-12",
+      "narration": "NEFT-681162874975-PREMIUM INFRASTRUCTURE",
+      "debit": null,
+      "credit": 502350.25,
+      "balance": 1656784.31,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-13",
+      "narration": "UPI/CR/451240120409/Arpita Mukherjee/6096550720@pay",
+      "debit": null,
+      "credit": 80379.82,
+      "balance": 1737164.13,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-15",
+      "narration": "IMPS-372414255374-PERSONAL CARE LTD",
+      "debit": null,
+      "credit": 204268.9,
+      "balance": 1941433.03,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-15",
+      "narration": "UPI/CR/827879283173/Moumita Das/6801023201@pay",
+      "debit": null,
+      "credit": 34236.88,
+      "balance": 1975669.91,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-15",
+      "narration": "RTGS-ICICR406650879120-Biplab Bose",
+      "debit": 598828.48,
+      "credit": null,
+      "balance": 1376841.43,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-16",
+      "narration": "RTGS-ICICR425692516542-Biplab Mukherjee",
+      "debit": 806680.21,
+      "credit": null,
+      "balance": 570161.22,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-17",
+      "narration": "CLG-MINDWAVE CONSULTING",
+      "debit": null,
+      "credit": 35597.6,
+      "balance": 605758.82,
+      "ref_no": "165446"
+    },
+    {
+      "date": "2024-01-17",
+      "narration": "SERVICE CHARGES-NEFT/RTGS Charges",
+      "debit": 211.9,
+      "credit": null,
+      "balance": 605546.92,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-17",
+      "narration": "NEFT-226549398508-THERMAL SYSTEMS LTD",
+      "debit": null,
+      "credit": 170833.13,
+      "balance": 776380.05,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-17",
+      "narration": "IMPS-646541084296-INFOCORE TECHNOLOGIES",
+      "debit": null,
+      "credit": 113099.69,
+      "balance": 889479.74,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-18",
+      "narration": "UPI/DR/854662006788/Sourav Bose/9460338544@pay",
+      "debit": 10404.27,
+      "credit": null,
+      "balance": 879075.47,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-18",
+      "narration": "IMPS-941910093672-MOTOR INDUSTRIES LTD",
+      "debit": null,
+      "credit": 122832.24,
+      "balance": 1001907.71,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-18",
+      "narration": "CHQ PAID-Arpita Bose-MICR",
+      "debit": 253040.23,
+      "credit": null,
+      "balance": 748867.48,
+      "ref_no": "169130"
+    },
+    {
+      "date": "2024-01-19",
+      "narration": "IMPS-985644642663-Amit Chatterjee",
+      "debit": 57054.2,
+      "credit": null,
+      "balance": 691813.28,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-20",
+      "narration": "UPI/DR/380209614650/Sujit Mukherjee/8435246132@pay",
+      "debit": 10700.03,
+      "credit": null,
+      "balance": 681113.25,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-22",
+      "narration": "NEFT-405024929549-FABRIC INDUSTRIES INDIA",
+      "debit": null,
+      "credit": 55881.22,
+      "balance": 736994.47,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-23",
+      "narration": "CASH DEPOSIT-Sujit Mukherjee",
+      "debit": null,
+      "credit": 10107.96,
+      "balance": 747102.43,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-24",
+      "narration": "CASH DEPOSIT-Sujit Banerjee",
+      "debit": null,
+      "credit": 47699.63,
+      "balance": 794802.06,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-24",
+      "narration": "IMPS-316395605051-CONSTRUCTION SOLUTIONS LTD",
+      "debit": null,
+      "credit": 44895.47,
+      "balance": 839697.53,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-25",
+      "narration": "CHQ PAID-Arpita Banerjee-MICR",
+      "debit": 94280.96,
+      "credit": null,
+      "balance": 745416.57,
+      "ref_no": "456115"
+    },
+    {
+      "date": "2024-01-27",
+      "narration": "NEFT-256628219425-Sujit Sen",
+      "debit": 260127.15,
+      "credit": null,
+      "balance": 485289.42,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-27",
+      "narration": "NEFT-853425720551-Biplab Mukherjee",
+      "debit": 184407.06,
+      "credit": null,
+      "balance": 300882.36,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-27",
+      "narration": "CLG-SOFTWAVE TECHNOLOGIES",
+      "debit": null,
+      "credit": 71995.03,
+      "balance": 372877.39,
+      "ref_no": "551242"
+    },
+    {
+      "date": "2024-01-27",
+      "narration": "CASH DEPOSIT-Amit Dutta",
+      "debit": null,
+      "credit": 23084.14,
+      "balance": 395961.53,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-29",
+      "narration": "UPI/CR/568609341618/Sourav Dutta/7947589516@pay",
+      "debit": null,
+      "credit": 767.86,
+      "balance": 396729.39,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-30",
+      "narration": "IMPS-199978623088-URBAN CONSTRUCTIONS",
+      "debit": null,
+      "credit": 35920.48,
+      "balance": 432649.87,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-30",
+      "narration": "UPI/DR/319011992581/Sujit Mukherjee/8459688825@pay",
+      "debit": 983.42,
+      "credit": null,
+      "balance": 431666.45,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-30",
+      "narration": "RTGS-ICICR629304592808-Amit Das",
+      "debit": 237764.77,
+      "credit": null,
+      "balance": 193901.68,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-31",
+      "narration": "IMPS-391960169668-MEDCARE LABORATORIES",
+      "debit": null,
+      "credit": 33200.78,
+      "balance": 227102.46,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-01",
+      "narration": "UPI/CR/766815255507/Biplab Chatterjee/9732135875@pay",
+      "debit": null,
+      "credit": 6052.65,
+      "balance": 233155.11,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-01",
+      "narration": "UPI/CR/676536493360/Debashis Bose/9892665695@pay",
+      "debit": null,
+      "credit": 3133.67,
+      "balance": 236288.78,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-01",
+      "narration": "NEFT-579208235883-METROPOLITAN BUILDERS",
+      "debit": null,
+      "credit": 14390.68,
+      "balance": 250679.46,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-02",
+      "narration": "RTGS-ICICR418445097935-RETAIL SOLUTIONS INDIA",
+      "debit": null,
+      "credit": 131304.62,
+      "balance": 381984.08,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-02",
+      "narration": "CLG-MEDCARE LABORATORIES",
+      "debit": null,
+      "credit": 28123.8,
+      "balance": 410107.88,
+      "ref_no": "780879"
+    },
+    {
+      "date": "2024-02-03",
+      "narration": "IMPS-236020219390-HEALTHCARE PRODUCTS LTD",
+      "debit": null,
+      "credit": 34145.49,
+      "balance": 444253.37,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-03",
+      "narration": "IMPS-987325588162-Moumita Dutta",
+      "debit": 19837.89,
+      "credit": null,
+      "balance": 424415.48,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-05",
+      "narration": "NEFT-334880454488-MEDCARE LABORATORIES",
+      "debit": null,
+      "credit": 90611.96,
+      "balance": 515027.44,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-05",
+      "narration": "CHQ PAID-Biplab Chatterjee-MICR",
+      "debit": 226722.2,
+      "credit": null,
+      "balance": 288305.24,
+      "ref_no": "411016"
+    },
+    {
+      "date": "2024-02-06",
+      "narration": "IMPS-926943581722-FABRIC INDUSTRIES INDIA",
+      "debit": null,
+      "credit": 42083.34,
+      "balance": 330388.58,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-07",
+      "narration": "NEFT Dr-748037584551-UTILITY SUBSCRIPTION",
+      "debit": 3845.85,
+      "credit": null,
+      "balance": 6126993.07,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-07",
+      "narration": "CLG-URBAN CONSTRUCTIONS",
+      "debit": null,
+      "credit": 20150.69,
+      "balance": 350539.27,
+      "ref_no": "327287"
+    },
+    {
+      "date": "2024-02-07",
+      "narration": "RTGS-ICICR118460914780-CONSUMER PRODUCTS INDIA",
+      "debit": null,
+      "credit": 545302.1,
+      "balance": 895841.37,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-08",
+      "narration": "NEFT-711338573680-CREDIT SERVICES LTD",
+      "debit": null,
+      "credit": 439359.48,
+      "balance": 1335200.85,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-09",
+      "narration": "CASH WITHDRAWAL-Sujit Chatterjee",
+      "debit": 7294.02,
+      "credit": null,
+      "balance": 1327906.83,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "CLG-CYBERCRAFT SYSTEMS",
+      "debit": null,
+      "credit": 222975.15,
+      "balance": 1550881.98,
+      "ref_no": "808146"
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "REVERSAL-NEFT-711338573680-CREDIT SERVICES LTD",
+      "debit": 439359.48,
+      "credit": null,
+      "balance": 6130838.92,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "IMPS-811196746303-PERSONAL CARE LTD",
+      "debit": null,
+      "credit": 270901.84,
+      "balance": 1821783.82,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "IMPS-863314852683-HEALTHPLUS PHARMA LTD",
+      "debit": null,
+      "credit": 274645.82,
+      "balance": 2096429.64,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-12",
+      "narration": "CHQ PAID-Moumita Das-MICR",
+      "debit": 484572.65,
+      "credit": null,
+      "balance": 1611856.99,
+      "ref_no": "653585"
+    },
+    {
+      "date": "2024-02-12",
+      "narration": "CLG-CYBERCRAFT SYSTEMS",
+      "debit": null,
+      "credit": 344514.64,
+      "balance": 1956371.63,
+      "ref_no": "376661"
+    },
+    {
+      "date": "2024-02-12",
+      "narration": "NEFT-722751383093-METROPOLITAN BUILDERS",
+      "debit": null,
+      "credit": 928827.54,
+      "balance": 2885199.17,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-12",
+      "narration": "IMPS-386711333675-Biplab Dutta",
+      "debit": 266629.56,
+      "credit": null,
+      "balance": 2618569.61,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-13",
+      "narration": "IMPS-229672250840-Sourav Bose",
+      "debit": 177723.44,
+      "credit": null,
+      "balance": 2440846.17,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-13",
+      "narration": "IMPS-291458747402-DIGITAL SOLUTIONS INDIA",
+      "debit": null,
+      "credit": 209164.03,
+      "balance": 2650010.2,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "ATM WDL-64288",
+      "debit": 5139.75,
+      "credit": null,
+      "balance": 2644870.45,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "NEFT Dr-982155916435-UTILITY SUBSCRIPTION",
+      "debit": 2089.31,
+      "credit": null,
+      "balance": 6124903.76,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "CHQ PAID-Debashis Mukherjee-MICR",
+      "debit": 860573.1,
+      "credit": null,
+      "balance": 1784297.35,
+      "ref_no": "340841"
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "RTGS-ICICR224207147482-CODEBASE SOLUTIONS",
+      "debit": null,
+      "credit": 2057439.22,
+      "balance": 3841736.57,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-15",
+      "narration": "RTGS-ICICR512535454526-NETFORGE TECHNOLOGIES",
+      "debit": null,
+      "credit": 6604901.86,
+      "balance": 10446638.43,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-15",
+      "narration": "CASH WITHDRAWAL-Amit Das",
+      "debit": 270678.57,
+      "credit": null,
+      "balance": 10175959.86,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-15",
+      "narration": "UPI/CR/127098656863/Amit Sen/6346545138@pay",
+      "debit": null,
+      "credit": 435753.83,
+      "balance": 10611713.69,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-15",
+      "narration": "NEFT-663968501413-SOFTWAVE TECHNOLOGIES",
+      "debit": null,
+      "credit": 3066310.16,
+      "balance": 13678023.85,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-15",
+      "narration": "NEFT-684160712560-Moumita Ghosh",
+      "debit": 5082880.72,
+      "credit": null,
+      "balance": 8595143.13,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-16",
+      "narration": "NEFT-752697218886-Sujit Chatterjee",
+      "debit": 618383.41,
+      "credit": null,
+      "balance": 7976759.72,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-16",
+      "narration": "NEFT-288107249408-Sreya Dutta",
+      "debit": 2033021.33,
+      "credit": null,
+      "balance": 5943738.39,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-17",
+      "narration": "NEFT-497020784348-METROPOLITAN BUILDERS",
+      "debit": null,
+      "credit": 2796126.89,
+      "balance": 8739865.28,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-20",
+      "narration": "CHQ PAID-Arpita Mukherjee-MICR",
+      "debit": 863691.64,
+      "credit": null,
+      "balance": 7876173.64,
+      "ref_no": "933223"
+    },
+    {
+      "date": "2024-02-20",
+      "narration": "UPI/DR/940080836940/Biplab Banerjee/6623973149@pay",
+      "debit": 150310.78,
+      "credit": null,
+      "balance": 7725862.86,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-21",
+      "narration": "UPI/CR/118692522892/Amit Banerjee/6720919916@pay",
+      "debit": null,
+      "credit": 370145.91,
+      "balance": 8096008.77,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-21",
+      "narration": "CASH WITHDRAWAL-Sourav Banerjee",
+      "debit": 66597.22,
+      "credit": null,
+      "balance": 8029411.55,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-21",
+      "narration": "IMPS-533378097194-Amit Sen",
+      "debit": 1095242.72,
+      "credit": null,
+      "balance": 6934168.83,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-22",
+      "narration": "CASH WITHDRAWAL-Sourav Mukherjee",
+      "debit": 267943.75,
+      "credit": null,
+      "balance": 6666225.08,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-22",
+      "narration": "UPI/CR/348875155602/Sreya Das/9912223848@pay",
+      "debit": null,
+      "credit": 32045.52,
+      "balance": 6698270.6,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-22",
+      "narration": "IMPS-722445992263-Sreya Sen",
+      "debit": 963933.02,
+      "credit": null,
+      "balance": 5734337.58,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-23",
+      "narration": "NEFT-338804176013-Sreya Ghosh",
+      "debit": 752471.99,
+      "credit": null,
+      "balance": 4981865.59,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-24",
+      "narration": "CHQ PAID-Moumita Dutta-MICR",
+      "debit": 2376236.82,
+      "credit": null,
+      "balance": 2605628.77,
+      "ref_no": "972353"
+    },
+    {
+      "date": "2024-02-24",
+      "narration": "IMPS-223368703784-Sujit Ghosh",
+      "debit": 121848.11,
+      "credit": null,
+      "balance": 2483780.66,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-26",
+      "narration": "IMPS-544132950798-CLOUDTECH SERVICES",
+      "debit": null,
+      "credit": 180865.09,
+      "balance": 2664645.75,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-26",
+      "narration": "CHQ PAID-Sujit Chatterjee-MICR",
+      "debit": 425512.47,
+      "credit": null,
+      "balance": 2239133.28,
+      "ref_no": "184805"
+    },
+    {
+      "date": "2024-02-27",
+      "narration": "SERVICE CHARGES-Statement Charges",
+      "debit": 393.19,
+      "credit": null,
+      "balance": 2238740.09,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-27",
+      "narration": "CLG-WEBSTREAM LIMITED",
+      "debit": null,
+      "credit": 181069.1,
+      "balance": 2419809.19,
+      "ref_no": "872460"
+    },
+    {
+      "date": "2024-02-28",
+      "narration": "NEFT-764824582345-FABRIC INDUSTRIES INDIA",
+      "debit": null,
+      "credit": 1036203.45,
+      "balance": 3456012.64,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-28",
+      "narration": "CLG-FINANCE SOLUTIONS INDIA",
+      "debit": null,
+      "credit": 423642.73,
+      "balance": 3879655.37,
+      "ref_no": "364569"
+    },
+    {
+      "date": "2024-02-28",
+      "narration": "Service Charges-Demat Account AMC",
+      "debit": 442.15,
+      "credit": null,
+      "balance": 6124461.61,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-01",
+      "narration": "CASH DEPOSIT-Sujit Chatterjee",
+      "debit": null,
+      "credit": 96701.73,
+      "balance": 3976357.1,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-01",
+      "narration": "NEFT-871908033928-METROPOLITAN BUILDERS",
+      "debit": null,
+      "credit": 1940460.36,
+      "balance": 5916817.46,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-01",
+      "narration": "NEFT-267999854085-MOTOR INDUSTRIES LTD",
+      "debit": null,
+      "credit": 1994906.18,
+      "balance": 7911723.64,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-04",
+      "narration": "IMPS-791810828925-Sujit Chatterjee",
+      "debit": 130821.28,
+      "credit": null,
+      "balance": 7780902.36,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-04",
+      "narration": "IMPS-127123589284-Moumita Mukherjee",
+      "debit": 203838.62,
+      "credit": null,
+      "balance": 7577063.74,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-04",
+      "narration": "SERVICE CHARGES-Online Banking Charges",
+      "debit": 476.65,
+      "credit": null,
+      "balance": 7576587.09,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-04",
+      "narration": "RTGS-ICICR635893966836-HIGHWAY DEVELOPERS INDIA",
+      "debit": null,
+      "credit": 9423248.41,
+      "balance": 16999835.5,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-05",
+      "narration": "CHQ PAID-Sourav Bose-MICR",
+      "debit": 1853595.54,
+      "credit": null,
+      "balance": 15146239.96,
+      "ref_no": "770277"
+    },
+    {
+      "date": "2024-03-05",
+      "narration": "NEFT-457067134864-Moumita Chatterjee",
+      "debit": 5782524.88,
+      "credit": null,
+      "balance": 9363715.08,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-05",
+      "narration": "CASH DEPOSIT-Moumita Mukherjee",
+      "debit": null,
+      "credit": 631608.9,
+      "balance": 9995323.98,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-05",
+      "narration": "NEFT-730185163872-CYBERCRAFT SYSTEMS",
+      "debit": null,
+      "credit": 2942179.08,
+      "balance": 12937503.06,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-06",
+      "narration": "ATM WDL-55042",
+      "debit": 13421.25,
+      "credit": null,
+      "balance": 12924081.81,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-06",
+      "narration": "REVERSAL-CASH DEPOSIT-Moumita Mukherjee",
+      "debit": 631608.9,
+      "credit": null,
+      "balance": 6570198.4,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-06",
+      "narration": "UPI/CR/442187200778/Arpita Mukherjee/7355363860@pay",
+      "debit": null,
+      "credit": 568755.41,
+      "balance": 13492837.22,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-07",
+      "narration": "NEFT Dr-538780079401-INSURANCE SUBSCRIPTION",
+      "debit": 4544.17,
+      "credit": null,
+      "balance": 6119917.44,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-07",
+      "narration": "NEFT-308620924065-Moumita Mukherjee",
+      "debit": 4439230.61,
+      "credit": null,
+      "balance": 9053606.61,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-07",
+      "narration": "IMPS-957755519646-FABRIC INDUSTRIES INDIA",
+      "debit": null,
+      "credit": 290582.64,
+      "balance": 9344189.25,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-07",
+      "narration": "IMPS-964604185796-FOOD INDUSTRIES CORP",
+      "debit": null,
+      "credit": 1769291.04,
+      "balance": 11113480.29,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-07",
+      "narration": "CASH WITHDRAWAL-Arpita Das",
+      "debit": 91266.35,
+      "credit": null,
+      "balance": 11022213.94,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-09",
+      "narration": "NEFT-928356291303-Amit Banerjee",
+      "debit": 4351255.2,
+      "credit": null,
+      "balance": 6670958.74,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-09",
+      "narration": "CHQ PAID-Biplab Mukherjee-MICR",
+      "debit": 1610650.77,
+      "credit": null,
+      "balance": 5060307.97,
+      "ref_no": "871632"
+    },
+    {
+      "date": "2024-03-11",
+      "narration": "UPI/DR/837398205041/Arpita Das/6953329982@pay",
+      "debit": 78773.47,
+      "credit": null,
+      "balance": 4981534.5,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-11",
+      "narration": "RTGS-ICICR368056278627-Amit Sen",
+      "debit": 3194649.09,
+      "credit": null,
+      "balance": 1786885.41,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-12",
+      "narration": "RTGS-ICICR679593603959-WELLNESS BRANDS INDIA",
+      "debit": null,
+      "credit": 2497139.27,
+      "balance": 4284024.68,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-12",
+      "narration": "RTGS-ICICR327809746327-GATEWAY PROJECTS LTD",
+      "debit": null,
+      "credit": 3379867.9,
+      "balance": 7663892.58,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-13",
+      "narration": "CASH DEPOSIT-Sourav Mukherjee",
+      "debit": null,
+      "credit": 77674.65,
+      "balance": 7741567.23,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-13",
+      "narration": "IMPS-632532016651-Sreya Dutta",
+      "debit": 850104.21,
+      "credit": null,
+      "balance": 6891463.02,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-14",
+      "narration": "RTGS-ICICR695881771098-Sujit Sen",
+      "debit": 4284323.43,
+      "credit": null,
+      "balance": 2607139.59,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-14",
+      "narration": "NEFT Dr-497203025608-INSURANCE SUBSCRIPTION",
+      "debit": 2260.7,
+      "credit": null,
+      "balance": 6117656.74,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-14",
+      "narration": "UPI/CR/824870473349/Amit Banerjee/8116282177@pay",
+      "debit": null,
+      "credit": 36417.4,
+      "balance": 2643556.99,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-15",
+      "narration": "IMPS-655319040390-Sourav Chatterjee",
+      "debit": 192131.17,
+      "credit": null,
+      "balance": 2451425.82,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-15",
+      "narration": "UPI/CR/202722848380/Sujit Chatterjee/9415827650@pay",
+      "debit": null,
+      "credit": 19822.63,
+      "balance": 2471248.45,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-16",
+      "narration": "NEFT-421582089366-INFOCORE TECHNOLOGIES",
+      "debit": null,
+      "credit": 1012792.79,
+      "balance": 3484041.24,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-16",
+      "narration": "IMPS-782576963678-APEX HEAVY INDUSTRIES",
+      "debit": null,
+      "credit": 448414.06,
+      "balance": 3932455.3,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-18",
+      "narration": "CASH DEPOSIT-Amit Mukherjee",
+      "debit": null,
+      "credit": 393067.87,
+      "balance": 4325523.17,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-18",
+      "narration": "CASH DEPOSIT-Amit Chatterjee",
+      "debit": null,
+      "credit": 162492.37,
+      "balance": 4488015.54,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-19",
+      "narration": "CHQ PAID-Biplab Das-MICR",
+      "debit": 840837.71,
+      "credit": null,
+      "balance": 3647177.83,
+      "ref_no": "866898"
+    },
+    {
+      "date": "2024-03-19",
+      "narration": "UPI/DR/376923425186/Moumita Ghosh/6516181209@pay",
+      "debit": 21295.36,
+      "credit": null,
+      "balance": 3625882.47,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-20",
+      "narration": "CASH WITHDRAWAL-Sreya Bose",
+      "debit": 85813.69,
+      "credit": null,
+      "balance": 3540068.78,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-20",
+      "narration": "NEFT-699637882807-GATEWAY PROJECTS LTD",
+      "debit": null,
+      "credit": 712757.75,
+      "balance": 4252826.53,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-21",
+      "narration": "NEFT-241768655002-DATABRIDGE INFOTECH",
+      "debit": null,
+      "credit": 1273425.04,
+      "balance": 5526251.57,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-21",
+      "narration": "CLG-MINDWAVE CONSULTING",
+      "debit": null,
+      "credit": 666609.72,
+      "balance": 6192861.29,
+      "ref_no": "816135"
+    },
+    {
+      "date": "2024-03-21",
+      "narration": "NEFT-649466297440-MINDWAVE CONSULTING",
+      "debit": null,
+      "credit": 2791511.5,
+      "balance": 8984372.79,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-22",
+      "narration": "IMPS-190042070958-CODEBASE SOLUTIONS",
+      "debit": null,
+      "credit": 415020.03,
+      "balance": 9399392.82,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-26",
+      "narration": "IMPS-213703920495-APEX HEAVY INDUSTRIES",
+      "debit": null,
+      "credit": 836644.93,
+      "balance": 10236037.75,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-26",
+      "narration": "UPI/DR/194697222208/Biplab Mukherjee/6215583962@pay",
+      "debit": 175615.43,
+      "credit": null,
+      "balance": 10060422.32,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-27",
+      "narration": "NEFT-521637214484-Sujit Das",
+      "debit": 2675870.57,
+      "credit": null,
+      "balance": 7384551.75,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-27",
+      "narration": "CHQ PAID-Sujit Dutta-MICR",
+      "debit": 1980238.76,
+      "credit": null,
+      "balance": 5404312.99,
+      "ref_no": "970266"
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "IMPS-193956004267-MINDWAVE CONSULTING",
+      "debit": null,
+      "credit": 523731.37,
+      "balance": 5928044.36,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "NEFT-381927547304-Sourav Ghosh",
+      "debit": 697372.48,
+      "credit": null,
+      "balance": 5230671.88,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "Service Charges-Foreign Currency Markup",
+      "debit": 227.04,
+      "credit": null,
+      "balance": 6117429.7,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-30",
+      "narration": "IMPS-129362780325-Sujit Mukherjee",
+      "debit": 220456.48,
+      "credit": null,
+      "balance": 5010215.4,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-30",
+      "narration": "CLG-HOUSING DEVELOPERS CORP",
+      "debit": null,
+      "credit": 1212458.2,
+      "balance": 6222673.6,
+      "ref_no": "196531"
+    },
+    {
+      "date": "2024-03-30",
+      "narration": "IMPS-538550177762-HEALTHPLUS PHARMA LTD",
+      "debit": null,
+      "credit": 979133.7,
+      "balance": 7201807.3,
+      "ref_no": null
+    }
+  ]
+}

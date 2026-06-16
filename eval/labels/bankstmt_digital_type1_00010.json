@@ -1,0 +1,1358 @@
+{
+  "_meta": {
+    "doc_file": "bankstmt_digital_type1_00010.pdf",
+    "doc_type": "bank_statement",
+    "labeled_by": "huggingface_ground_truth",
+    "labeled_at": "2026-06-17",
+    "note": "Auto-generated from AgamiAI/Indian-Bank-Statements ground truth"
+  },
+  "account_holder_name": "FABRIC PRODUCTS CORP",
+  "account_number": "47803927299",
+  "bank_name": "Milestone Banking Solutions",
+  "ifsc": "MILE0662740",
+  "statement_period": {
+    "start": "2024-01-01",
+    "end": "2024-03-31"
+  },
+  "opening_balance": 975441.29,
+  "closing_balance": 1970110.12,
+  "currency": "INR",
+  "transactions": [
+    {
+      "date": "2024-01-01",
+      "narration": "UPI/CR/639632486983/REVATHI BALAJI/SENT-TRANSFER FROM 7765412063",
+      "debit": null,
+      "credit": 47714.49,
+      "balance": 1023155.78,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-03",
+      "narration": "NEFT Cr-399188976186-ICIC0SF0002-FUNDING SOLUTIONS CORP--",
+      "debit": null,
+      "credit": 98936.43,
+      "balance": 1122092.21,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-03",
+      "narration": "NEFT Dr-185052730606-INSURANCE PREMIUM",
+      "debit": 1099.69,
+      "credit": null,
+      "balance": 1853286.94,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-03",
+      "narration": "NEFT Cr-189625200747-ICIC0SF0002-FREIGHT LOGISTICS LTD--",
+      "debit": null,
+      "credit": 198485.68,
+      "balance": 1320577.89,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-03",
+      "narration": "NEFT Cr-977640384366-ICIC0SF0002-CONSUMER PRODUCTS INDIA--",
+      "debit": null,
+      "credit": 226425.07,
+      "balance": 1547002.96,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-04",
+      "narration": "IMPS BRN SALARY TRF BY-FASHION TEXTILES LTD",
+      "debit": null,
+      "credit": 33164.87,
+      "balance": 1580167.83,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-04",
+      "narration": "NEFT Dr-251283781662-INSURANCE PREMIUM",
+      "debit": 4316.56,
+      "credit": null,
+      "balance": 1848970.38,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-04",
+      "narration": "IMPS BRN SALARY TRF BY-CLOUDTECH SERVICES",
+      "debit": null,
+      "credit": 150713.41,
+      "balance": 1730881.24,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-05",
+      "narration": "NEFT Dr-344378545082-UTILITY PAYMENT",
+      "debit": 2382.16,
+      "credit": null,
+      "balance": 1846588.22,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-05",
+      "narration": "NEFT Cr-130465791800-ICIC0SF0002-WHOLESALE TRADERS LTD--",
+      "debit": null,
+      "credit": 334510.88,
+      "balance": 2065392.12,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-05",
+      "narration": "NEFT Cr-983631254185-ICIC0SF0002-WEAVING INDUSTRIES LTD--",
+      "debit": null,
+      "credit": 362418.22,
+      "balance": 2427810.34,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-06",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), ENGINE TECH INDIA",
+      "debit": null,
+      "credit": 346217.61,
+      "balance": 2774027.95,
+      "ref_no": "851875"
+    },
+    {
+      "date": "2024-01-08",
+      "narration": "RTGS Dr-CNRBR966197125722-HDFC0004171-PRIYA SWAMY-/NONE",
+      "debit": 724978.78,
+      "credit": null,
+      "balance": 2049049.17,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-08",
+      "narration": "CASH-BNA-SELF-SHANTI MURTHY",
+      "debit": null,
+      "credit": 134957.14,
+      "balance": 2184006.31,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-08",
+      "narration": "Cash Withdrawal-BHARATH BALAJI",
+      "debit": 83165.1,
+      "credit": null,
+      "balance": 2100841.21,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-09",
+      "narration": "UPI/CR/176219696554/KARTHIK IYER/SENT-TRANSFER FROM 7388025637",
+      "debit": null,
+      "credit": 33386.45,
+      "balance": 2134227.66,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-09",
+      "narration": "IMPS BRN SALARY TRF BY-CONSTRUCTION SOLUTIONS LTD",
+      "debit": null,
+      "credit": 367562.8,
+      "balance": 2501790.46,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-09",
+      "narration": "NEFT Cr-584995766424-ICIC0SF0002-VEHICLE SYSTEMS INDIA--",
+      "debit": null,
+      "credit": 339301.93,
+      "balance": 2841092.39,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-10",
+      "narration": "NEFT Dr-458640679738-HDFC0009038-PRAKASH BHAT",
+      "debit": 1081642.05,
+      "credit": null,
+      "balance": 1759450.34,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-10",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), CONSUMER PRODUCTS INDIA",
+      "debit": null,
+      "credit": 470725.77,
+      "balance": 2230176.11,
+      "ref_no": "161608"
+    },
+    {
+      "date": "2024-01-11",
+      "narration": "IMPS Dr-817517924602-ANITHA IYER",
+      "debit": 295906.6,
+      "credit": null,
+      "balance": 1934269.51,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-12",
+      "narration": "Cash Withdrawal-ARJUN RAMAN",
+      "debit": 62304.62,
+      "credit": null,
+      "balance": 1871964.89,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-13",
+      "narration": "NEFT Cr-516882397613-ICIC0SF0002-FUNDING SOLUTIONS CORP--",
+      "debit": null,
+      "credit": 877724.15,
+      "balance": 2749689.04,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-13",
+      "narration": "Chq Paid-MICR Inward Clearing-NANDINI RAO-HDFC BANK LTD.",
+      "debit": 1341408.02,
+      "credit": null,
+      "balance": 1408281.02,
+      "ref_no": "997665"
+    },
+    {
+      "date": "2024-01-15",
+      "narration": "UPI/DR/621655694358/LAKSHMI VARMA/UPI-TRANSFER TO 7122312271",
+      "debit": 11739.89,
+      "credit": null,
+      "balance": 1396541.13,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-16",
+      "narration": "CASH-BNA-SELF-PADMA RAMAN",
+      "debit": null,
+      "credit": 67416.43,
+      "balance": 1463957.56,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-16",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), COURIER NETWORKS INDIA",
+      "debit": null,
+      "credit": 98705.69,
+      "balance": 1562663.25,
+      "ref_no": "689319"
+    },
+    {
+      "date": "2024-01-19",
+      "narration": "CASH-BNA-SELF-PRAKASH KRISHNAN",
+      "debit": null,
+      "credit": 25454.76,
+      "balance": 1588118.01,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-19",
+      "narration": "Cash Withdrawal-POOJA RAO",
+      "debit": 55216.08,
+      "credit": null,
+      "balance": 1532901.93,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-20",
+      "narration": "IMPS BRN SALARY TRF BY-AUTOMOTIVE PARTS CORP",
+      "debit": null,
+      "credit": 17555.48,
+      "balance": 1550457.41,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-20",
+      "narration": "NEFT Dr-420128862585-GST PAYMENT-GSTIN 38C7043",
+      "debit": 145352.87,
+      "credit": null,
+      "balance": 1701235.35,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-22",
+      "narration": "REVERSAL-IMPS BRN SALARY TRF BY-AUTOMOTIVE PARTS CORP",
+      "debit": 17555.48,
+      "credit": null,
+      "balance": 1854386.63,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-22",
+      "narration": "IMPS BRN SALARY TRF BY-DIGITAL SOLUTIONS INDIA",
+      "debit": null,
+      "credit": 289059.08,
+      "balance": 1839516.49,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-23",
+      "narration": "ATM WDL-ATM CASH 28806",
+      "debit": 9337.91,
+      "credit": null,
+      "balance": 1830178.58,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-23",
+      "narration": "IMPS BRN SALARY TRF BY-INDUSTRIAL WORKS INDIA",
+      "debit": null,
+      "credit": 323176.75,
+      "balance": 2153355.33,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-24",
+      "narration": "Chq Paid-MICR Inward Clearing-GANESH NAIDU-HDFC BANK LTD.",
+      "debit": 128541.6,
+      "credit": null,
+      "balance": 2024813.73,
+      "ref_no": "478160"
+    },
+    {
+      "date": "2024-01-25",
+      "narration": "NEFT Cr-507527203866-ICIC0SF0002-POWER SYSTEMS CORP--",
+      "debit": null,
+      "credit": 961131.3,
+      "balance": 2985945.03,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-25",
+      "narration": "RTGS Dr-CNRBR790221545970-HDFC0004171-KRISHNA ACHARYA-/NONE",
+      "debit": 2067470.34,
+      "credit": null,
+      "balance": 918474.69,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-27",
+      "narration": "IMPS BRN SALARY TRF BY-MARKET DISTRIBUTORS CORP",
+      "debit": null,
+      "credit": 113214.26,
+      "balance": 1031688.95,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-29",
+      "narration": "NEFT Cr-311254827045-ICIC0SF0002-WEBSTREAM LIMITED--",
+      "debit": null,
+      "credit": 341499.88,
+      "balance": 1373188.83,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-29",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), SNACKS MANUFACTURING LTD",
+      "debit": null,
+      "credit": 97651.7,
+      "balance": 1470840.53,
+      "ref_no": "866866"
+    },
+    {
+      "date": "2024-01-29",
+      "narration": "CASH-BNA-SELF-KRISHNA REDDY",
+      "debit": null,
+      "credit": 76571.22,
+      "balance": 1547411.75,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-30",
+      "narration": "UPI/DR/744757852750/PRAKASH SUNDARAM/UPI-TRANSFER TO 6691448806",
+      "debit": 9864.08,
+      "credit": null,
+      "balance": 1537547.67,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-30",
+      "narration": "REVERSAL-By Clg:DEL ACCTS-CITI BANK N.A.(CIT), SNACKS MANUF",
+      "debit": 97651.7,
+      "credit": null,
+      "balance": 1871942.11,
+      "ref_no": "866866"
+    },
+    {
+      "date": "2024-01-30",
+      "narration": "NEFT Dr-812721759157-HDFC0009038-RAMESH NAIDU",
+      "debit": 306260.99,
+      "credit": null,
+      "balance": 1231286.68,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-30",
+      "narration": "NEFT Cr-732264400816-ICIC0SF0002-FABRIC PRODUCTS CORP--",
+      "debit": null,
+      "credit": 571324.47,
+      "balance": 1802611.15,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-31",
+      "narration": "RTGS Dr-CNRBR946745669455-HDFC0004171-RAJESH SWAMY-/NONE",
+      "debit": 868767.07,
+      "credit": null,
+      "balance": 933844.08,
+      "ref_no": null
+    },
+    {
+      "date": "2024-01-31",
+      "narration": "UPI/DR/402184391715/PRIYA SWAMY/UPI-TRANSFER TO 7951658313",
+      "debit": 3618.3,
+      "credit": null,
+      "balance": 930225.78,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-02",
+      "narration": "IMPS BRN SALARY TRF BY-CREDIT SERVICES LTD",
+      "debit": null,
+      "credit": 173616.11,
+      "balance": 1103841.89,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-02",
+      "narration": "IMPS BRN SALARY TRF BY-DIGITAL SOLUTIONS INDIA",
+      "debit": null,
+      "credit": 173898.3,
+      "balance": 1277740.19,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-03",
+      "narration": "RTGS Cr-ICICR166912583951-ICIC0000011-PREMIUM INFRASTRUCTURE--/URGENT/",
+      "debit": null,
+      "credit": 2047755.01,
+      "balance": 3325495.2,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-03",
+      "narration": "NEFT Dr-291778160245-INSURANCE PREMIUM",
+      "debit": 1961.46,
+      "credit": null,
+      "balance": 1699273.89,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-05",
+      "narration": "NEFT Dr-282625153917-INSURANCE PREMIUM",
+      "debit": 1044.9,
+      "credit": null,
+      "balance": 1698228.99,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-05",
+      "narration": "UPI/CR/648109804495/ANITHA RAMAN/SENT-TRANSFER FROM 8419861766",
+      "debit": null,
+      "credit": 65091.98,
+      "balance": 3390587.18,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-06",
+      "narration": "Cash Withdrawal-RADHA REDDY",
+      "debit": 92315.83,
+      "credit": null,
+      "balance": 3298271.35,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-06",
+      "narration": "RTGS Dr-CNRBR693383601315-HDFC0004171-SHANTI ACHARYA-/NONE",
+      "debit": 1049464.72,
+      "credit": null,
+      "balance": 2248806.63,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-07",
+      "narration": "NEFT Cr-745190677297-ICIC0SF0002-LIFELINE PHARMACEUTICAL--",
+      "debit": null,
+      "credit": 911833.2,
+      "balance": 3160639.83,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-07",
+      "narration": "IMPS Dr-234765610613-SUBRAMANIAM SUNDARAM",
+      "debit": 192433.07,
+      "credit": null,
+      "balance": 2968206.76,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-07",
+      "narration": "NEFT Dr-405270157993-HDFC0009038-RAJESH SWAMY",
+      "debit": 606595.83,
+      "credit": null,
+      "balance": 2361610.93,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-08",
+      "narration": "NEFT Dr-515668914323-HDFC0009038-KRISHNA IYER",
+      "debit": 270181.85,
+      "credit": null,
+      "balance": 2091429.08,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-08",
+      "narration": "IMPS Dr-261381953412-KARTHIK SWAMY",
+      "debit": 241873.44,
+      "credit": null,
+      "balance": 1849555.64,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-08",
+      "narration": "NEFT Dr-767195846042-HDFC0009038-SAVITHA MENON",
+      "debit": 553069.16,
+      "credit": null,
+      "balance": 1296486.48,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-09",
+      "narration": "IMPS Dr-298547112334-ANITHA SHETTY",
+      "debit": 167737.69,
+      "credit": null,
+      "balance": 1128748.79,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-09",
+      "narration": "UPI/DR/698517167949/MADHAVAN PRASAD/UPI-TRANSFER TO 7672211452",
+      "debit": 15817.49,
+      "credit": null,
+      "balance": 1112931.3,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-09",
+      "narration": "IMPS BRN SALARY TRF BY-GATEWAY PROJECTS LTD",
+      "debit": null,
+      "credit": 85579.01,
+      "balance": 1198510.31,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-09",
+      "narration": "ATM WDL-ATM CASH 78949",
+      "debit": 5359.47,
+      "credit": null,
+      "balance": 1193150.84,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "NEFT Cr-163035043797-ICIC0SF0002-METROPOLITAN BUILDERS--",
+      "debit": null,
+      "credit": 285073.19,
+      "balance": 1478224.03,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "NEFT Cr-292374209333-ICIC0SF0002-FREIGHT LOGISTICS LTD--",
+      "debit": null,
+      "credit": 391251.44,
+      "balance": 1869475.47,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-10",
+      "narration": "UPI/CR/840238523488/PRIYA SWAMY/SENT-TRANSFER FROM 8347259260",
+      "debit": null,
+      "credit": 73865.81,
+      "balance": 1943341.28,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-12",
+      "narration": "NEFT Cr-749574971215-ICIC0SF0002-MARKET DISTRIBUTORS CORP--",
+      "debit": null,
+      "credit": 320789.65,
+      "balance": 2264130.93,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-12",
+      "narration": "Chq Paid-MICR Inward Clearing-RADHA MURTHY-HDFC BANK LTD.",
+      "debit": 572698.43,
+      "credit": null,
+      "balance": 1691432.5,
+      "ref_no": "448316"
+    },
+    {
+      "date": "2024-02-13",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), INDUSTRIAL WORKS INDIA",
+      "debit": null,
+      "credit": 155708.78,
+      "balance": 1847141.28,
+      "ref_no": "141729"
+    },
+    {
+      "date": "2024-02-13",
+      "narration": "RTGS Cr-ICICR790757011285-ICIC0000011-WELLNESS LABS INDIA--/URGENT/",
+      "debit": null,
+      "credit": 2506966.15,
+      "balance": 4354107.43,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-13",
+      "narration": "RTGS Cr-ICICR210152896320-ICIC0000011-BIOCARE INDUSTRIES--/URGENT/",
+      "debit": null,
+      "credit": 8354828.49,
+      "balance": 12708935.92,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "ATM WDL-ATM CASH 36233",
+      "debit": 9598.06,
+      "credit": null,
+      "balance": 12699337.86,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "NEFT Cr-345813093156-ICIC0SF0002-FUNDING SOLUTIONS CORP--",
+      "debit": null,
+      "credit": 4809402.56,
+      "balance": 17508740.42,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), SNACKS MANUFACTURING LTD",
+      "debit": null,
+      "credit": 2225601.03,
+      "balance": 19734341.45,
+      "ref_no": "829437"
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "IMPS BRN SALARY TRF BY-RETAIL COMMERCE INDIA",
+      "debit": null,
+      "credit": 2944281.56,
+      "balance": 22678623.01,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "ATM WDL-ATM CASH 36660",
+      "debit": 12909.57,
+      "credit": null,
+      "balance": 22665713.44,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-14",
+      "narration": "ATM WDL-ATM CASH 92610",
+      "debit": 17101.74,
+      "credit": null,
+      "balance": 22648611.7,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-15",
+      "narration": "UPI/CR/153097630091/BHARATH MENON/SENT-TRANSFER FROM 8887045579",
+      "debit": null,
+      "credit": 586774.05,
+      "balance": 23235385.75,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-15",
+      "narration": "Chq Paid-MICR Inward Clearing-RAJESH RAMAN-HDFC BANK LTD.",
+      "debit": 8769251.57,
+      "credit": null,
+      "balance": 14466134.18,
+      "ref_no": "412926"
+    },
+    {
+      "date": "2024-02-15",
+      "narration": "Chq Paid-MICR Inward Clearing-RAMESH MURTHY-HDFC BANK LTD.",
+      "debit": 4092721.21,
+      "credit": null,
+      "balance": 10373412.97,
+      "ref_no": "447701"
+    },
+    {
+      "date": "2024-02-17",
+      "narration": "Cash Withdrawal-MEERA SUBRAMANIAN",
+      "debit": 225465.14,
+      "credit": null,
+      "balance": 10147947.83,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-17",
+      "narration": "IMPS BRN SALARY TRF BY-DISTRIBUTION NETWORKS INDIA",
+      "debit": null,
+      "credit": 1821823.32,
+      "balance": 11969771.15,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-17",
+      "narration": "FAILED-INSUFFICIENT FUNDS-Chq Paid-MICR Inward Clearing-REVATHI SUBRAMANIAN-HDFC BANK LTD.",
+      "debit": null,
+      "credit": null,
+      "balance": 11969771.15,
+      "ref_no": "553951"
+    },
+    {
+      "date": "2024-02-19",
+      "narration": "UPI/DR/817467200156/DIVYA PILLAI/UPI-TRANSFER TO 6523792191",
+      "debit": 88926.52,
+      "credit": null,
+      "balance": 11880844.63,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-19",
+      "narration": "ATM WDL-ATM CASH 69440",
+      "debit": 4200.57,
+      "credit": null,
+      "balance": 11876644.06,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-19",
+      "narration": "Service Charges-Cheque Bounce Charge-553951",
+      "debit": 516.31,
+      "credit": null,
+      "balance": 1969593.81,
+      "ref_no": "553951"
+    },
+    {
+      "date": "2024-02-20",
+      "narration": "NEFT Dr-920535740475-GST PAYMENT-GSTIN 35C8336",
+      "debit": 145352.87,
+      "credit": null,
+      "balance": 1552876.12,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-21",
+      "narration": "Chq Paid-MICR Inward Clearing-RAMESH BHAT-HDFC BANK LTD.",
+      "debit": 877382.82,
+      "credit": null,
+      "balance": 10999261.24,
+      "ref_no": "684047"
+    },
+    {
+      "date": "2024-02-22",
+      "narration": "NEFT Dr-509390731867-HDFC0009038-RAJESH MENON",
+      "debit": 1090669.81,
+      "credit": null,
+      "balance": 9908591.43,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-22",
+      "narration": "IMPS Dr-144598615300-DEEPA SHETTY",
+      "debit": 1063079.25,
+      "credit": null,
+      "balance": 8845512.18,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-23",
+      "narration": "Cash Withdrawal-RAJESH BHAT",
+      "debit": 86492.58,
+      "credit": null,
+      "balance": 8759019.6,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-23",
+      "narration": "RTGS Dr-CNRBR745674799507-HDFC0004171-MADHAVAN HEGDE-/NONE",
+      "debit": 4855651.43,
+      "credit": null,
+      "balance": 3903368.17,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-23",
+      "narration": "Chq Paid-MICR Inward Clearing-BHARATH SHETTY-HDFC BANK LTD.",
+      "debit": 1797597.1,
+      "credit": null,
+      "balance": 2105771.07,
+      "ref_no": "204192"
+    },
+    {
+      "date": "2024-02-24",
+      "narration": "Chq Paid-MICR Inward Clearing-DIVYA SUBRAMANIAN-HDFC BANK LTD.",
+      "debit": 419890.89,
+      "credit": null,
+      "balance": 1685880.18,
+      "ref_no": "521289"
+    },
+    {
+      "date": "2024-02-24",
+      "narration": "NEFT Cr-284495302711-ICIC0SF0002-MECHANICAL SOLUTIONS LTD--",
+      "debit": null,
+      "credit": 350875.98,
+      "balance": 2036756.16,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-24",
+      "narration": "IMPS BRN SALARY TRF BY-CONSUMER PRODUCTS INDIA",
+      "debit": null,
+      "credit": 363468.47,
+      "balance": 2400224.63,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-26",
+      "narration": "NEFT Dr-153898365120-HDFC0009038-NANDINI SWAMY",
+      "debit": 711372.88,
+      "credit": null,
+      "balance": 1688851.75,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-26",
+      "narration": "ATM WDL-ATM CASH 11929",
+      "debit": 9879.39,
+      "credit": null,
+      "balance": 1678972.36,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-27",
+      "narration": "NEFT Cr-270089504488-ICIC0SF0002-HOUSING DEVELOPERS CORP--",
+      "debit": null,
+      "credit": 433603.74,
+      "balance": 2112576.1,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-28",
+      "narration": "NEFT Cr-252663932381-ICIC0SF0002-CLOTHING INDUSTRIES LTD--",
+      "debit": null,
+      "credit": 727826.57,
+      "balance": 2840402.67,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-28",
+      "narration": "Service Charges-Demat Account AMC",
+      "debit": 505.16,
+      "credit": null,
+      "balance": 1403326.78,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-29",
+      "narration": "IMPS BRN SALARY TRF BY-CURE PHARMACEUTICALS",
+      "debit": null,
+      "credit": 174337.45,
+      "balance": 3014740.12,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-29",
+      "narration": "RTGS Dr-CNRBR759545217901-HDFC0004171-RAJESH PILLAI-/NONE",
+      "debit": 1184685.07,
+      "credit": null,
+      "balance": 1830055.05,
+      "ref_no": null
+    },
+    {
+      "date": "2024-02-29",
+      "narration": "Chq Paid-MICR Inward Clearing-PRAKASH PRASAD-HDFC BANK LTD.",
+      "debit": 492523.92,
+      "credit": null,
+      "balance": 1337531.13,
+      "ref_no": "647729"
+    },
+    {
+      "date": "2024-03-01",
+      "narration": "CASH-BNA-SELF-MEERA SUBRAMANIAN",
+      "debit": null,
+      "credit": 22862.08,
+      "balance": 1360393.21,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-01",
+      "narration": "IMPS BRN SALARY TRF BY-RETAIL BRANDS CORP",
+      "debit": null,
+      "credit": 203647.71,
+      "balance": 1564040.92,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-02",
+      "narration": "RTGS Cr-ICICR696753465912-ICIC0000011-WELLNESS PHARMA CORP--/URGENT/",
+      "debit": null,
+      "credit": 1844874.67,
+      "balance": 3408915.59,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-02",
+      "narration": "RTGS Dr-CNRBR495149765508-HDFC0004171-NANDINI SUBRAMANIAN-/NONE",
+      "debit": 2643955.39,
+      "credit": null,
+      "balance": 764960.2,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-02",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), WEAVING INDUSTRIES LTD",
+      "debit": null,
+      "credit": 145130.98,
+      "balance": 910091.18,
+      "ref_no": "962874"
+    },
+    {
+      "date": "2024-03-04",
+      "narration": "NEFT Dr-693197013933-CLOUD SERVICES",
+      "debit": 2505.8,
+      "credit": null,
+      "balance": 1550370.32,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-04",
+      "narration": "IMPS BRN SALARY TRF BY-RESIDENTIAL PROJECTS LTD",
+      "debit": null,
+      "credit": 12085.49,
+      "balance": 922176.67,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-04",
+      "narration": "IMPS BRN SALARY TRF BY-DAILY NEEDS LIMITED",
+      "debit": null,
+      "credit": 41193.53,
+      "balance": 963370.2,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-04",
+      "narration": "Cash Withdrawal-NANDINI REDDY",
+      "debit": 41198.1,
+      "credit": null,
+      "balance": 922172.1,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-05",
+      "narration": "NEFT Dr-162143733905-SOFTWARE SUBSCRIPTION",
+      "debit": 1185.51,
+      "credit": null,
+      "balance": 1549184.81,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-05",
+      "narration": "NEFT Cr-187111719505-ICIC0SF0002-CREDIT SERVICES LTD--",
+      "debit": null,
+      "credit": 102633.06,
+      "balance": 1024805.16,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-05",
+      "narration": "IMPS BRN SALARY TRF BY-FUNDING SOLUTIONS CORP",
+      "debit": null,
+      "credit": 30136.87,
+      "balance": 1054942.03,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-05",
+      "narration": "Chq Paid-MICR Inward Clearing-PRAKASH IYER-HDFC BANK LTD.",
+      "debit": 225935.97,
+      "credit": null,
+      "balance": 829006.06,
+      "ref_no": "206287"
+    },
+    {
+      "date": "2024-03-06",
+      "narration": "IMPS BRN SALARY TRF BY-REMEDIES HEALTHCARE",
+      "debit": null,
+      "credit": 162099.27,
+      "balance": 991105.33,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-07",
+      "narration": "NEFT Dr-760257626311-HDFC0009038-MADHAVAN HEGDE",
+      "debit": 196981.8,
+      "credit": null,
+      "balance": 794123.53,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-09",
+      "narration": "NEFT Cr-258309376869-ICIC0SF0002-TRADING HOUSE LTD--",
+      "debit": null,
+      "credit": 261281.55,
+      "balance": 1055405.08,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-09",
+      "narration": "NEFT Dr-104436079508-HDFC0009038-VISHNU RAO",
+      "debit": 379711.5,
+      "credit": null,
+      "balance": 675693.58,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-09",
+      "narration": "NEFT Cr-917719180967-ICIC0SF0002-TRADE LINKS INDIA--",
+      "debit": null,
+      "credit": 97582.41,
+      "balance": 773275.99,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-09",
+      "narration": "ATM WDL-ATM CASH 98778",
+      "debit": 3134.25,
+      "credit": null,
+      "balance": 770141.74,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-11",
+      "narration": "UPI/CR/455159865745/MEERA NAIR/SENT-TRANSFER FROM 9202482822",
+      "debit": null,
+      "credit": 19095.95,
+      "balance": 789237.69,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-12",
+      "narration": "NEFT Dr-469104020953-HDFC0009038-SHANTI HEGDE",
+      "debit": 188798.26,
+      "credit": null,
+      "balance": 600439.43,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-12",
+      "narration": "NEFT Cr-883757621581-ICIC0SF0002-APPAREL MAKERS INDIA--",
+      "debit": null,
+      "credit": 38627.45,
+      "balance": 639066.88,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-12",
+      "narration": "NEFT Cr-589874421720-ICIC0SF0002-INDUSTRIAL COMPONENTS INDIA--",
+      "debit": null,
+      "credit": 192972.3,
+      "balance": 832039.18,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-13",
+      "narration": "IMPS BRN SALARY TRF BY-BRIDGE ENGINEERING CO",
+      "debit": null,
+      "credit": 45240.24,
+      "balance": 877279.42,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-13",
+      "narration": "Chq Paid-MICR Inward Clearing-KARTHIK VENKAT-HDFC BANK LTD.",
+      "debit": 333497.4,
+      "credit": null,
+      "balance": 543782.02,
+      "ref_no": "654983"
+    },
+    {
+      "date": "2024-03-14",
+      "narration": "NEFT Cr-665304873403-ICIC0SF0002-TECHVISION SYSTEMS--",
+      "debit": null,
+      "credit": 187717.09,
+      "balance": 731499.11,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-14",
+      "narration": "NEFT Dr-877701202941-HDFC0009038-DIVYA PRASAD",
+      "debit": 273393.53,
+      "credit": null,
+      "balance": 458105.58,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-15",
+      "narration": "UPI/DR/467806683249/MADHAVAN VARMA/UPI-TRANSFER TO 6844312361",
+      "debit": 2670.38,
+      "credit": null,
+      "balance": 455435.2,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-15",
+      "narration": "UPI/CR/600239458928/KRISHNA BHAT/SENT-TRANSFER FROM 8064587106",
+      "debit": null,
+      "credit": 21650.51,
+      "balance": 477085.71,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-15",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), CLOUDTECH SERVICES",
+      "debit": null,
+      "credit": 106632.3,
+      "balance": 583718.01,
+      "ref_no": "895071"
+    },
+    {
+      "date": "2024-03-15",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), EXPRESS LOGISTICS INDIA",
+      "debit": null,
+      "credit": 80749.24,
+      "balance": 664467.25,
+      "ref_no": "653933"
+    },
+    {
+      "date": "2024-03-16",
+      "narration": "IMPS BRN SALARY TRF BY-COMMERCIAL PROPERTIES INDIA",
+      "debit": null,
+      "credit": 89326.99,
+      "balance": 753794.24,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-18",
+      "narration": "Cash Withdrawal-PRIYA VARMA",
+      "debit": 24849.19,
+      "credit": null,
+      "balance": 728945.05,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-18",
+      "narration": "UPI/CR/221447816726/DIVYA RAMAN/SENT-TRANSFER FROM 6802015296",
+      "debit": null,
+      "credit": 14915.46,
+      "balance": 743860.51,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-18",
+      "narration": "NEFT Cr-385945294584-ICIC0SF0002-WEAVING INDUSTRIES LTD--",
+      "debit": null,
+      "credit": 238968.55,
+      "balance": 982829.06,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-18",
+      "narration": "IMPS BRN SALARY TRF BY-PHARMATECH INDUSTRIES",
+      "debit": null,
+      "credit": 134267.94,
+      "balance": 1117097.0,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-18",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), CITYSCAPE DEVELOPERS",
+      "debit": null,
+      "credit": 58655.29,
+      "balance": 1175752.29,
+      "ref_no": "771194"
+    },
+    {
+      "date": "2024-03-18",
+      "narration": "RTGS Cr-ICICR469274847274-ICIC0000011-COMMERCE SOLUTIONS LTD--/URGENT/",
+      "debit": null,
+      "credit": 785463.89,
+      "balance": 1961216.18,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-19",
+      "narration": "RTGS Cr-ICICR895608122955-ICIC0000011-FREIGHT LOGISTICS LTD--/URGENT/",
+      "debit": null,
+      "credit": 2430205.15,
+      "balance": 4391421.33,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-19",
+      "narration": "IMPS Dr-710233467463-PRAKASH SUNDARAM",
+      "debit": 369690.93,
+      "credit": null,
+      "balance": 4021730.4,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-19",
+      "narration": "UPI/DR/792320994502/VISHNU ACHARYA/UPI-TRANSFER TO 7491301266",
+      "debit": 91472.51,
+      "credit": null,
+      "balance": 3930257.89,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-19",
+      "narration": "NEFT Cr-391537603153-ICIC0SF0002-HEALTHCARE PRODUCTS LTD--",
+      "debit": null,
+      "credit": 629147.51,
+      "balance": 4559405.4,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-20",
+      "narration": "IMPS Dr-698243158061-PRAKASH RAO",
+      "debit": 153794.12,
+      "credit": null,
+      "balance": 4405611.28,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-20",
+      "narration": "Chq Paid-MICR Inward Clearing-PADMA IYER-HDFC BANK LTD.",
+      "debit": 2172112.8,
+      "credit": null,
+      "balance": 2233498.48,
+      "ref_no": "691767"
+    },
+    {
+      "date": "2024-03-20",
+      "narration": "NEFT Dr-200129087318-GST PAYMENT-GSTIN 68D9269",
+      "debit": 145352.87,
+      "credit": null,
+      "balance": 1403831.94,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-21",
+      "narration": "IMPS BRN SALARY TRF BY-MARKET DISTRIBUTORS CORP",
+      "debit": null,
+      "credit": 234337.09,
+      "balance": 2467835.57,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-21",
+      "narration": "NEFT Dr-581259320502-HDFC0009038-DIVYA NAIR",
+      "debit": 193796.56,
+      "credit": null,
+      "balance": 2274039.01,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-21",
+      "narration": "CASH-BNA-SELF-RAMESH PRASAD",
+      "debit": null,
+      "credit": 25039.31,
+      "balance": 2299078.32,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-26",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), VEHICLE SYSTEMS INDIA",
+      "debit": null,
+      "credit": 257360.76,
+      "balance": 2556439.08,
+      "ref_no": "407337"
+    },
+    {
+      "date": "2024-03-26",
+      "narration": "IMPS Dr-546926472193-BHARATH PILLAI",
+      "debit": 271922.89,
+      "credit": null,
+      "balance": 2284516.19,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-26",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), MECHANICAL SOLUTIONS LTD",
+      "debit": null,
+      "credit": 458297.96,
+      "balance": 2742814.15,
+      "ref_no": "750786"
+    },
+    {
+      "date": "2024-03-27",
+      "narration": "CASH-BNA-SELF-SHANTI RAO",
+      "debit": null,
+      "credit": 120288.04,
+      "balance": 2863102.19,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "UPI/CR/822481457804/SRINIVAS VENKAT/SENT-TRANSFER FROM 6147128920",
+      "debit": null,
+      "credit": 130491.91,
+      "balance": 2993594.1,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "RTGS Dr-CNRBR646460812134-HDFC0004171-SAVITHA RAMAN-/NONE",
+      "debit": 977045.41,
+      "credit": null,
+      "balance": 2016548.69,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "By Clg:DEL ACCTS-CITI BANK N.A.(CIT), SKYLINE BUILDERS",
+      "debit": null,
+      "credit": 462214.83,
+      "balance": 2478763.52,
+      "ref_no": "670368"
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "Service Charges-Account Maintenance",
+      "debit": 426.55,
+      "credit": null,
+      "balance": 1402900.23,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "Service Charges-Demat Account AMC",
+      "debit": 452.96,
+      "credit": null,
+      "balance": 1402447.27,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-28",
+      "narration": "Service Charges-Foreign Currency Markup",
+      "debit": 393.71,
+      "credit": null,
+      "balance": 1402053.56,
+      "ref_no": null
+    },
+    {
+      "date": "2024-03-30",
+      "narration": "Chq Paid-MICR Inward Clearing-KRISHNA NAIDU-HDFC BANK LTD.",
+      "debit": 534282.21,
+      "credit": null,
+      "balance": 1944481.31,
+      "ref_no": "625574"
+    },
+    {
+      "date": "2024-03-30",
+      "narration": "UPI/CR/247615973163/RADHA VENKAT/SENT-TRANSFER FROM 7694108819",
+      "debit": null,
+      "credit": 25628.81,
+      "balance": 1970110.12,
+      "ref_no": null
+    }
+  ]
+}
