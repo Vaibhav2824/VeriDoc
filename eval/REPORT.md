@@ -45,50 +45,51 @@ Total scored (field x doc) pairs: 100
 
 ## M2 — Verifier + confidence
 
-**Last run:** 2026-06-16 11:10 UTC · **Docs evaluated:** 28 (of 100 labeled; Groq `llama-4-scout-17b-16e-instruct`)
+**Last run:** 2026-06-16 12:38 UTC · **Docs evaluated:** 29
 
 | Metric | Value | Notes |
 |---|---|---|
-| **Macro field accuracy** | **98.6%** | After gate (abstained = miss) |
+| **Macro field accuracy** | **98.3%** | After gate (abstained = miss) |
 | Hallucination rate | 0.0% | Non-null value with no source location |
-| ECE | 0.0149 | Expected Calibration Error (lower is better) |
-| % auto-processed @ 99% precision | 81.3% | Coverage at 99% precision threshold |
-| Abstention rate | 1.8% | Fields routed to human review |
+| ECE | 0.0115 | Expected Calibration Error (lower is better) |
+| % auto-processed @ 99% precision | 84.3% | Coverage at 99% precision threshold |
+| Abstention rate | 1.0% | Fields routed to human review |
 | Cost per doc | — | Wire Langfuse keys in .env for real numbers |
 
 ### Per-field accuracy (after gate)
 
 | Field | Accuracy | Docs scored |
 |---|---|---|
-| `buyer_name` | 100.0% | (of 28) |
-| `currency` | 100.0% | (of 28) |
-| `invoice_date` | 85.7% | (of 28) |
-| `invoice_number` | 100.0% | (of 28) |
-| `subtotal` | 100.0% | (of 28) |
-| `tax.total_tax` | 100.0% | (of 28) |
-| `total_amount` | 100.0% | (of 28) |
-| `vendor_address` | 100.0% | (of 28) |
-| `vendor_gstin` | 100.0% | (of 28) |
-| `vendor_name` | 100.0% | (of 28) |
+| `buyer_name` | 100.0% | (of 29) |
+| `currency` | 100.0% | (of 29) |
+| `invoice_date` | 82.8% | (of 29) |
+| `invoice_number` | 100.0% | (of 29) |
+| `subtotal` | 100.0% | (of 29) |
+| `tax.total_tax` | 100.0% | (of 29) |
+| `total_amount` | 100.0% | (of 29) |
+| `vendor_address` | 100.0% | (of 29) |
+| `vendor_gstin` | 100.0% | (of 29) |
+| `vendor_name` | 100.0% | (of 29) |
 
-Total scored (field x doc) pairs: 280
+Total scored (field x doc) pairs: 290
 
 ### Known limitation: benchmark grown to 100 docs, full run blocked by free-tier daily quotas
 
-`eval/labels/` + `eval/docs/` now hold 100 invoices (was 10), imported via
+`eval/labels/` + `eval/docs/` hold 100 invoices (was 10), imported via
 `scripts/import_batch_labels.py` from the Kaggle batch in `samples/Batch 1/`. A full
-`eval.run` pass needs ~200 VLM calls (extractor + verifier per doc). On 2026-06-16, every
-configured free-tier option was exhausted within one session before reaching 100 docs:
+`eval.run` pass needs ~200 VLM calls (extractor + verifier per doc) — more than a single
+free-tier daily quota covers on any currently configured model/key:
 
-- Groq `llama-4-scout-17b-16e-instruct`: hit its 500K tokens/day cap after 28 docs (56 calls).
-- Gemini `gemini-2.0-flash-lite`: already at zero quota for the day before this run started.
-- Gemini `gemini-2.5-flash-lite`: exhausted its daily cap after 8 docs (16 calls).
+- Groq `llama-4-scout-17b-16e-instruct` (key #1, 2026-06-16 morning): 28/100 docs (56 calls)
+  before exhausting its 500K tokens/day cap.
+- Gemini `gemini-2.0-flash-lite`: already at zero quota before that run started.
+- Gemini `gemini-2.5-flash-lite`: 8/100 docs (16 calls) before exhausting its daily cap.
+- Groq `llama-4-scout-17b-16e-instruct` (key #2, fresh key, separate org): 29/100 docs
+  (58 calls) before hitting the same 500K tokens/day structural limit.
 
-The numbers above are the largest complete, error-free subset obtained today (28/100, Groq).
-Re-run `uv run python -m eval.run` once a provider's daily quota resets to extend coverage
-toward the full 100-doc benchmark. (Also fixed during this run: `InvoiceVerificationResponse`
-rejected an explicit `null` for unverifiable fields like `due_date` — Gemini emits `null`
-where Groq always emitted a default object; see `services/api/models/verified_invoice.py`.)
+The numbers above are the largest complete, error-free subset obtained so far (29/100, Groq
+key #2). Re-run `uv run python -m eval.run` once a provider's daily quota resets — or spread
+the run across multiple keys/days — to extend coverage toward the full 100-doc benchmark.
 
 ---
 

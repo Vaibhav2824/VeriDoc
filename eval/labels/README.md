@@ -56,7 +56,7 @@ Each file is a JSON label for one invoice document in `eval/docs/`.
 ```bash
 # 1. Download Kaggle dataset (see below)
 # 2. Generate a draft label for one doc:
-uv run python scripts/create_label.py eval/docs/invoice_001.pdf
+uv run python -m scripts.create_label eval/docs/invoice_001.pdf
 
 # 3. Edit the generated JSON — correct any wrong/missing values
 # 4. Repeat steps 2-3 for each doc (~10 for the M0 baseline)

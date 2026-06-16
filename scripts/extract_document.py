@@ -1,11 +1,13 @@
-"""CLI: extract invoice fields from a PDF or image and print JSON to stdout.
+"""CLI: classify + extract a document (invoice or bank statement) via the
+LangGraph Router->Extractor->Verifier->Gate->Aggregator pipeline, and print
+the result as JSON to stdout. Unlike scripts/extract_invoice.py, the caller
+doesn't need to know the doc type in advance — the router decides.
 
 Usage:
-    uv run python -m scripts.extract_invoice <path/to/invoice.pdf>
-    uv run python -m scripts.extract_invoice <path/to/invoice.png>
+    uv run python -m scripts.extract_document <path/to/document.pdf>
 
 Requires GROQ_API_KEY or GEMINI_API_KEY in the environment or .env file.
-Copy .env.example → .env and fill in your key before running.
+Copy .env.example -> .env and fill in your key before running.
 
 Exit codes:
     0  success
@@ -22,7 +24,7 @@ from dotenv import load_dotenv
 
 from services.api.clients import make_client
 from services.api.clients.base import VLMError
-from services.api.extractor import extract_invoice
+from services.api.graph import run_extraction_pipeline
 from services.api.ingest import IngestError
 
 
@@ -35,7 +37,7 @@ async def _run(path: str) -> int:
         return 1
 
     try:
-        result = await extract_invoice(path, client)
+        result = await run_extraction_pipeline(path, client)
     except IngestError as exc:
         print(f"[error] ingest failed: {exc}", file=sys.stderr)
         return 1
@@ -50,7 +52,7 @@ async def _run(path: str) -> int:
 def main() -> None:
     if len(sys.argv) != 2:
         print(
-            "Usage: uv run python -m scripts.extract_invoice <path>",
+            "Usage: uv run python -m scripts.extract_document <path>",
             file=sys.stderr,
         )
         sys.exit(1)

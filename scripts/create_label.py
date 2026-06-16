@@ -1,7 +1,7 @@
 """Draft-label helper: run the extractor on a doc and save a draft label file.
 
 Usage:
-    uv run python scripts/create_label.py <path/to/invoice.pdf>
+    uv run python -m scripts.create_label <path/to/invoice.pdf>
 
 What it does:
 1. Runs extract_invoice on the supplied document (real Gemini call).
@@ -83,7 +83,7 @@ async def _run(doc_path: Path) -> int:
 def main() -> None:
     if len(sys.argv) != 2:
         print(
-            "Usage: uv run python scripts/create_label.py <path/to/invoice.pdf>",
+            "Usage: uv run python -m scripts.create_label <path/to/invoice.pdf>",
             file=sys.stderr,
         )
         sys.exit(1)

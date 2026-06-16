@@ -11,9 +11,13 @@ for the full vision.
 `scripts/import_batch_labels.py`), closing the M1 "grow benchmark" gap.
 **M3 in progress** — Agentify + MCP + RAG + fine-tune. Landed: regression CI gate
 (`.github/workflows/ci.yml` blocking on push/PR; `.github/workflows/eval-regression.yml` +
-`eval/regression.py`, manually triggered to respect free-tier quota limits). Still pending:
-LangGraph Router→Extractor→Verifier→Gate→Aggregator orchestration, doc-type router with
-Kaggle/Colab fine-tune, `pgvector` few-shot retrieval, MCP server.
+`eval/regression.py`, manually triggered to respect free-tier quota limits); LangGraph
+Router→Extractor→Verifier→Gate→Aggregator orchestration (`services/api/graph.py`,
+`scripts/extract_document.py`) with a VLM-prompt doc-type router (`services/api/nodes/router.py`)
+that auto-dispatches to the invoice or bank-statement pipeline — no fine-tune yet, and no
+baseline router-accuracy number yet since the benchmark has no labeled bank-statement docs
+to measure against (invoices only). Still pending: Kaggle/Colab router fine-tune (blocked on
+sourcing bank-statement samples), `pgvector` few-shot retrieval, MCP server.
 Eval harness: run `uv run python -m eval.run` to regenerate `eval/REPORT.md` from `eval/labels/` + `eval/docs/`.
 
 ## Environment & constraints (fixed)
@@ -78,7 +82,8 @@ PRD.md  PROJECT_SPEC.md  README.md  CLAUDE.md
 | Purpose | Command |
 |---|---|
 | Setup env | `uv sync` |
-| Extract invoice (M0 CLI) | `uv run python scripts/extract_invoice.py <path>` |
+| Extract invoice (assumes doc type) | `uv run python -m scripts.extract_invoice <path>` |
+| Extract any doc (router auto-detects type) | `uv run python -m scripts.extract_document <path>` |
 | Import a Kaggle batch into the benchmark | `uv run python scripts/import_batch_labels.py <batch.csv>` |
 | Run API | `uv run uvicorn services.api.main:app --reload` *(placeholder — M3)* |
 | Tests | `uv run pytest` |
