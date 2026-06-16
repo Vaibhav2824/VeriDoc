@@ -20,9 +20,14 @@ to measure against (invoices only); a fingerprinted local extraction cache (`eva
 see `eval/run.py`) so eval runs accumulate coverage across the free-tier quota windows
 documented in `eval/REPORT.md`; and an MCP server (`services/mcp/server.py`) exposing
 `extract_document` (auto-routes), `extract_invoice`, and `extract_bank_statement` as MCP
-tools. Still pending: Kaggle/Colab router fine-tune (blocked on sourcing bank-statement
-samples) and `pgvector` few-shot retrieval (blocked on a real Neon Postgres connection
-string — `DATABASE_URL` in `.env` is still the `.env.example` placeholder).
+tools; and the `pgvector` exemplar store (`services/api/rag/`: `embeddings.py` via Gemini's
+free embedding model, `exemplar_text.py` pure text-shaping, `store.py` ingest/retrieve) — built
+and unit-tested with a mocked engine/session, but **not yet live-tested or wired into the
+extraction hot path**: `DATABASE_URL` in `.env` is still the `.env.example` placeholder, so
+there's no real Neon Postgres instance to run `init_schema()` against yet. Still pending:
+Kaggle/Colab router fine-tune (blocked on sourcing bank-statement samples — none exist in the
+repo) and wiring RAG retrieval into the extraction prompt (needs a real DB + a design decision
+on when retrieval triggers, e.g. on low post-verification confidence).
 Eval harness: run `uv run python -m eval.run` to regenerate `eval/REPORT.md` from `eval/labels/` + `eval/docs/`.
 
 ## Environment & constraints (fixed)
