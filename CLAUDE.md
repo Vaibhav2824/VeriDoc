@@ -9,8 +9,11 @@ for the full vision.
 (commit `3c4defc`); verifier + calibrated confidence + abstention gate + trust metrics landed in M2
 (commit `d16bcb3`). Benchmark grown from 10 to 100 labeled invoices (Kaggle batch via
 `scripts/import_batch_labels.py`), closing the M1 "grow benchmark" gap.
-Next: **M3 — Agentify + MCP + RAG + fine-tune** (LangGraph Router→Extractor→Verifier→Gate→Aggregator,
-doc-type router with Kaggle/Colab fine-tune, `pgvector` few-shot retrieval, MCP server, regression CI gate).
+**M3 in progress** — Agentify + MCP + RAG + fine-tune. Landed: regression CI gate
+(`.github/workflows/ci.yml` blocking on push/PR; `.github/workflows/eval-regression.yml` +
+`eval/regression.py`, manually triggered to respect free-tier quota limits). Still pending:
+LangGraph Router→Extractor→Verifier→Gate→Aggregator orchestration, doc-type router with
+Kaggle/Colab fine-tune, `pgvector` few-shot retrieval, MCP server.
 Eval harness: run `uv run python -m eval.run` to regenerate `eval/REPORT.md` from `eval/labels/` + `eval/docs/`.
 
 ## Environment & constraints (fixed)
@@ -70,24 +73,33 @@ PRD.md  PROJECT_SPEC.md  README.md  CLAUDE.md
 - No bare `except`; structured logging routed to Langfuse.
 - Keep modules small and single-purpose; match surrounding style.
 
-## Commands (placeholders now; fill in as code lands)
+## Commands
 
 | Purpose | Command |
 |---|---|
 | Setup env | `uv sync` |
 | Extract invoice (M0 CLI) | `uv run python scripts/extract_invoice.py <path>` |
-| Run API | `uv run uvicorn services.api.main:app --reload` *(placeholder — M1)* |
+| Import a Kaggle batch into the benchmark | `uv run python scripts/import_batch_labels.py <batch.csv>` |
+| Run API | `uv run uvicorn services.api.main:app --reload` *(placeholder — M3)* |
 | Tests | `uv run pytest` |
 | Lint | `uv run ruff check .` |
 | Typecheck | `uv run mypy .` |
 | Eval harness | `uv run python -m eval.run` |
-| Regression gate | `uv run python -m eval.regression` |
+| Regression gate | `uv run python -m eval.regression [--tolerance 0.02]` |
 
 ## Eval-first workflow
 
 - **Never merge without a number.** Every change re-runs the eval harness.
-- The M0 **baseline** is the contract; later milestones are measured against it.
-- The **regression CI gate** (GitHub Actions) fails a PR if macro field-F1 drops beyond the configured threshold.
+- The M0 **baseline** (98.0% macro accuracy) is the contract; later milestones are measured against it.
+- **CI** (`.github/workflows/ci.yml`) runs ruff + mypy + pytest on every push/PR to `main` — fully
+  deterministic, no VLM calls, no quota risk.
+- **Eval regression gate** (`.github/workflows/eval-regression.yml`, `eval/regression.py`) re-runs
+  the live extraction pipeline over the full labeled corpus and fails if macro accuracy drops more
+  than `--tolerance` below the M0 baseline. **Manually triggered only** (`workflow_dispatch`), not on
+  every push — free-tier VLM daily quotas are small enough that a single 100-doc pass can exhaust
+  them (see `eval/REPORT.md`'s "Known limitation" note), so running it unconditionally would burn
+  quota on CI and fail on quota exhaustion rather than real regressions. Trigger it manually from the
+  Actions tab when you have fresh quota and want to confirm before a release.
 - Headline numbers (F1, hallucination rate, ECE, % auto-processed at 99% precision) live in `eval/REPORT.md` and regenerate from the labeled benchmark.
 
 ## Guardrails (enforce these — they are the product)
