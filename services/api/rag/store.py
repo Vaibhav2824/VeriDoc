@@ -58,6 +58,10 @@ def get_engine() -> Engine:
                 "DATABASE_URL is not set to a real connection string. "
                 "Copy .env.example -> .env and add your Neon Postgres URL."
             )
+        # Neon's dashboard gives a bare "postgresql://" URL, which SQLAlchemy
+        # defaults to psycopg2 (not a project dependency - we use psycopg3).
+        if url.startswith("postgresql://"):
+            url = "postgresql+psycopg://" + url[len("postgresql://") :]
         _engine = create_engine(url)
     return _engine
 

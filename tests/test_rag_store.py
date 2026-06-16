@@ -39,6 +39,16 @@ def test_get_engine_raises_on_example_placeholder(monkeypatch: pytest.MonkeyPatc
         get_engine()
 
 
+def test_get_engine_normalizes_bare_postgresql_scheme(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Neon's dashboard gives a bare postgresql:// URL; force the psycopg3 driver."""
+    monkeypatch.setenv("DATABASE_URL", "postgresql://u:p@real-host/db")
+    with patch.object(store_module, "create_engine") as mock_create:
+        mock_create.return_value = MagicMock()
+        get_engine()
+
+    mock_create.assert_called_once_with("postgresql+psycopg://u:p@real-host/db")
+
+
 def test_get_engine_constructs_once_for_real_url(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("DATABASE_URL", "postgresql+psycopg://u:p@real-host/db")
     with patch.object(store_module, "create_engine") as mock_create:

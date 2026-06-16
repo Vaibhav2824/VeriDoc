@@ -10,10 +10,15 @@ from __future__ import annotations
 import os
 
 from google import genai
+from google.genai import types
 
 from services.api.clients.base import VLMError
 
-EMBEDDING_MODEL = "text-embedding-004"
+# text-embedding-004 returns 404 NOT_FOUND on the current API version/key;
+# gemini-embedding-001 is what's actually available, truncated to
+# EMBEDDING_DIM via Matryoshka representation (output_dimensionality) so the
+# stored vectors stay small without changing the pgvector schema's width.
+EMBEDDING_MODEL = "gemini-embedding-001"
 EMBEDDING_DIM = 768
 
 _client: genai.Client | None = None
@@ -40,7 +45,11 @@ async def embed_text(text: str) -> list[float]:
     """
     client = _get_client()
     try:
-        response = await client.aio.models.embed_content(model=EMBEDDING_MODEL, contents=text)
+        response = await client.aio.models.embed_content(
+            model=EMBEDDING_MODEL,
+            contents=text,
+            config=types.EmbedContentConfig(output_dimensionality=EMBEDDING_DIM),
+        )
     except Exception as exc:
         raise VLMError(f"Embedding failed: {exc}") from exc
 

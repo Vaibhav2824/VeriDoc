@@ -35,9 +35,10 @@ async def test_embed_text_returns_values(monkeypatch: pytest.MonkeyPatch) -> Non
     result = await embed_text("hello world")
 
     assert result == [0.1, 0.2, 0.3]
-    client.aio.models.embed_content.assert_awaited_once_with(
-        model=embeddings_module.EMBEDDING_MODEL, contents="hello world"
-    )
+    call_kwargs = client.aio.models.embed_content.call_args.kwargs
+    assert call_kwargs["model"] == embeddings_module.EMBEDDING_MODEL
+    assert call_kwargs["contents"] == "hello world"
+    assert call_kwargs["config"].output_dimensionality == embeddings_module.EMBEDDING_DIM
 
 
 async def test_embed_text_missing_api_key_raises(monkeypatch: pytest.MonkeyPatch) -> None:
