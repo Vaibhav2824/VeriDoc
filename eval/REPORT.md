@@ -86,10 +86,17 @@ free-tier daily quota covers on any currently configured model/key:
 - Gemini `gemini-2.5-flash-lite`: 8/100 docs (16 calls) before exhausting its daily cap.
 - Groq `llama-4-scout-17b-16e-instruct` (key #2, fresh key, separate org): 29/100 docs
   (58 calls) before hitting the same 500K tokens/day structural limit.
+- Groq key #2, next calendar day: only 7/100 docs (14 calls) before re-hitting the cap —
+  confirming Groq's TPD limit is a **rolling 24h window**, not a fixed daily reset. Reusing
+  a key within ~24h of heavy use yields almost no fresh quota even on a new calendar day;
+  "wait until tomorrow" only works if "tomorrow" is the full 24h, not just past local midnight.
 
 The numbers above are the largest complete, error-free subset obtained so far (29/100, Groq
-key #2). Re-run `uv run python -m eval.run` once a provider's daily quota resets — or spread
-the run across multiple keys/days — to extend coverage toward the full 100-doc benchmark.
+key #2). `eval.run` now caches successful per-doc extractions locally (`eval/.cache/`,
+fingerprinted by model + pipeline source so code/model changes invalidate it automatically),
+so re-runs accumulate coverage across multiple quota windows instead of re-spending tokens on
+docs already extracted. Re-run `uv run python -m eval.run` ~24h after a key was last used —
+or with a different key/provider — to extend coverage toward the full 100-doc benchmark.
 
 ---
 

@@ -74,6 +74,11 @@ async def main() -> int:
         default=DEFAULT_TOLERANCE,
         help=f"Allowed drop below baseline before failing (default {DEFAULT_TOLERANCE}).",
     )
+    parser.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="Ignore eval/.cache/extractions.json and re-extract every doc.",
+    )
     args = parser.parse_args()
 
     pairs = load_labels(_LABELS_DIR)
@@ -88,7 +93,7 @@ async def main() -> int:
         return 1
 
     print(f"Running regression gate over {len(pairs)} labeled document(s)...\n")
-    doc_results, _extractions, errors = await run_eval(client, pairs)
+    doc_results, _extractions, errors = await run_eval(client, pairs, use_cache=not args.no_cache)
 
     if errors:
         print(f"\n{len(errors)} document(s) failed extraction:")

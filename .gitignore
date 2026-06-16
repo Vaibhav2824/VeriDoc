@@ -22,6 +22,9 @@ venv/
 .coverage
 htmlcov/
 
+# Local extraction cache (fingerprinted; rebuilds cleanly from eval/labels/ + eval/docs/)
+eval/.cache/
+
 # Logs & temp
 *.log
 *.tmp
