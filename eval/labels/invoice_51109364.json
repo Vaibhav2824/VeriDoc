@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109364.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109364",
+  "invoice_date": "2023-05-28",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Indore Gadget Market",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 64388.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 6438.8
+  },
+  "total_amount": 70826.8,
+  "line_items": [
+    {
+      "description": "Sony WH-1000XM5 Wireless Headphones",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 30219.0,
+      "line_total": 60438.0
+    },
+    {
+      "description": "Anker 65W GaN USB-C 3-Port Charger",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 3950.0,
+      "line_total": 3950.0
+    }
+  ]
+}

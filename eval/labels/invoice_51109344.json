@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109344.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109344",
+  "invoice_date": "2023-08-11",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Solapur Electronics City",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1081430.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 108143.0
+  },
+  "total_amount": 1189573.0,
+  "line_items": [
+    {
+      "description": "Realme GT 5 Pro 256GB Navigator Beige",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 43764.0,
+      "line_total": 306348.0
+    },
+    {
+      "description": "Apple iPad Air M1 64GB WiFi Space Grey",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 58375.0,
+      "line_total": 291875.0
+    },
+    {
+      "description": "Lenovo IdeaPad Slim 5 i5 16GB 512GB",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 63440.0,
+      "line_total": 190320.0
+    },
+    {
+      "description": "Dell 27 inch 4K USB-C IPS Monitor",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 41841.0,
+      "line_total": 292887.0
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109328.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109328",
+  "invoice_date": "2023-10-09",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Guwahati Electronics City",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 728805.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 72880.5
+  },
+  "total_amount": 801685.5,
+  "line_items": [
+    {
+      "description": "LG UltraGear 27 inch 165Hz Gaming Monitor",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 29525.0,
+      "line_total": 29525.0
+    },
+    {
+      "description": "Sony WH-1000XM5 Wireless Headphones",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 27341.0,
+      "line_total": 54682.0
+    },
+    {
+      "description": "Garmin Fenix 7 Solar Multisport GPS",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 74977.0,
+      "line_total": 224931.0
+    },
+    {
+      "description": "Dell XPS 13 Intel i7 16GB 512GB",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 108228.0,
+      "line_total": 108228.0
+    },
+    {
+      "description": "Sony Alpha ZV-E10 Mirrorless Kit 16-50",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 59024.0,
+      "line_total": 177072.0
+    },
+    {
+      "description": "Lenovo Tab P12 Pro 256GB Storm Grey",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 44789.0,
+      "line_total": 134367.0
+    }
+  ]
+}

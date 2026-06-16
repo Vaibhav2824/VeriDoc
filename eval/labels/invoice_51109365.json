@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109365.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109365",
+  "invoice_date": "2023-08-29",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Nagpur Electronics Plaza",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 702043.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 70204.3
+  },
+  "total_amount": 772247.3,
+  "line_items": [
+    {
+      "description": "GoPro Hero 12 Black Action Camera",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 40412.0,
+      "line_total": 80824.0
+    },
+    {
+      "description": "Sony Alpha ZV-E10 Mirrorless Kit 16-50",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 57110.0,
+      "line_total": 228440.0
+    },
+    {
+      "description": "Sony WH-1000XM5 Wireless Headphones",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 29158.0,
+      "line_total": 87474.0
+    },
+    {
+      "description": "HP Pavilion 15 Ryzen 5 8GB 512GB",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 58960.0,
+      "line_total": 58960.0
+    },
+    {
+      "description": "Apple iPhone 15 128GB Black",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 82115.0,
+      "line_total": 246345.0
+    }
+  ]
+}

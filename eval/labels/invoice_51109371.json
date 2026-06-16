@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109371.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109371",
+  "invoice_date": "2023-08-15",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Amritsar Gadget Gallery",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 2322896.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 232289.6
+  },
+  "total_amount": 2555185.6,
+  "line_items": [
+    {
+      "description": "Canon EOS R50 Mirrorless Camera Body",
+      "hsn_sac": null,
+      "quantity": 8.0,
+      "unit_price": 66279.0,
+      "line_total": 530232.0
+    },
+    {
+      "description": "Apple iPhone 15 128GB Black",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 83640.0,
+      "line_total": 836400.0
+    },
+    {
+      "description": "HP Pavilion 15 Ryzen 5 8GB 512GB",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 65296.0,
+      "line_total": 261184.0
+    },
+    {
+      "description": "Samsung 65 inch QLED 4K Smart TV",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 111968.0,
+      "line_total": 671808.0
+    },
+    {
+      "description": "Philips Hue White Ambiance Starter Kit",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 5818.0,
+      "line_total": 23272.0
+    }
+  ]
+}

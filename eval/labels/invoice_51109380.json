@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109380.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109380",
+  "invoice_date": "2023-06-19",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Raipur Smart Devices",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 496050.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 49605.0
+  },
+  "total_amount": 545655.0,
+  "line_items": [
+    {
+      "description": "Apple iPad Air M1 64GB WiFi Space Grey",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 62411.0,
+      "line_total": 249644.0
+    },
+    {
+      "description": "Anker 65W GaN USB-C 3-Port Charger",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 3630.0,
+      "line_total": 32670.0
+    },
+    {
+      "description": "Apple Watch Series 9 GPS 45mm Midnight",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 53434.0,
+      "line_total": 213736.0
+    }
+  ]
+}

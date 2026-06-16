@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 from services.api.models.fields import ExtractionField, FieldVerification
 from services.api.models.invoice import LineItem, TaxBreakdown
@@ -121,3 +121,14 @@ class InvoiceVerificationResponse(BaseModel):
         default_factory=FieldVerification,
         description="Verification for the tax.total_tax field",
     )
+
+    @model_validator(mode="before")
+    @classmethod
+    def _coerce_null_to_default(cls, data: Any) -> Any:
+        """Some VLMs (e.g. Gemini) emit an explicit `null` for a field it has no
+        verification for, rather than omitting the key. `default_factory` only
+        applies when the key is absent, so coerce null -> {} here to get the
+        same "uncertain, no source location" default."""
+        if isinstance(data, dict):
+            return {k: ({} if v is None else v) for k, v in data.items()}
+        return data

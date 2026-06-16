@@ -79,6 +79,39 @@ def _full_verif_response() -> InvoiceVerificationResponse:
     )
 
 
+def test_verification_response_coerces_explicit_null() -> None:
+    """Some VLMs (Gemini) emit `"due_date": null` instead of omitting the key.
+
+    default_factory only kicks in for an absent key, so the schema must
+    also tolerate an explicit null and fall back to the same default.
+    """
+    high = {
+        "confidence": 0.95,
+        "source_location": {"page": 0, "bbox": [0.1, 0.1, 0.5, 0.2]},
+    }
+    verif = InvoiceVerificationResponse.model_validate(
+        {
+            "invoice_number": high,
+            "invoice_date": high,
+            "due_date": None,
+            "vendor_name": high,
+            "vendor_gstin": high,
+            "vendor_address": high,
+            "buyer_name": high,
+            "buyer_gstin": None,
+            "currency": high,
+            "subtotal": high,
+            "total_amount": high,
+            "tax_total_tax": high,
+        }
+    )
+
+    assert verif.due_date == FieldVerification()
+    assert verif.due_date.confidence == 0.5
+    assert verif.due_date.source_location is None
+    assert verif.buyer_gstin == FieldVerification()
+
+
 def _mock_client_two_pass(
     extraction: InvoiceExtraction,
     verification: InvoiceVerificationResponse,

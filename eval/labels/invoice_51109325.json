@@ -1,0 +1,83 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109325.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109325",
+  "invoice_date": "2023-11-19",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Rajkot Mobile World",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 2179343.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 217934.3
+  },
+  "total_amount": 2397277.3,
+  "line_items": [
+    {
+      "description": "HP Pavilion 15 Ryzen 5 8GB 512GB",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 63101.0,
+      "line_total": 631010.0
+    },
+    {
+      "description": "GoPro Hero 12 Black Action Camera",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 38686.0,
+      "line_total": 348174.0
+    },
+    {
+      "description": "Sony WH-1000XM5 Wireless Headphones",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 32890.0,
+      "line_total": 197340.0
+    },
+    {
+      "description": "Lenovo IdeaPad Slim 5 i5 16GB 512GB",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 66370.0,
+      "line_total": 132740.0
+    },
+    {
+      "description": "Western Digital 2TB My Passport HDD",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 6326.0,
+      "line_total": 25304.0
+    },
+    {
+      "description": "Dell 27 inch 4K USB-C IPS Monitor",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 44323.0,
+      "line_total": 443230.0
+    },
+    {
+      "description": "Samsung T7 Shield 1TB Portable SSD",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 11794.0,
+      "line_total": 35382.0
+    },
+    {
+      "description": "LG 43 inch 4K UHD Smart WebOS TV",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 52309.0,
+      "line_total": 366163.0
+    }
+  ]
+}

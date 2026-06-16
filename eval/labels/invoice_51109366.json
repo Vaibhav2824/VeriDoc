@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109366.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109366",
+  "invoice_date": "2023-11-02",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Chandigarh Tech Square",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1721882.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 172188.2
+  },
+  "total_amount": 1894070.2,
+  "line_items": [
+    {
+      "description": "Samsung T7 Shield 1TB Portable SSD",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 10495.0,
+      "line_total": 10495.0
+    },
+    {
+      "description": "HP Pavilion 15 Ryzen 5 8GB 512GB",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 59212.0,
+      "line_total": 592120.0
+    },
+    {
+      "description": "GoPro Hero 12 Black Action Camera",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 35676.0,
+      "line_total": 214056.0
+    },
+    {
+      "description": "OnePlus 12 256GB Silky Black",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 68581.0,
+      "line_total": 137162.0
+    },
+    {
+      "description": "Xiaomi 14 Pro 512GB White",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 83393.0,
+      "line_total": 166786.0
+    },
+    {
+      "description": "Logitech MX Master 3S Wireless Mouse",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 11940.0,
+      "line_total": 107460.0
+    },
+    {
+      "description": "Apple Watch Series 9 GPS 45mm Midnight",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 54867.0,
+      "line_total": 493803.0
+    }
+  ]
+}

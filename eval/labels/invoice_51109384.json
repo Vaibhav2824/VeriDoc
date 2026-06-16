@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109384.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109384",
+  "invoice_date": "2024-04-05",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Mysuru Electronics",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1665820.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 166582.0
+  },
+  "total_amount": 1832402.0,
+  "line_items": [
+    {
+      "description": "Apple MacBook Air M2 8GB 256GB Silver",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 113412.0,
+      "line_total": 680472.0
+    },
+    {
+      "description": "Samsung T7 Shield 1TB Portable SSD",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 8600.0,
+      "line_total": 60200.0
+    },
+    {
+      "description": "Asus VivoBook 16 Ryzen 7 16GB 512GB",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 69398.0,
+      "line_total": 69398.0
+    },
+    {
+      "description": "TP-Link Archer AX73 WiFi 6 Router",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 14072.0,
+      "line_total": 84432.0
+    },
+    {
+      "description": "Samsung Galaxy Watch6 Classic 47mm",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 27228.0,
+      "line_total": 163368.0
+    },
+    {
+      "description": "JBL Flip 6 Portable Bluetooth Speaker",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 11286.0,
+      "line_total": 56430.0
+    },
+    {
+      "description": "OnePlus 12 256GB Silky Black",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 61280.0,
+      "line_total": 551520.0
+    }
+  ]
+}

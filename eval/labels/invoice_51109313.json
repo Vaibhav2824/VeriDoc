@@ -1,0 +1,83 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109313.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109313",
+  "invoice_date": "2023-12-13",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Bhopal Smart Tech",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 2471141.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 247114.1
+  },
+  "total_amount": 2718255.1,
+  "line_items": [
+    {
+      "description": "Keychron K8 Pro Mechanical Keyboard",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 13958.0,
+      "line_total": 83748.0
+    },
+    {
+      "description": "LG 43 inch 4K UHD Smart WebOS TV",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 42382.0,
+      "line_total": 254292.0
+    },
+    {
+      "description": "Vivo X100 Pro 256GB Asteroid Black",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 94096.0,
+      "line_total": 658672.0
+    },
+    {
+      "description": "Samsung Galaxy Tab S9 256GB Graphite",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 84832.0,
+      "line_total": 84832.0
+    },
+    {
+      "description": "Lenovo Tab P12 Pro 256GB Storm Grey",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 39690.0,
+      "line_total": 119070.0
+    },
+    {
+      "description": "Apple MacBook Air M2 8GB 256GB Silver",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 99128.0,
+      "line_total": 396512.0
+    },
+    {
+      "description": "Asus VivoBook 16 Ryzen 7 16GB 512GB",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 68635.0,
+      "line_total": 686350.0
+    },
+    {
+      "description": "Realme GT 5 Pro 256GB Navigator Beige",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 37533.0,
+      "line_total": 187665.0
+    }
+  ]
+}

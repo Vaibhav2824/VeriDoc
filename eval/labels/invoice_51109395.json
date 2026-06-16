@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109395.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109395",
+  "invoice_date": "2023-10-11",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Kolhapur Tech Market",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 2455501.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 245550.1
+  },
+  "total_amount": 2701051.1,
+  "line_items": [
+    {
+      "description": "LG 43 inch 4K UHD Smart WebOS TV",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 41990.0,
+      "line_total": 293930.0
+    },
+    {
+      "description": "Realme GT 5 Pro 256GB Navigator Beige",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 47254.0,
+      "line_total": 330778.0
+    },
+    {
+      "description": "Apple MacBook Air M2 8GB 256GB Silver",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 114521.0,
+      "line_total": 687126.0
+    },
+    {
+      "description": "Samsung Galaxy S24 256GB Phantom Black",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 85277.0,
+      "line_total": 426385.0
+    },
+    {
+      "description": "HP Pavilion 15 Ryzen 5 8GB 512GB",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 68177.0,
+      "line_total": 409062.0
+    },
+    {
+      "description": "Dell 27 inch 4K USB-C IPS Monitor",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 51370.0,
+      "line_total": 308220.0
+    }
+  ]
+}

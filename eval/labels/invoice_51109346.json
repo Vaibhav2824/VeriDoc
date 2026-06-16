@@ -1,0 +1,83 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109346.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109346",
+  "invoice_date": "2024-02-22",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Nellore Digital Hub",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1568774.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 156877.4
+  },
+  "total_amount": 1725651.4,
+  "line_items": [
+    {
+      "description": "Sony Alpha ZV-E10 Mirrorless Kit 16-50",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 69808.0,
+      "line_total": 349040.0
+    },
+    {
+      "description": "Apple iPhone 15 128GB Black",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 67026.0,
+      "line_total": 469182.0
+    },
+    {
+      "description": "Lenovo Tab P12 Pro 256GB Storm Grey",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 36828.0,
+      "line_total": 220968.0
+    },
+    {
+      "description": "Samsung T7 Shield 1TB Portable SSD",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 9556.0,
+      "line_total": 86004.0
+    },
+    {
+      "description": "Keychron K8 Pro Mechanical Keyboard",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 10403.0,
+      "line_total": 20806.0
+    },
+    {
+      "description": "Sony WH-1000XM5 Wireless Headphones",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 28519.0,
+      "line_total": 142595.0
+    },
+    {
+      "description": "Sony Bravia 55 inch 4K OLED TV",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 126837.0,
+      "line_total": 253674.0
+    },
+    {
+      "description": "Western Digital 2TB My Passport HDD",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 5301.0,
+      "line_total": 26505.0
+    }
+  ]
+}

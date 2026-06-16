@@ -5,9 +5,13 @@ extracted field carries a calibrated confidence + a source link, and the system 
 on low-confidence fields instead of hallucinating. See `PRD.md` for scope, `PROJECT_SPEC.md`
 for the full vision.
 
-**Status:** M0 complete. Walking skeleton + eval harness committed (commit `2a39ef3`).
-Next: **M1 — Structured extraction** (Instructor/Pydantic invoice schema, bounded retries, Langfuse tracing, bank-statement ingestion).
-Baseline: run `uv run python -m eval.run` after labeling ~10 Kaggle invoices to record the M0 number.
+**Status:** M0–M2 complete. Structured extraction (Instructor/Pydantic, bank statement) landed in M1
+(commit `3c4defc`); verifier + calibrated confidence + abstention gate + trust metrics landed in M2
+(commit `d16bcb3`). Benchmark grown from 10 to 100 labeled invoices (Kaggle batch via
+`scripts/import_batch_labels.py`), closing the M1 "grow benchmark" gap.
+Next: **M3 — Agentify + MCP + RAG + fine-tune** (LangGraph Router→Extractor→Verifier→Gate→Aggregator,
+doc-type router with Kaggle/Colab fine-tune, `pgvector` few-shot retrieval, MCP server, regression CI gate).
+Eval harness: run `uv run python -m eval.run` to regenerate `eval/REPORT.md` from `eval/labels/` + `eval/docs/`.
 
 ## Environment & constraints (fixed)
 

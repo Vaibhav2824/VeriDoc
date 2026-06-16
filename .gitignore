@@ -44,6 +44,13 @@ eval/docs/*.png
 eval/docs/*.jpg
 eval/docs/*.jpeg
 
+# Raw Kaggle batch downloads (same policy as eval/docs — keep the CSV ground
+# truth, exclude the raw PDFs; scripts/import_batch_labels.py regenerates docs)
+samples/**/*.pdf
+samples/**/*.png
+samples/**/*.jpg
+samples/**/*.jpeg
+
 # Claude Code internal state
 .claude/
 

@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109314.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109314",
+  "invoice_date": "2023-06-03",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Indore Gadget Market",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 669145.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 66914.5
+  },
+  "total_amount": 736059.5,
+  "line_items": [
+    {
+      "description": "Garmin Fenix 7 Solar Multisport GPS",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 71185.0,
+      "line_total": 640665.0
+    },
+    {
+      "description": "Boat Rockerz 550 Bluetooth Headphones",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 2848.0,
+      "line_total": 28480.0
+    }
+  ]
+}

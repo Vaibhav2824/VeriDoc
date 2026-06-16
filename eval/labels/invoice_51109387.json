@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109387.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109387",
+  "invoice_date": "2024-02-22",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Varanasi Electronics Hub",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 2043227.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 204322.7
+  },
+  "total_amount": 2247549.7,
+  "line_items": [
+    {
+      "description": "Anker 65W GaN USB-C 3-Port Charger",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 4314.0,
+      "line_total": 8628.0
+    },
+    {
+      "description": "Xiaomi 14 Pro 512GB White",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 75938.0,
+      "line_total": 759380.0
+    },
+    {
+      "description": "Dell XPS 13 Intel i7 16GB 512GB",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 116262.0,
+      "line_total": 581310.0
+    },
+    {
+      "description": "Apple iPhone 15 Pro 256GB Titanium",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 113221.0,
+      "line_total": 226442.0
+    },
+    {
+      "description": "OnePlus 12 256GB Silky Black",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 66781.0,
+      "line_total": 467467.0
+    }
+  ]
+}

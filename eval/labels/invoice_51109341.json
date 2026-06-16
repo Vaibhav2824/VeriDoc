@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109341.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109341",
+  "invoice_date": "2023-04-11",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Gwalior Tech World",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 415773.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 41577.3
+  },
+  "total_amount": 457350.3,
+  "line_items": [
+    {
+      "description": "Lenovo Tab P12 Pro 256GB Storm Grey",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 46197.0,
+      "line_total": 415773.0
+    }
+  ]
+}

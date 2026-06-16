@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109331.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109331",
+  "invoice_date": "2023-11-14",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Ludhiana Digital World",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 2162904.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 216290.4
+  },
+  "total_amount": 2379194.4,
+  "line_items": [
+    {
+      "description": "Dell 27 inch 4K USB-C IPS Monitor",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 51739.0,
+      "line_total": 51739.0
+    },
+    {
+      "description": "Philips Hue White Ambiance Starter Kit",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 8330.0,
+      "line_total": 58310.0
+    },
+    {
+      "description": "JBL Flip 6 Portable Bluetooth Speaker",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 8564.0,
+      "line_total": 85640.0
+    },
+    {
+      "description": "Samsung Galaxy Buds2 Pro Graphite",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 14516.0,
+      "line_total": 43548.0
+    },
+    {
+      "description": "Samsung 65 inch QLED 4K Smart TV",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 123832.0,
+      "line_total": 742992.0
+    },
+    {
+      "description": "Vivo X100 Pro 256GB Asteroid Black",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 87137.0,
+      "line_total": 871370.0
+    },
+    {
+      "description": "Sony Alpha ZV-E10 Mirrorless Kit 16-50",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 61861.0,
+      "line_total": 309305.0
+    }
+  ]
+}

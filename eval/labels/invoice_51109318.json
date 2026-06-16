@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109318.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109318",
+  "invoice_date": "2024-03-31",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Vadodara Digital Zone",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 405648.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 40564.8
+  },
+  "total_amount": 446212.8,
+  "line_items": [
+    {
+      "description": "Dell 27 inch 4K USB-C IPS Monitor",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 45072.0,
+      "line_total": 405648.0
+    }
+  ]
+}

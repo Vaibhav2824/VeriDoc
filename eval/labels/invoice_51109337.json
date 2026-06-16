@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109337.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109337",
+  "invoice_date": "2023-09-18",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Varanasi Electronics Hub",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1649136.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 164913.6
+  },
+  "total_amount": 1814049.6,
+  "line_items": [
+    {
+      "description": "Samsung T7 Shield 1TB Portable SSD",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 11026.0,
+      "line_total": 66156.0
+    },
+    {
+      "description": "Apple Watch Series 9 GPS 45mm Midnight",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 53079.0,
+      "line_total": 371553.0
+    },
+    {
+      "description": "Boat Rockerz 550 Bluetooth Headphones",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 2853.0,
+      "line_total": 2853.0
+    },
+    {
+      "description": "Samsung Galaxy Watch6 Classic 47mm",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 25933.0,
+      "line_total": 181531.0
+    },
+    {
+      "description": "Apple iPhone 15 Pro 256GB Titanium",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 111265.0,
+      "line_total": 1001385.0
+    },
+    {
+      "description": "Samsung Galaxy Buds2 Pro Graphite",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 12829.0,
+      "line_total": 25658.0
+    }
+  ]
+}

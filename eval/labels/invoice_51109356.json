@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109356.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109356",
+  "invoice_date": "2024-03-15",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Kolkata Electronics Hub",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1615350.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 161535.0
+  },
+  "total_amount": 1776885.0,
+  "line_items": [
+    {
+      "description": "GoPro Hero 12 Black Action Camera",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 36023.0,
+      "line_total": 36023.0
+    },
+    {
+      "description": "Apple Watch Series 9 GPS 45mm Midnight",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 53790.0,
+      "line_total": 215160.0
+    },
+    {
+      "description": "HP Pavilion 15 Ryzen 5 8GB 512GB",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 65738.0,
+      "line_total": 131476.0
+    },
+    {
+      "description": "Samsung 65 inch QLED 4K Smart TV",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 111443.0,
+      "line_total": 668658.0
+    },
+    {
+      "description": "JBL Flip 6 Portable Bluetooth Speaker",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 11936.0,
+      "line_total": 71616.0
+    },
+    {
+      "description": "Logitech MX Master 3S Wireless Mouse",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 11123.0,
+      "line_total": 100107.0
+    },
+    {
+      "description": "Lenovo Tab P12 Pro 256GB Storm Grey",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 43590.0,
+      "line_total": 392310.0
+    }
+  ]
+}

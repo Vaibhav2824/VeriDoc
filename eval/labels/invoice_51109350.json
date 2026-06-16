@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109350.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109350",
+  "invoice_date": "2024-02-18",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Guntur Smart Devices",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 218110.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 21811.0
+  },
+  "total_amount": 239921.0,
+  "line_items": [
+    {
+      "description": "Apple AirPods Pro 2nd Gen USB-C",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 21811.0,
+      "line_total": 218110.0
+    }
+  ]
+}

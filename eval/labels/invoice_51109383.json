@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109383.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109383",
+  "invoice_date": "2023-11-03",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Thiruvananthapuram Gadgets",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1787388.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 178738.8
+  },
+  "total_amount": 1966126.8,
+  "line_items": [
+    {
+      "description": "Apple iPad Air M1 64GB WiFi Space Grey",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 68521.0,
+      "line_total": 685210.0
+    },
+    {
+      "description": "Apple iPhone 15 Pro 256GB Titanium",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 134274.0,
+      "line_total": 268548.0
+    },
+    {
+      "description": "Logitech MX Master 3S Wireless Mouse",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 11473.0,
+      "line_total": 22946.0
+    },
+    {
+      "description": "Samsung Galaxy Tab S9 256GB Graphite",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 67099.0,
+      "line_total": 201297.0
+    },
+    {
+      "description": "Apple iPhone 15 128GB Black",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 84577.0,
+      "line_total": 338308.0
+    },
+    {
+      "description": "Boat Rockerz 550 Bluetooth Headphones",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 2991.0,
+      "line_total": 2991.0
+    },
+    {
+      "description": "Samsung Galaxy Watch6 Classic 47mm",
+      "hsn_sac": null,
+      "quantity": 8.0,
+      "unit_price": 33511.0,
+      "line_total": 268088.0
+    }
+  ]
+}

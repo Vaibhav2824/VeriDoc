@@ -1,0 +1,83 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109315.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109315",
+  "invoice_date": "2024-02-13",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Nagpur Electronics Plaza",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1673081.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 167308.1
+  },
+  "total_amount": 1840389.1,
+  "line_items": [
+    {
+      "description": "TP-Link Archer AX73 WiFi 6 Router",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 17801.0,
+      "line_total": 53403.0
+    },
+    {
+      "description": "GoPro Hero 12 Black Action Camera",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 38779.0,
+      "line_total": 155116.0
+    },
+    {
+      "description": "Dell XPS 13 Intel i7 16GB 512GB",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 98992.0,
+      "line_total": 296976.0
+    },
+    {
+      "description": "Samsung Galaxy S24 256GB Phantom Black",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 84314.0,
+      "line_total": 337256.0
+    },
+    {
+      "description": "Samsung Galaxy Tab S9 256GB Graphite",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 76910.0,
+      "line_total": 307640.0
+    },
+    {
+      "description": "Apple iPhone 15 128GB Black",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 58489.0,
+      "line_total": 116978.0
+    },
+    {
+      "description": "Logitech MX Master 3S Wireless Mouse",
+      "hsn_sac": null,
+      "quantity": 8.0,
+      "unit_price": 9560.0,
+      "line_total": 76480.0
+    },
+    {
+      "description": "Realme GT 5 Pro 256GB Navigator Beige",
+      "hsn_sac": null,
+      "quantity": 8.0,
+      "unit_price": 41154.0,
+      "line_total": 329232.0
+    }
+  ]
+}

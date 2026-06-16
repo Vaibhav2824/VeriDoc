@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109312.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109312",
+  "invoice_date": "2024-03-07",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Kochi Mobile Hub",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1872803.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 187280.3
+  },
+  "total_amount": 2060083.3,
+  "line_items": [
+    {
+      "description": "Apple AirPods Pro 2nd Gen USB-C",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 21336.0,
+      "line_total": 213360.0
+    },
+    {
+      "description": "Samsung Galaxy Watch6 Classic 47mm",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 28516.0,
+      "line_total": 199612.0
+    },
+    {
+      "description": "Apple MacBook Air M2 8GB 256GB Silver",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 95855.0,
+      "line_total": 670985.0
+    },
+    {
+      "description": "Apple iPhone 15 128GB Black",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 66869.0,
+      "line_total": 668690.0
+    },
+    {
+      "description": "Samsung T7 Shield 1TB Portable SSD",
+      "hsn_sac": null,
+      "quantity": 8.0,
+      "unit_price": 9403.0,
+      "line_total": 75224.0
+    },
+    {
+      "description": "Western Digital 2TB My Passport HDD",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 5084.0,
+      "line_total": 10168.0
+    },
+    {
+      "description": "JBL Flip 6 Portable Bluetooth Speaker",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 8691.0,
+      "line_total": 34764.0
+    }
+  ]
+}

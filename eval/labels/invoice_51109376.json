@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109376.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109376",
+  "invoice_date": "2023-10-16",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Madurai Digital Hub",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1462815.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 146281.5
+  },
+  "total_amount": 1609096.5,
+  "line_items": [
+    {
+      "description": "Samsung Galaxy Buds2 Pro Graphite",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 12338.0,
+      "line_total": 24676.0
+    },
+    {
+      "description": "Apple Watch Series 9 GPS 45mm Midnight",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 54166.0,
+      "line_total": 270830.0
+    },
+    {
+      "description": "OnePlus 12 256GB Silky Black",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 68098.0,
+      "line_total": 136196.0
+    },
+    {
+      "description": "Dell 27 inch 4K USB-C IPS Monitor",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 57659.0,
+      "line_total": 518931.0
+    },
+    {
+      "description": "Lenovo Tab P12 Pro 256GB Storm Grey",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 45409.0,
+      "line_total": 272454.0
+    },
+    {
+      "description": "Apple MacBook Air M2 8GB 256GB Silver",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 111183.0,
+      "line_total": 222366.0
+    },
+    {
+      "description": "JBL Flip 6 Portable Bluetooth Speaker",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 8681.0,
+      "line_total": 17362.0
+    }
+  ]
+}

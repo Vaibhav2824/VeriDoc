@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109319.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109319",
+  "invoice_date": "2024-03-10",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Patna Electronics Corner",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 79381.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 7938.1
+  },
+  "total_amount": 87319.1,
+  "line_items": [
+    {
+      "description": "JBL Flip 6 Portable Bluetooth Speaker",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 9581.0,
+      "line_total": 28743.0
+    },
+    {
+      "description": "Apple AirPods Pro 2nd Gen USB-C",
+      "hsn_sac": null,
+      "quantity": 2.0,
+      "unit_price": 25319.0,
+      "line_total": 50638.0
+    }
+  ]
+}

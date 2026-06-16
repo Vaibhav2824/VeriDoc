@@ -1,0 +1,83 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109378.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109378",
+  "invoice_date": "2023-12-07",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Guwahati Electronics City",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 2711346.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 271134.6
+  },
+  "total_amount": 2982480.6,
+  "line_items": [
+    {
+      "description": "Lenovo Tab P12 Pro 256GB Storm Grey",
+      "hsn_sac": null,
+      "quantity": 6.0,
+      "unit_price": 39006.0,
+      "line_total": 234036.0
+    },
+    {
+      "description": "Samsung Galaxy Buds2 Pro Graphite",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 14209.0,
+      "line_total": 56836.0
+    },
+    {
+      "description": "Western Digital 2TB My Passport HDD",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 7994.0,
+      "line_total": 55958.0
+    },
+    {
+      "description": "Apple MacBook Air M2 8GB 256GB Silver",
+      "hsn_sac": null,
+      "quantity": 8.0,
+      "unit_price": 113594.0,
+      "line_total": 908752.0
+    },
+    {
+      "description": "Apple iPad Air M1 64GB WiFi Space Grey",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 58421.0,
+      "line_total": 292105.0
+    },
+    {
+      "description": "Keychron K8 Pro Mechanical Keyboard",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 12153.0,
+      "line_total": 109377.0
+    },
+    {
+      "description": "Samsung Galaxy Tab S9 256GB Graphite",
+      "hsn_sac": null,
+      "quantity": 9.0,
+      "unit_price": 73998.0,
+      "line_total": 665982.0
+    },
+    {
+      "description": "LG UltraGear 27 inch 165Hz Gaming Monitor",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 38830.0,
+      "line_total": 388300.0
+    }
+  ]
+}

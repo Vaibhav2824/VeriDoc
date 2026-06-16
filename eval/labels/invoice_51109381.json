@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109381.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109381",
+  "invoice_date": "2023-08-06",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Ludhiana Digital World",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1129575.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 112957.5
+  },
+  "total_amount": 1242532.5,
+  "line_items": [
+    {
+      "description": "Keychron K8 Pro Mechanical Keyboard",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 13138.0,
+      "line_total": 65690.0
+    },
+    {
+      "description": "JBL Flip 6 Portable Bluetooth Speaker",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 10586.0,
+      "line_total": 42344.0
+    },
+    {
+      "description": "Lenovo IdeaPad Slim 5 i5 16GB 512GB",
+      "hsn_sac": null,
+      "quantity": 1.0,
+      "unit_price": 74805.0,
+      "line_total": 74805.0
+    },
+    {
+      "description": "Sony Bravia 55 inch 4K OLED TV",
+      "hsn_sac": null,
+      "quantity": 7.0,
+      "unit_price": 135248.0,
+      "line_total": 946736.0
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "doc_file": "invoice_51109342.pdf",
+    "labeled_by": "csv_ground_truth",
+    "labeled_at": "2026-06-16",
+    "note": "Auto-generated from batch_1.csv ground truth"
+  },
+  "invoice_number": "51109342",
+  "invoice_date": "2023-12-23",
+  "due_date": null,
+  "vendor_name": "TechVision Distributors Pvt Ltd",
+  "vendor_gstin": "27AABCT1234F1Z5",
+  "vendor_address": "Plot 14, MIDC Industrial Area, Andheri East, Mumbai, Maharashtra - 400093",
+  "buyer_name": "Jabalpur Digital Zone",
+  "buyer_gstin": null,
+  "currency": "INR",
+  "subtotal": 1446601.0,
+  "tax": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 144660.1
+  },
+  "total_amount": 1591261.1,
+  "line_items": [
+    {
+      "description": "Samsung Galaxy S24 256GB Phantom Black",
+      "hsn_sac": null,
+      "quantity": 3.0,
+      "unit_price": 82617.0,
+      "line_total": 247851.0
+    },
+    {
+      "description": "Sony Alpha ZV-E10 Mirrorless Kit 16-50",
+      "hsn_sac": null,
+      "quantity": 4.0,
+      "unit_price": 70166.0,
+      "line_total": 280664.0
+    },
+    {
+      "description": "Samsung Galaxy Buds2 Pro Graphite",
+      "hsn_sac": null,
+      "quantity": 5.0,
+      "unit_price": 12526.0,
+      "line_total": 62630.0
+    },
+    {
+      "description": "Western Digital 2TB My Passport HDD",
+      "hsn_sac": null,
+      "quantity": 8.0,
+      "unit_price": 5007.0,
+      "line_total": 40056.0
+    },
+    {
+      "description": "Asus VivoBook 16 Ryzen 7 16GB 512GB",
+      "hsn_sac": null,
+      "quantity": 10.0,
+      "unit_price": 81540.0,
+      "line_total": 815400.0
+    }
+  ]
+}
