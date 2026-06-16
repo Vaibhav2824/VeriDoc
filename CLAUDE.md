@@ -16,8 +16,13 @@ Router→Extractor→Verifier→Gate→Aggregator orchestration (`services/api/g
 `scripts/extract_document.py`) with a VLM-prompt doc-type router (`services/api/nodes/router.py`)
 that auto-dispatches to the invoice or bank-statement pipeline — no fine-tune yet, and no
 baseline router-accuracy number yet since the benchmark has no labeled bank-statement docs
-to measure against (invoices only). Still pending: Kaggle/Colab router fine-tune (blocked on
-sourcing bank-statement samples), `pgvector` few-shot retrieval, MCP server.
+to measure against (invoices only); a fingerprinted local extraction cache (`eval/.cache/`,
+see `eval/run.py`) so eval runs accumulate coverage across the free-tier quota windows
+documented in `eval/REPORT.md`; and an MCP server (`services/mcp/server.py`) exposing
+`extract_document` (auto-routes), `extract_invoice`, and `extract_bank_statement` as MCP
+tools. Still pending: Kaggle/Colab router fine-tune (blocked on sourcing bank-statement
+samples) and `pgvector` few-shot retrieval (blocked on a real Neon Postgres connection
+string — `DATABASE_URL` in `.env` is still the `.env.example` placeholder).
 Eval harness: run `uv run python -m eval.run` to regenerate `eval/REPORT.md` from `eval/labels/` + `eval/docs/`.
 
 ## Environment & constraints (fixed)
@@ -85,7 +90,8 @@ PRD.md  PROJECT_SPEC.md  README.md  CLAUDE.md
 | Extract invoice (assumes doc type) | `uv run python -m scripts.extract_invoice <path>` |
 | Extract any doc (router auto-detects type) | `uv run python -m scripts.extract_document <path>` |
 | Import a Kaggle batch into the benchmark | `uv run python scripts/import_batch_labels.py <batch.csv>` |
-| Run API | `uv run uvicorn services.api.main:app --reload` *(placeholder — M3)* |
+| Run MCP server | `uv run python -m services.mcp.server` |
+| Run API | `uv run uvicorn services.api.main:app --reload` *(placeholder — M4)* |
 | Tests | `uv run pytest` |
 | Lint | `uv run ruff check .` |
 | Typecheck | `uv run mypy .` |
