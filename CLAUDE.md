@@ -21,13 +21,14 @@ see `eval/run.py`) so eval runs accumulate coverage across the free-tier quota w
 documented in `eval/REPORT.md`; and an MCP server (`services/mcp/server.py`) exposing
 `extract_document` (auto-routes), `extract_invoice`, and `extract_bank_statement` as MCP
 tools; and the `pgvector` exemplar store (`services/api/rag/`: `embeddings.py` via Gemini's
-free embedding model, `exemplar_text.py` pure text-shaping, `store.py` ingest/retrieve) — built
-and unit-tested with a mocked engine/session, but **not yet live-tested or wired into the
-extraction hot path**: `DATABASE_URL` in `.env` is still the `.env.example` placeholder, so
-there's no real Neon Postgres instance to run `init_schema()` against yet. Still pending:
+`gemini-embedding-001`, `exemplar_text.py` pure text-shaping, `store.py` ingest/retrieve), now
+**live-validated against a real Neon Postgres instance** — `init_schema()`, `embed_text()`,
+`ingest_exemplar()`, and `retrieve_similar()` all confirmed working end to end (semantic
+similarity correctly ranked a near-duplicate vendor name above unrelated ones). Still pending:
 Kaggle/Colab router fine-tune (blocked on sourcing bank-statement samples — none exist in the
-repo) and wiring RAG retrieval into the extraction prompt (needs a real DB + a design decision
-on when retrieval triggers, e.g. on low post-verification confidence).
+repo) and wiring RAG retrieval into the extraction prompt itself (a separate design decision:
+when retrieval triggers, e.g. on low post-verification confidence, and how exemplars get
+formatted into the extractor's prompt).
 Eval harness: run `uv run python -m eval.run` to regenerate `eval/REPORT.md` from `eval/labels/` + `eval/docs/`.
 
 ## Environment & constraints (fixed)
