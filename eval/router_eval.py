@@ -120,7 +120,7 @@ async def run_router_eval(
             n_calls += 1
             try:
                 pages = load_document(doc_path)
-                classification = await classify_doc_type(pages, client)
+                classification = await classify_doc_type(pages, client, doc_path=str(doc_path))
             except (IngestError, VLMError) as exc:
                 errors.append(f"{doc_path.name}: {exc}")
                 print(f"ERROR -- {exc}")

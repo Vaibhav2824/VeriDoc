@@ -25,6 +25,7 @@ dev = [
     "pytest-asyncio>=0.24",
     "ruff>=0.9",
     "mypy>=1.13",
+    "scikit-learn>=1.5",
 ]
 
 [tool.uv]

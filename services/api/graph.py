@@ -56,7 +56,9 @@ def build_graph(client: VLMClient, confidence_threshold: float | None = None) ->
     """Compile the Router->Extractor(->Verifier->Gate)->Aggregator graph for *client*."""
 
     async def router_node(state: GraphState) -> dict[str, Any]:
-        classification = await classify_doc_type(state["pages"], client)
+        classification = await classify_doc_type(
+            state["pages"], client, doc_path=state.get("doc_path")
+        )
         return {"doc_type": classification.doc_type, "router_confidence": classification.confidence}
 
     async def extract_invoice_node(state: GraphState) -> dict[str, Any]:

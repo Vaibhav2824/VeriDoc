@@ -113,6 +113,24 @@ or with a different key/provider — to extend coverage toward the full 100-doc 
 | `bank_statement` | 100.0% | 30 |
 | `invoice` | 100.0% | 100 |
 
+### Router fine-tune lift
+
+Fine-tuned a **TF-IDF + LogisticRegression** classifier on the 130-doc labeled corpus
+(first-page text extracted via pypdfium2). Trained locally in <1 s; no GPU required.
+A DistilBERT ONNX version can be trained on Kaggle/Colab T4 using
+`training/router_finetune.ipynb` (swap-in supported by the same artifact-loader path in
+`services/api/nodes/router.py`).
+
+| Model | CV accuracy | Docs | Tokens / call | Latency |
+|---|---|---|---|---|
+| VLM baseline (`llama-4-scout`, Groq) | 100.0% | 130/130 | ~2 743 | ~2 s |
+| **TF-IDF + LR (fine-tuned, local)** | **100.0%** | 5-fold CV | **0** | **<1 ms** |
+| DistilBERT ONNX (Kaggle T4) | pending | — | 0 | ~50 ms (CPU) |
+
+The fine-tuned classifier is loaded automatically when `training/artifacts/router_tfidf.pkl`
+and `router_clf.pkl` are present — no configuration needed. Falls back to the VLM when
+the artifact is absent.
+
 ---
 
 ## M4 — Frontend + deploy

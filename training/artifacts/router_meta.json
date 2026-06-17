@@ -1,0 +1,15 @@
+{
+  "sklearn_version": "1.9.0",
+  "n_examples": 130,
+  "classes": [
+    "bank_statement",
+    "invoice"
+  ],
+  "cv_accuracy_mean": 1.0,
+  "cv_accuracy_std": 0.0,
+  "train_accuracy": 1.0,
+  "train_time_s": 0.14,
+  "model": "TfidfVectorizer(max_features=1000, ngram_range=(1,2)) + LogisticRegression",
+  "vlm_baseline_accuracy": 1.0,
+  "vlm_baseline_docs": 130
+}

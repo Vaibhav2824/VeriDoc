@@ -60,5 +60,8 @@ samples/**/*.jpeg
 # Graphify generated artifacts
 graphify-out/
 
+# Training data CSV (raw PDF text, not committed; regenerate with prepare_router_data.py)
+training/router_training_data.csv
+
 # Secrets / local overrides
 *.local
