@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-import pytest
+from collections.abc import Generator
 from unittest.mock import AsyncMock, MagicMock, patch
 
+import pytest
 from PIL import Image
 
 from services.api.models.router import DocTypeClassification
@@ -63,7 +64,7 @@ async def test_classify_doc_type_passes_max_retries() -> None:
 # ── Artifact path ─────────────────────────────────────────────────────────────
 
 @pytest.fixture(autouse=True)
-def _reset_artifact_state() -> None:
+def _reset_artifact_state() -> Generator[None, None, None]:
     """Reset module-level artifact cache so each test starts clean."""
     import services.api.nodes.router as r_mod
     orig = (r_mod._tfidf, r_mod._clf, r_mod._artifact_checked)
