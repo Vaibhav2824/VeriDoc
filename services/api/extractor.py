@@ -1,9 +1,12 @@
-"""Document extractor pipeline — M2.
+"""Document extractor pipeline — M3.
 
 extract_invoice() chains:
   1. Extractor  — VLM → InvoiceExtraction (plain values, Instructor-enforced schema)
   2. Verifier   — VLM → InvoiceVerificationResponse (confidence + source_location)
   3. Gate       — apply confidence threshold → VerifiedInvoiceExtraction
+  4. RAG pass   — if any fields abstained and RAG is configured: retrieve similar
+                  exemplars, re-run steps 1-3 with few-shot context in the prompt.
+  5. Ingest     — if final result has no abstained fields, store as future exemplar.
 
 extract_bank_statement() runs extractor only (verifier for bank statements is M3).
 
@@ -22,6 +25,11 @@ from services.api.models.invoice import InvoiceExtraction
 from services.api.models.verified_invoice import VerifiedInvoiceExtraction
 from services.api.nodes.gate import apply_gate
 from services.api.nodes.verifier import verify_invoice
+from services.api.rag.retrieval import (
+    format_exemplars_for_prompt,
+    ingest_invoice_exemplar,
+    retrieve_invoice_exemplars,
+)
 from services.api.tracing import client_model as _client_model
 from services.api.tracing import trace as _trace
 
@@ -85,6 +93,37 @@ async def extract_invoice(
 
         # ── Step 3: Gate ──────────────────────────────────────────────────────
         gated = apply_gate(verified, threshold=confidence_threshold)
+
+        # ── Step 4: RAG re-pass (if abstained fields and RAG configured) ──────
+        if gated.abstained_fields():
+            exemplars = await retrieve_invoice_exemplars(gated)
+            if exemplars:
+                few_shot = format_exemplars_for_prompt(exemplars)
+                t_rag = time.monotonic()
+                rag_extraction: InvoiceExtraction = await client.extract_structured(
+                    pages, InvoiceExtraction, max_retries, instruction=few_shot
+                )
+                _trace(
+                    name="extract_invoice_rag_extractor",
+                    doc_name=doc_name,
+                    model=model,
+                    latency_s=time.monotonic() - t_rag,
+                    success=True,
+                )
+                t_rag2 = time.monotonic()
+                rag_verified = await verify_invoice(rag_extraction, pages, client, max_retries=2)
+                _trace(
+                    name="extract_invoice_rag_verifier",
+                    doc_name=doc_name,
+                    model=model,
+                    latency_s=time.monotonic() - t_rag2,
+                    success=True,
+                )
+                gated = apply_gate(rag_verified, threshold=confidence_threshold)
+
+        # ── Step 5: Ingest exemplar (best-effort, only when fully confident) ───
+        if not gated.abstained_fields():
+            await ingest_invoice_exemplar(gated, doc_name)
 
         return gated
 
