@@ -17,6 +17,7 @@ from __future__ import annotations
 import logging
 import os
 import tempfile
+import time
 from pathlib import Path
 from typing import Any
 
@@ -79,6 +80,7 @@ async def _run_extraction(job_id: str, tmp_path: str, doc_name: str) -> None:
         update_job(job_id, status="running", event_type="extraction_started",
                    event_payload={"doc_name": doc_name})
 
+    t0 = time.time()
     try:
         client = make_client()
         result = await run_extraction_pipeline(tmp_path, client, confidence_threshold)
@@ -99,6 +101,7 @@ async def _run_extraction(job_id: str, tmp_path: str, doc_name: str) -> None:
         if result.bank_statement is not None:
             result_dict["bank_statement"] = result.bank_statement.model_dump()
 
+        elapsed = time.time() - t0
         if _db_available:
             from services.api.db import update_job
             update_job(
@@ -107,19 +110,24 @@ async def _run_extraction(job_id: str, tmp_path: str, doc_name: str) -> None:
                 doc_type=result.doc_type,
                 result_json=result_dict,
                 review_queue_json=queue_items,
+                processing_time_s=elapsed,
                 event_type="extraction_done",
                 event_payload={"doc_type": result.doc_type,
-                               "queue_items": len(queue_items)},
+                               "queue_items": len(queue_items),
+                               "processing_time_s": round(elapsed, 2)},
             )
         else:
             _in_memory[job_id] = {"status": "done", "doc_name": doc_name,
-                                   "result": result_dict, "queue": queue_items}
+                                   "result": result_dict, "queue": queue_items,
+                                   "processing_time_s": elapsed}
 
     except Exception as exc:
         log.exception("Extraction failed for job %s", job_id)
+        elapsed = time.time() - t0
         if _db_available:
             from services.api.db import update_job
             update_job(job_id, status="failed", error_message=str(exc),
+                       processing_time_s=elapsed,
                        event_type="extraction_failed",
                        event_payload={"error": str(exc)[:500]})
         else:
@@ -247,6 +255,42 @@ async def resolve_queue_item(
                    event_payload={"field_name": field_name,
                                   "resolved_by": body.resolved_by})
     return {"status": "resolved", "field_name": field_name, "job_id": job_id}
+
+
+@app.get("/v1/stats")
+async def get_stats() -> dict[str, Any]:
+    """Aggregate stats: job counts, doc type breakdown, latency p95, queue size."""
+    if _db_available:
+        from services.api.db import get_stats as _get_stats
+        return _get_stats()
+    # in-memory fallback
+    by_status: dict[str, int] = {}
+    by_doc_type: dict[str, int] = {}
+    times: list[float] = []
+    queue_total = 0
+    for state in _in_memory.values():
+        s = state.get("status", "unknown")
+        by_status[s] = by_status.get(s, 0) + 1
+        dt = (state.get("result") or {}).get("doc_type")
+        if dt:
+            by_doc_type[str(dt)] = by_doc_type.get(str(dt), 0) + 1
+        pt = state.get("processing_time_s")
+        if pt is not None:
+            times.append(float(pt))
+        for item in state.get("queue", []):
+            if not item.get("resolved"):
+                queue_total += 1
+    times_sorted = sorted(times)
+    p95 = times_sorted[int(len(times_sorted) * 0.95)] if times_sorted else None
+    avg = sum(times) / len(times) if times else None
+    return {
+        "total_jobs": len(_in_memory),
+        "by_status": by_status,
+        "by_doc_type": by_doc_type,
+        "avg_processing_time_s": round(avg, 2) if avg is not None else None,
+        "p95_processing_time_s": round(p95, 2) if p95 is not None else None,
+        "pending_review_items": queue_total,
+    }
 
 
 @app.get("/health")

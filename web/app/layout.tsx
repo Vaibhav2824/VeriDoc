@@ -25,6 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Link href="/queue" className="text-gray-500 hover:text-gray-900 transition-colors">
             Review Queue
           </Link>
+          <Link href="/dashboard" className="text-gray-500 hover:text-gray-900 transition-colors">
+            Dashboard
+          </Link>
         </nav>
         <main className="flex-1 mx-auto w-full max-w-5xl px-6 py-10">{children}</main>
       </body>

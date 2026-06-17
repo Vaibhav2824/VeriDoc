@@ -42,6 +42,7 @@ class ExtractionJob(Base):
         JSON, nullable=True
     )
     error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
+    processing_time_s: Mapped[float | None] = mapped_column(nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
@@ -111,6 +112,7 @@ def update_job(
     result_json: dict[str, Any] | None = None,
     review_queue_json: list[dict[str, Any]] | None = None,
     error_message: str | None = None,
+    processing_time_s: float | None = None,
     event_type: str,
     event_payload: dict[str, Any] | None = None,
 ) -> None:
@@ -129,6 +131,8 @@ def update_job(
             job.review_queue_json = review_queue_json
         if error_message is not None:
             job.error_message = error_message
+        if processing_time_s is not None:
+            job.processing_time_s = processing_time_s
         s.add(AuditEvent(job_id=job_id, event_type=event_type, payload=event_payload))
         s.commit()
 
@@ -137,6 +141,38 @@ def get_job(job_id: str) -> ExtractionJob | None:
     engine = get_engine()
     with Session(engine) as s:
         return s.get(ExtractionJob, job_id)
+
+
+def get_stats() -> dict[str, Any]:
+    """Aggregate stats across all jobs — used by /v1/stats."""
+    from sqlalchemy import select
+    engine = get_engine()
+    with Session(engine) as s:
+        jobs = s.scalars(select(ExtractionJob)).all()
+        by_status: dict[str, int] = {}
+        by_doc_type: dict[str, int] = {}
+        times: list[float] = []
+        queue_total = 0
+        for job in jobs:
+            by_status[job.status] = by_status.get(job.status, 0) + 1
+            if job.doc_type:
+                by_doc_type[job.doc_type] = by_doc_type.get(job.doc_type, 0) + 1
+            if job.processing_time_s is not None:
+                times.append(job.processing_time_s)
+            for item in (job.review_queue_json or []):
+                if not item.get("resolved"):
+                    queue_total += 1
+        times_sorted = sorted(times)
+        p95 = times_sorted[int(len(times_sorted) * 0.95)] if times_sorted else None
+        avg = sum(times) / len(times) if times else None
+        return {
+            "total_jobs": len(jobs),
+            "by_status": by_status,
+            "by_doc_type": by_doc_type,
+            "avg_processing_time_s": round(avg, 2) if avg is not None else None,
+            "p95_processing_time_s": round(p95, 2) if p95 is not None else None,
+            "pending_review_items": queue_total,
+        }
 
 
 def list_queue_items() -> list[dict[str, Any]]:

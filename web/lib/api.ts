@@ -44,6 +44,21 @@ export async function getQueue(): Promise<QueueItem[]> {
   return res.json();
 }
 
+export interface Stats {
+  total_jobs: number;
+  by_status: Record<string, number>;
+  by_doc_type: Record<string, number>;
+  avg_processing_time_s: number | null;
+  p95_processing_time_s: number | null;
+  pending_review_items: number;
+}
+
+export async function getStats(): Promise<Stats> {
+  const res = await fetch(`${BASE}/v1/stats`);
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+
 export async function resolveQueueItem(
   jobId: string,
   fieldName: string,

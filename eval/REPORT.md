@@ -135,4 +135,50 @@ the artifact is absent.
 
 ## M4 — Frontend + deploy
 
-*Not yet reached.*
+**Shipped:** 2026-06-17
+
+### What was built
+
+| Component | Description |
+|---|---|
+| `services/api/main.py` | FastAPI: `POST /v1/extract` (async job queue), `GET /v1/jobs/{id}`, `GET /v1/queue`, `POST /v1/queue/{id}/{field}/resolve`, `GET /v1/stats`, `GET /health` |
+| `services/api/db.py` | `ExtractionJob` + `AuditEvent` SQLAlchemy models; Neon Postgres via psycopg; in-memory fallback for demo |
+| `docker-compose.yml` | api + web + pgvector/pgvector:pg16 with healthcheck-gated startup |
+| `infra/Dockerfile.api` | python:3.11-slim, uv --frozen; production-ready |
+| `web/app/page.tsx` | Drag-and-drop upload → routes to job results page |
+| `web/app/jobs/[id]/page.tsx` | Polling results page: confidence chips per field (green/yellow/red), abstained fields highlighted, review queue banner |
+| `web/app/queue/page.tsx` | Review queue: inline edit + approve per field; resolved items greyed out |
+| `web/app/dashboard/page.tsx` | Live stats: total jobs, avg/p95 latency, queue size, status/doc-type breakdown bars, eval numbers panel |
+| `vercel.json` | Vercel deploy config (web/ subdirectory) |
+| `render.yaml` | Render.com deploy blueprint for the FastAPI API service |
+
+### Deploy (free tier)
+
+**Web (Vercel):**
+1. Push repo to GitHub.
+2. Import at [vercel.com/new](https://vercel.com/new) — Vercel auto-detects `vercel.json`.
+3. Set env var `NEXT_PUBLIC_API_URL` → Render API URL (from step below).
+4. Deploy. Live at `https://your-project.vercel.app`.
+
+**API (Render):**
+1. In Render dashboard → "New Blueprint" → point to this repo.
+2. `render.yaml` defines the `veridoc-api` web service.
+3. Set env vars: `GEMINI_API_KEY`, `GROQ_API_KEY`, `DATABASE_URL` (Neon connection string).
+4. Optional: `LANGFUSE_SECRET_KEY` + `LANGFUSE_PUBLIC_KEY` for tracing.
+
+**On-prem (docker compose):**
+```
+docker compose up
+```
+Requires Docker Desktop running. Starts API on :8000, Next.js on :3000, Postgres+pgvector on :5432.
+
+### Latency (logged per job, available at GET /v1/stats)
+
+| Metric | Value | Notes |
+|---|---|---|
+| avg processing time | tracked per job | Populated after first real extraction runs |
+| p95 processing time | tracked per job | Computed over all completed jobs |
+| pending review items | live counter | Fields below confidence threshold routed to human |
+
+> Real numbers populate once extractions run against the deployed API.
+> Langfuse token/cost traces emit for every VLM call when `LANGFUSE_SECRET_KEY` is set.
