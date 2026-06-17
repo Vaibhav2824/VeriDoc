@@ -5,35 +5,12 @@ extracted field carries a calibrated confidence + a source link, and the system 
 on low-confidence fields instead of hallucinating. See `PRD.md` for scope, `PROJECT_SPEC.md`
 for the full vision.
 
-**Status:** M0–M2 complete. Structured extraction (Instructor/Pydantic, bank statement) landed in M1
-(commit `3c4defc`); verifier + calibrated confidence + abstention gate + trust metrics landed in M2
-(commit `d16bcb3`). Benchmark grown from 10 to 100 labeled invoices (Kaggle batch via
-`scripts/import_batch_labels.py`), closing the M1 "grow benchmark" gap.
-**M3 in progress** — Agentify + MCP + RAG + fine-tune. Landed: regression CI gate
-(`.github/workflows/ci.yml` blocking on push/PR; `.github/workflows/eval-regression.yml` +
-`eval/regression.py`, manually triggered to respect free-tier quota limits); LangGraph
-Router→Extractor→Verifier→Gate→Aggregator orchestration (`services/api/graph.py`,
-`scripts/extract_document.py`) with a VLM-prompt doc-type router (`services/api/nodes/router.py`)
-that auto-dispatches to the invoice or bank-statement pipeline — no fine-tune yet, and no
-baseline router-accuracy number yet since the benchmark has no labeled bank-statement docs
-to measure against (invoices only); a fingerprinted local extraction cache (`eval/.cache/`,
-see `eval/run.py`) so eval runs accumulate coverage across the free-tier quota windows
-documented in `eval/REPORT.md`; and an MCP server (`services/mcp/server.py`) exposing
-`extract_document` (auto-routes), `extract_invoice`, and `extract_bank_statement` as MCP
-tools; and the `pgvector` exemplar store (`services/api/rag/`: `embeddings.py` via Gemini's
-`gemini-embedding-001`, `exemplar_text.py` pure text-shaping, `store.py` ingest/retrieve,
-`retrieval.py` retrieve+ingest helpers + prompt formatter), now **live-validated against a real
-Neon Postgres instance** and **wired into the extraction pipeline** — on abstained fields the
-extractor fetches k=3 similar exemplars from pgvector, re-runs steps 1-3 with few-shot context
-injected into the instruction, then ingests the final high-confidence result as a future exemplar
-(both paths are best-effort: if DATABASE_URL or GEMINI_API_KEY are absent, RAG is silently
-skipped). Also landed: `GroqClient` (high-throughput free-tier alternative to Gemini,
-`llama-4-scout-17b-16e-instruct`, `max_retries=0` to avoid 10+ min hangs on quota 429s);
-`make_client()` now prefers Groq when `GROQ_API_KEY` is set; `eval/router_eval.py` — router
-accuracy eval that classifies every labeled doc (invoice + bank_statement) against ground truth
-and writes a `### Router accuracy` section into `eval/REPORT.md` (M3 baseline number, still
-accumulating via cache across quota windows). Still pending: Kaggle/Colab router fine-tune
-(off-machine, requires GPU access).
+**Status:** M0–M3 complete. **M4 in progress** — Frontend + deploy + dashboards.
+
+M3 shipped (commits `ed6e002`–`b1e05ff`): regression CI gate; LangGraph Router→Extractor→Verifier→Gate→Aggregator (`services/api/graph.py`); VLM-prompt + fine-tuned router (`services/api/nodes/router.py`) with TF-IDF+LR artifact auto-loaded at startup (100% 5-fold CV, 0 tokens/call, <1 ms/doc) and Kaggle/Colab DistilBERT notebook (`training/router_finetune.ipynb`) for the heavier variant; MCP server (`services/mcp/server.py`); pgvector exemplar store + RAG wired into invoice extraction pipeline; GroqClient (`make_client()` prefers Groq); router accuracy baseline **100.0% on 130/130 docs** recorded in `eval/REPORT.md`.
+
+M4 in progress: FastAPI app (`services/api/main.py`) with async job queue, audit log (Postgres), and review-queue endpoints; PII masking already wired in `extract_bank_statement()`; docker-compose on-prem path (`docker-compose.yml`); Next.js 15 + shadcn/ui frontend (`web/`).
+
 Eval harness: run `uv run python -m eval.run` to regenerate `eval/REPORT.md` from `eval/labels/` + `eval/docs/`.
 
 ## Environment & constraints (fixed)
