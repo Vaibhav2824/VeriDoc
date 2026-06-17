@@ -21,14 +21,19 @@ see `eval/run.py`) so eval runs accumulate coverage across the free-tier quota w
 documented in `eval/REPORT.md`; and an MCP server (`services/mcp/server.py`) exposing
 `extract_document` (auto-routes), `extract_invoice`, and `extract_bank_statement` as MCP
 tools; and the `pgvector` exemplar store (`services/api/rag/`: `embeddings.py` via Gemini's
-`gemini-embedding-001`, `exemplar_text.py` pure text-shaping, `store.py` ingest/retrieve), now
-**live-validated against a real Neon Postgres instance** — `init_schema()`, `embed_text()`,
-`ingest_exemplar()`, and `retrieve_similar()` all confirmed working end to end (semantic
-similarity correctly ranked a near-duplicate vendor name above unrelated ones). Still pending:
-Kaggle/Colab router fine-tune (blocked on sourcing bank-statement samples — none exist in the
-repo) and wiring RAG retrieval into the extraction prompt itself (a separate design decision:
-when retrieval triggers, e.g. on low post-verification confidence, and how exemplars get
-formatted into the extractor's prompt).
+`gemini-embedding-001`, `exemplar_text.py` pure text-shaping, `store.py` ingest/retrieve,
+`retrieval.py` retrieve+ingest helpers + prompt formatter), now **live-validated against a real
+Neon Postgres instance** and **wired into the extraction pipeline** — on abstained fields the
+extractor fetches k=3 similar exemplars from pgvector, re-runs steps 1-3 with few-shot context
+injected into the instruction, then ingests the final high-confidence result as a future exemplar
+(both paths are best-effort: if DATABASE_URL or GEMINI_API_KEY are absent, RAG is silently
+skipped). Also landed: `GroqClient` (high-throughput free-tier alternative to Gemini,
+`llama-4-scout-17b-16e-instruct`, `max_retries=0` to avoid 10+ min hangs on quota 429s);
+`make_client()` now prefers Groq when `GROQ_API_KEY` is set; `eval/router_eval.py` — router
+accuracy eval that classifies every labeled doc (invoice + bank_statement) against ground truth
+and writes a `### Router accuracy` section into `eval/REPORT.md` (M3 baseline number, still
+accumulating via cache across quota windows). Still pending: Kaggle/Colab router fine-tune
+(off-machine, requires GPU access).
 Eval harness: run `uv run python -m eval.run` to regenerate `eval/REPORT.md` from `eval/labels/` + `eval/docs/`.
 
 ## Environment & constraints (fixed)
