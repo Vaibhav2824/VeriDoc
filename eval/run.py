@@ -175,6 +175,10 @@ async def run_eval(
                     "fingerprint": fingerprint,
                     "result": verified.model_dump(),
                 }
+                # Save after every success, not batched: a long run is mostly
+                # failures under quota exhaustion, so gating on n_calls % N can
+                # skip every checkpoint and never persist anything before a kill.
+                save_cache(cache)
 
         predicted = verified.to_value_dict()
         result = doc_accuracy(predicted, ground_truth)

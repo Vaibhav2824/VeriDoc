@@ -189,6 +189,37 @@ async def test_run_eval_cache_miss_on_fingerprint_mismatch(
     assert client.extract_structured.await_count == 2
 
 
+async def test_cache_saved_immediately_after_each_success_not_batched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Regression: a long run is mostly failures under quota exhaustion, so a
+    save gated on "n_calls % N" (counting every attempt, success or fail) can
+    skip every multiple of N and never persist a success if the run is later
+    interrupted before its own final save_cache() call at the end.
+    """
+    cache_path = tmp_path / "cache.json"
+    monkeypatch.setattr(run_module, "_CACHE_PATH", cache_path)
+
+    pdf1 = _make_pdf(tmp_path, "doc1.pdf")
+    pdf2 = _make_pdf(tmp_path, "doc2.pdf")
+    client = _mock_client(
+        "mock-model",
+        _full_invoice(),
+        _full_verif_response(),
+        RuntimeError("simulated crash"),
+    )
+    pairs = [
+        (pdf1, {"invoice_number": "INV-001"}),
+        (pdf2, {"invoice_number": "INV-002"}),
+    ]
+
+    with pytest.raises(RuntimeError, match="simulated crash"):
+        await run_eval(client, pairs)
+
+    on_disk = load_cache(cache_path)
+    assert "doc1.pdf" in on_disk
+
+
 async def test_run_eval_use_cache_false_ignores_cache(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

@@ -53,7 +53,12 @@ class GroqClient:
                 "GROQ_API_KEY is not set. "
                 "Get a free key at console.groq.com and add it to .env."
             )
-        self._async_groq = AsyncGroq(api_key=key)
+        # The SDK's own retry layer honors Groq's Retry-After header, which for a
+        # daily-quota 429 can be many minutes - multiplied by instructor's retries
+        # on top, a single doc can block for 10+ minutes on a cap that won't lift
+        # before the run ends anyway. Disable it; our own max_retries (schema
+        # retries) is the only retry budget that's actually worth spending here.
+        self._async_groq = AsyncGroq(api_key=key, max_retries=0)
         self._instructor = instructor.from_groq(self._async_groq, mode=instructor.Mode.JSON)
         self._model = model or os.environ.get("GROQ_MODEL", _FALLBACK_MODEL)
 
