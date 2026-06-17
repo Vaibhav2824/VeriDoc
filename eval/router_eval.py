@@ -198,9 +198,29 @@ def _format_router_section(results: list[dict[str, Any]], errors: list[str]) -> 
             )
 
     if errors:
-        lines += ["", "Errors:", ""]
+        tpm: list[str] = []
+        tpd: list[str] = []
+        other: list[str] = []
         for e in errors:
-            lines.append(f"- {e}")
+            doc = e.split(":")[0].strip()
+            if "tokens per minute (TPM)" in e:
+                tpm.append(doc)
+            elif "tokens per day (TPD)" in e:
+                tpd.append(doc)
+            else:
+                other.append(doc)
+        header = f"**{len(errors)} docs skipped (quota exhaustion — not misclassifications):**"
+        lines += ["", header, ""]
+        if tpm:
+            lines.append(
+                f"- {len(tpm)} TPM (tokens/min) — re-run with `EVAL_RATE_LIMIT_SLEEP=7` in .env"
+            )
+        if tpd:
+            lines.append(
+                f"- {len(tpd)} TPD (tokens/day) limit — re-run after the 24 h rolling window resets"
+            )
+        for doc in other:
+            lines.append(f"- `{doc}`: classification error (check logs)")
 
     return "\n".join(lines)
 
