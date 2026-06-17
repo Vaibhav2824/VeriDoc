@@ -104,21 +104,17 @@ or with a different key/provider — to extend coverage toward the full 100-doc 
 
 ### Router accuracy
 
-**Last run:** 2026-06-17 05:30 UTC · **Docs classified:** 95
+**Last run:** 2026-06-17 05:53 UTC · **Docs classified:** 130
 
-**Accuracy: 100.0%** (95/95)
+**Accuracy: 100.0%** (130/130)
 
 | True type | Accuracy | Docs |
 |---|---|---|
 | `bank_statement` | 100.0% | 30 |
-| `invoice` | 100.0% | 65 |
-
-**35 docs skipped (quota exhaustion — not misclassifications):**
-
-- 14 TPM (tokens/min) limit — re-run with `EVAL_RATE_LIMIT_SLEEP=7` in .env
-- 21 TPD (tokens/day) limit — re-run after the 24 h rolling window resets
+| `invoice` | 100.0% | 100 |
 
 ---
+
 ## M4 — Frontend + deploy
 
 *Not yet reached.*

@@ -236,7 +236,11 @@ def update_report(results: list[dict[str, Any]], errors: list[str]) -> None:
         if sub_idx != -1 and (next_idx == -1 or sub_idx < next_idx):
             next_idx = sub_idx
         after = rest[next_idx:] if next_idx != -1 else ""
-        report = before + new_section + "\n\n" + after
+        # Re-insert the --- divider when the next block is a top-level section
+        if after.lstrip("\n").startswith("## "):
+            report = before + new_section + "\n\n---\n\n" + after.lstrip("\n")
+        else:
+            report = before + new_section + "\n\n" + after
     else:
         marker = "## M3 — Agentify + MCP + RAG + fine-tune"
         if marker in report:
