@@ -88,6 +88,11 @@ def init_schema() -> None:
     with engine.begin() as conn:
         conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
     Base.metadata.create_all(engine)
+    # Supabase exposes the public schema via PostgREST; RLS with no policies
+    # blocks anon/authenticated roles while the API's postgres role bypasses it.
+    with engine.begin() as conn:
+        for table in Base.metadata.sorted_tables:
+            conn.execute(text(f'ALTER TABLE "{table.name}" ENABLE ROW LEVEL SECURITY'))
 
 
 # ── Job helpers ───────────────────────────────────────────────────────────────

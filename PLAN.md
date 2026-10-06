@@ -27,34 +27,34 @@ Not used: **Webflow** is a separate hosted site builder that doesn't fit Pages +
 
 ## Phase 0 — Prep
 - [x] Clone/inspect, write this plan
-- [ ] Branch `feat/pages-supabase-ui`, commit pending `web/.gitkeep` deletion
+- [x] Branch `feat/pages-supabase-ui`, commit pending `web/.gitkeep` deletion
 
 ## Phase 1 — Supabase database
-- [ ] `init_schema()` in `services/api/db.py` + `services/api/rag/store.py`: `ENABLE ROW LEVEL SECURITY`
+- [x] `init_schema()` in `services/api/db.py` + `services/api/rag/store.py`: `ENABLE ROW LEVEL SECURITY`
       on every table (Supabase exposes `public` through PostgREST; with RLS on and no policies, anon/authenticated get nothing, and the `postgres` role the API uses bypasses RLS)
-- [ ] `.env.example`: Supabase **session pooler** URL (IPv4, port 5432) replaces Neon; docs in README
-- [ ] Unit test: RLS statement emitted for each table (no live DB in CI)
+- [x] `.env.example`: Supabase **session pooler** URL (IPv4, port 5432) replaces Neon; docs in README
+- [x] Unit test: RLS statement emitted for each table (no live DB in CI)
 - [ ] **You:** create Supabase project → Settings → Database → copy session-pooler URI into local `.env` + Render env
 - [ ] Run `init_schema()` once against Supabase and re-seed exemplars
 
 ## Phase 2 — API ready for public hosting (Render)
-- [ ] Move `scikit-learn` from dev deps to runtime deps (router artifact needs it; Render runs `uv sync --no-dev`)
-- [ ] CORS: `ALLOWED_ORIGINS` env (default `http://localhost:3000`), set to `https://vaibhav2824.github.io` on Render
-- [ ] Upload guard: reject files > 10 MB (413) — trust boundary
-- [ ] `resolve` endpoint: 404 when job/field missing (frontend currently ignores errors)
-- [ ] `render.yaml`: add `ALLOWED_ORIGINS`, `PYTHON_VERSION`
-- [ ] Tests for size limit + CORS env parsing
+- [x] Move `scikit-learn` from dev deps to runtime deps (router artifact needs it; Render runs `uv sync --no-dev`)
+- [x] CORS: `ALLOWED_ORIGINS` env (default `http://localhost:3000`), set to `https://vaibhav2824.github.io` on Render
+- [x] Upload guard: reject files > 10 MB (413) — trust boundary
+- [x] `resolve` endpoint: 404 when job/field missing (frontend currently ignores errors)
+- [x] `render.yaml`: add `ALLOWED_ORIGINS`, `PYTHON_VERSION`
+- [x] Tests for size limit + CORS env parsing
 - [ ] **You:** Render → New → Blueprint → this repo; paste secrets (GROQ/GEMINI/DATABASE_URL/LANGFUSE)
-- [ ] `keepalive.yml` cron pings `/health` every 14 min (Render free sleeps after 15; 744 h/mo fits the 750 h free quota)
+- [x] `keepalive.yml` cron pings `/health` every 14 min (Render free sleeps after 15; 744 h/mo fits the 750 h free quota)
 
 ## Phase 3 — Static frontend on GitHub Pages
 - [ ] `next.config.ts`: `output: "export"`, `basePath`/`assetPrefix` from `NEXT_PUBLIC_BASE_PATH`, `images.unoptimized`, `trailingSlash`
 - [ ] `jobs/[id]` → `jobs/?id=` (dynamic routes can't be statically exported for unknown IDs)
 - [ ] `web/Dockerfile` → nginx serving `out/` (keeps the docker-compose on-prem path working)
 - [ ] Delete `vercel.json` (replaced by Pages)
-- [ ] `.github/workflows/pages.yml`: build `web/` with `NEXT_PUBLIC_API_URL` repo variable → `actions/deploy-pages`
+- [ ] `.github/workflows/pages.yml`: build `web/` with `vars.API_URL` → `NEXT_PUBLIC_API_URL` → `actions/deploy-pages`
 - [ ] CI: add `npm ci && npm run lint && npm run build` job for `web/`
-- [ ] **You:** repo Settings → Pages → Source: GitHub Actions; Settings → Variables → `NEXT_PUBLIC_API_URL=<render url>`
+- [ ] **You:** repo Settings → Pages → Source: GitHub Actions; Settings → Variables → `API_URL=<render url>` (used by Pages build + keepalive)
 
 ## Phase 4 — UI overhaul
 Stack: shadcn/ui (`components.json` already set, base-nova), Tailwind v4, lucide, `motion`, GSAP (+ScrollTrigger),
@@ -80,4 +80,4 @@ Concept: "trust you can see" — every field shows its confidence and where it c
 ## Needs from you (can't be done by Claude: account creation + secrets)
 1. Supabase project + session-pooler connection string
 2. Render account, Blueprint deploy, secrets pasted in Render dashboard
-3. GitHub: Pages source = Actions, repo variable `NEXT_PUBLIC_API_URL`
+3. GitHub: Pages source = Actions, repo variable `API_URL`

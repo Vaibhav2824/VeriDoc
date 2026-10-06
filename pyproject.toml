@@ -20,6 +20,7 @@ dependencies = [
     "sqlalchemy>=2.0.51",
     "psycopg[binary]>=3.3.4",
     "pgvector>=0.4.2",
+    "scikit-learn>=1.5",
 ]
 
 [dependency-groups]
@@ -28,7 +29,6 @@ dev = [
     "pytest-asyncio>=0.24",
     "ruff>=0.9",
     "mypy>=1.13",
-    "scikit-learn>=1.5",
 ]
 
 [tool.uv]

@@ -1,0 +1,15 @@
+name: API keepalive
+
+# Render's free tier sleeps after 15 min idle; a ping every 14 min keeps the
+# demo responsive (≈744 h/month, inside the 750 h free quota).
+on:
+  schedule:
+    - cron: "*/14 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    if: vars.API_URL != ''
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -fsS --max-time 90 "${{ vars.API_URL }}/health"

@@ -1801,6 +1801,7 @@ dependencies = [
     { name = "pypdfium2" },
     { name = "python-dotenv" },
     { name = "python-multipart" },
+    { name = "scikit-learn" },
     { name = "sqlalchemy" },
     { name = "uvicorn", extra = ["standard"] },
 ]
@@ -1811,7 +1812,6 @@ dev = [
     { name = "pytest" },
     { name = "pytest-asyncio" },
     { name = "ruff" },
-    { name = "scikit-learn" },
 ]
 
 [package.metadata]
@@ -1830,6 +1830,7 @@ requires-dist = [
     { name = "pypdfium2", specifier = ">=4.30" },
     { name = "python-dotenv", specifier = ">=1.0" },
     { name = "python-multipart", specifier = ">=0.0.20" },
+    { name = "scikit-learn", specifier = ">=1.5" },
     { name = "sqlalchemy", specifier = ">=2.0.51" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.34" },
 ]
@@ -1840,7 +1841,6 @@ dev = [
     { name = "pytest", specifier = ">=8.3" },
     { name = "pytest-asyncio", specifier = ">=0.24" },
     { name = "ruff", specifier = ">=0.9" },
-    { name = "scikit-learn", specifier = ">=1.5" },
 ]
 
 [[package]]

@@ -39,7 +39,11 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # tighten for prod
+    allow_origins=[
+        o.strip()
+        for o in os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+        if o.strip()
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -79,6 +83,8 @@ async def _run_extraction(job_id: str, tmp_path: str, doc_name: str) -> None:
         from services.api.db import update_job
         update_job(job_id, status="running", event_type="extraction_started",
                    event_payload={"doc_name": doc_name})
+    else:
+        _in_memory[job_id] = {"status": "running", "doc_name": doc_name}
 
     t0 = time.time()
     try:
@@ -118,7 +124,7 @@ async def _run_extraction(job_id: str, tmp_path: str, doc_name: str) -> None:
             )
         else:
             _in_memory[job_id] = {"status": "done", "doc_name": doc_name,
-                                   "result": result_dict, "queue": queue_items,
+                                   "result": result_dict, "review_queue": queue_items,
                                    "processing_time_s": elapsed}
 
     except Exception as exc:
@@ -146,6 +152,9 @@ _in_memory: dict[str, Any] = {}
 
 # ── Endpoints ─────────────────────────────────────────────────────────────────
 
+MAX_UPLOAD_BYTES = 10 * 2**20
+
+
 class ExtractResponse(BaseModel):
     job_id: str
     message: str = "Extraction started"
@@ -169,7 +178,9 @@ async def extract(
         raise HTTPException(400, f"Unsupported file type: {suffix}")
 
     # Save to a temp file (the background task owns cleanup)
-    content = await file.read()
+    content = await file.read(MAX_UPLOAD_BYTES + 1)
+    if len(content) > MAX_UPLOAD_BYTES:
+        raise HTTPException(413, f"File too large (max {MAX_UPLOAD_BYTES // 2**20} MB)")
     with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:
         tmp.write(content)
         tmp_path = tmp.name
@@ -220,7 +231,7 @@ async def get_queue() -> list[dict[str, Any]]:
         return list_queue_items()
     items = []
     for jid, state in _in_memory.items():
-        for item in state.get("queue", []):
+        for item in state.get("review_queue", []):
             items.append({"job_id": jid, "doc_name": state.get("doc_name", ""), **item})
     return items
 
@@ -228,6 +239,19 @@ async def get_queue() -> list[dict[str, Any]]:
 class ResolveRequest(BaseModel):
     corrected_value: Any = None
     resolved_by: str = "human"
+
+
+def _resolve_in_queue(
+    queue: list[dict[str, Any]], field_name: str, body: ResolveRequest
+) -> list[dict[str, Any]]:
+    if not any(item.get("field_name") == field_name for item in queue):
+        raise HTTPException(404, "Field not in review queue")
+    return [
+        {**item, "resolved": True, "corrected_value": body.corrected_value,
+         "resolved_by": body.resolved_by}
+        if item.get("field_name") == field_name else item
+        for item in queue
+    ]
 
 
 @app.post("/v1/queue/{job_id}/{field_name}/resolve")
@@ -243,17 +267,18 @@ async def resolve_queue_item(
         job = _get_job(job_id)
         if job is None:
             raise HTTPException(404, "Job not found")
-        queue = job.review_queue_json or []
-        updated = [
-            {**item, "resolved": True, "corrected_value": body.corrected_value,
-             "resolved_by": body.resolved_by}
-            if item.get("field_name") == field_name else item
-            for item in queue
-        ]
+        updated = _resolve_in_queue(job.review_queue_json or [], field_name, body)
         update_job(job_id, status=job.status, review_queue_json=updated,
                    event_type="field_resolved",
                    event_payload={"field_name": field_name,
                                   "resolved_by": body.resolved_by})
+    else:
+        if job_id not in _in_memory:
+            raise HTTPException(404, "Job not found")
+        state = _in_memory[job_id]
+        state["review_queue"] = _resolve_in_queue(
+            state.get("review_queue", []), field_name, body
+        )
     return {"status": "resolved", "field_name": field_name, "job_id": job_id}
 
 
@@ -277,7 +302,7 @@ async def get_stats() -> dict[str, Any]:
         pt = state.get("processing_time_s")
         if pt is not None:
             times.append(float(pt))
-        for item in state.get("queue", []):
+        for item in state.get("review_queue", []):
             if not item.get("resolved"):
                 queue_total += 1
     times_sorted = sorted(times)
