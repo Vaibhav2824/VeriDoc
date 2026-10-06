@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from typing import Generic, Literal, TypeVar
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 T = TypeVar("T")
 
@@ -32,6 +32,16 @@ class SourceLocation(BaseModel):
         min_length=4,
         max_length=4,
     )
+
+    @field_validator("bbox")
+    @classmethod
+    def _normalize_bbox(cls, v: list[float]) -> list[float]:
+        # VLMs (Gemini) return boxes on a 0-1000 grid despite the prompt asking
+        # for [0, 1]; rescale so the viewer can overlay them on any render size.
+        # ponytail: assumes the 0-1000 convention for any value > 1.
+        if max(v) > 1:
+            v = [min(max(c / 1000, 0.0), 1.0) for c in v]
+        return v
 
 
 class FieldVerification(BaseModel):

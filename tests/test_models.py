@@ -122,3 +122,10 @@ class TestMaskStatement:
         stmt = BankStatementExtraction(account_number=None)
         masked = mask_statement(stmt)
         assert masked.account_number is None
+
+
+def test_source_location_rescales_0_1000_grid_bbox() -> None:
+    from services.api.models.fields import SourceLocation
+
+    assert SourceLocation(page=0, bbox=[204, 73, 323, 1200]).bbox == [0.204, 0.073, 0.323, 1.0]
+    assert SourceLocation(page=0, bbox=[0.1, 0.2, 0.3, 0.4]).bbox == [0.1, 0.2, 0.3, 0.4]
