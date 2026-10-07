@@ -124,6 +124,7 @@ async def _run_extraction(job_id: str, tmp_path: str, doc_name: str) -> None:
             )
         else:
             _in_memory[job_id] = {"status": "done", "doc_name": doc_name,
+                                   "doc_type": result.doc_type,
                                    "result": result_dict, "review_queue": queue_items,
                                    "processing_time_s": elapsed}
 
@@ -296,7 +297,7 @@ async def get_stats() -> dict[str, Any]:
     for state in _in_memory.values():
         s = state.get("status", "unknown")
         by_status[s] = by_status.get(s, 0) + 1
-        dt = (state.get("result") or {}).get("doc_type")
+        dt = state.get("doc_type")
         if dt:
             by_doc_type[str(dt)] = by_doc_type.get(str(dt), 0) + 1
         pt = state.get("processing_time_s")

@@ -1,98 +1,101 @@
-"use client";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { CountUp } from "@/components/unlumen-ui/count-up";
+import { buttonVariants } from "@/components/ui/button";
+import { HeroScan } from "@/components/veridoc/hero-scan";
+import { PipelineSteps } from "@/components/veridoc/pipeline-steps";
+import { UploadPanel } from "@/components/veridoc/upload-panel";
+import { DEMO_ID } from "@/lib/demo";
+import { cn } from "@/lib/utils";
 
-import { useRouter } from "next/navigation";
-import { useState, useRef } from "react";
-import { uploadDocument } from "@/lib/api";
+const REPORT_URL = "https://github.com/Vaibhav2824/VeriDoc/blob/main/eval/REPORT.md";
+
+// Numbers from eval/REPORT.md (M2 trust metrics, M3 router).
+const METRICS = [
+  { value: 84.3, suffix: "%", label: "of fields auto-processed at 99% precision" },
+  { value: 0.0115, suffix: "", label: "expected calibration error" },
+  { value: 0, suffix: "%", label: "hallucination rate (value with no source location)" },
+];
 
 export default function Home() {
-  const router = useRouter();
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [dragging, setDragging] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  async function handleFile(file: File) {
-    setError(null);
-    setLoading(true);
-    try {
-      const { job_id } = await uploadDocument(file);
-      router.push(`/jobs/${job_id}`);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Upload failed");
-      setLoading(false);
-    }
-  }
-
   return (
-    <div className="flex flex-col items-center gap-10 pt-10">
-      <div className="text-center space-y-3">
-        <h1 className="text-4xl font-bold tracking-tight">VeriDoc</h1>
-        <p className="text-gray-500 text-lg max-w-lg">
-          Upload an invoice or bank statement. Every extracted field gets a
-          calibrated confidence score — low-confidence fields are flagged for
-          review instead of hallucinated.
-        </p>
-      </div>
-
-      {/* Drop zone */}
-      <div
-        onClick={() => inputRef.current?.click()}
-        onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
-        onDragLeave={() => setDragging(false)}
-        onDrop={(e) => {
-          e.preventDefault();
-          setDragging(false);
-          const file = e.dataTransfer.files[0];
-          if (file) handleFile(file);
-        }}
-        className={`
-          w-full max-w-xl border-2 border-dashed rounded-2xl p-14 text-center cursor-pointer
-          transition-colors select-none
-          ${dragging ? "border-blue-500 bg-blue-50" : "border-gray-300 hover:border-gray-400 bg-white"}
-        `}
-      >
-        <input
-          ref={inputRef}
-          type="file"
-          accept=".pdf,.png,.jpg,.jpeg"
-          className="hidden"
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-            if (file) handleFile(file);
-          }}
-        />
-        {loading ? (
-          <p className="text-blue-600 font-medium">Uploading…</p>
-        ) : (
-          <>
-            <p className="text-2xl mb-2">📄</p>
-            <p className="font-medium text-gray-700">Drop a PDF or image here</p>
-            <p className="text-sm text-gray-400 mt-1">or click to browse</p>
-            <p className="text-xs text-gray-400 mt-3">Supports: PDF, PNG, JPG</p>
-          </>
-        )}
-      </div>
-
-      {error && (
-        <div className="text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm">
-          {error}
-        </div>
-      )}
-
-      {/* Feature bullets */}
-      <div className="grid grid-cols-3 gap-6 w-full max-w-xl text-sm text-gray-600">
-        {[
-          ["🔍", "Source-grounded", "Every value linked to its exact source location"],
-          ["📊", "Calibrated confidence", "ECE-tested scores per field"],
-          ["🚫", "Abstention gate", "Low-confidence fields routed to review, never hallucinated"],
-        ].map(([icon, title, desc]) => (
-          <div key={title} className="bg-white rounded-xl border p-4 space-y-1">
-            <span className="text-xl">{icon}</span>
-            <p className="font-semibold text-gray-800">{title}</p>
-            <p>{desc}</p>
+    <>
+      <section className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-20 pt-12 sm:px-6 md:grid-cols-[5fr_6fr] md:pt-20 lg:gap-20">
+        <div>
+          <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
+            Document extraction that shows its work.
+          </h1>
+          <p className="mt-6 max-w-[42ch] text-lg leading-relaxed text-muted-foreground">
+            Every field carries a calibrated confidence and the exact spot it came from. Unsure fields
+            go to a human.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="#extract" className={cn(buttonVariants({ size: "lg" }), "active:scale-[0.98]")}>
+              Extract a document <ArrowRight />
+            </a>
+            <Link
+              href={`/jobs/?id=${DEMO_ID}`}
+              className={cn(buttonVariants({ size: "lg", variant: "outline" }), "active:scale-[0.98]")}
+            >
+              Open the sample
+            </Link>
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+        <HeroScan />
+      </section>
+
+      <section id="extract" className="scroll-mt-20 border-y bg-muted/40">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 sm:px-6 md:grid-cols-[2fr_3fr] md:py-24">
+          <div>
+            <h2 className="text-3xl font-semibold tracking-tight">Try it on your own document</h2>
+            <p className="mt-3 max-w-[40ch] leading-relaxed text-muted-foreground">
+              Invoices and bank statements are detected automatically. Results stream back with a
+              confidence for every field.
+            </p>
+          </div>
+          <UploadPanel />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28">
+        <h2 className="text-balance text-3xl font-semibold tracking-tight">
+          Four steps, each one allowed to say no
+        </h2>
+        <div className="mt-12">
+          <PipelineSteps />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6">
+        <div className="grid gap-4 md:grid-cols-3 md:grid-rows-3">
+          <div className="flex flex-col justify-between rounded-2xl bg-primary p-8 text-primary-foreground md:col-span-2 md:row-span-3 md:p-10">
+            <h2 className="max-w-[20ch] text-2xl font-semibold tracking-tight md:text-3xl">
+              Measured on a labeled benchmark, not claimed
+            </h2>
+            <div className="mt-12">
+              <div className="text-6xl font-semibold tracking-tighter tabular-nums md:text-8xl">
+                <CountUp to={98.3} duration={1.4} />%
+              </div>
+              <p className="mt-2 text-primary-foreground/80">macro field accuracy after the abstention gate</p>
+            </div>
+          </div>
+          {METRICS.map((m) => (
+            <div key={m.label} className="rounded-2xl border bg-card p-6">
+              <div className="text-4xl font-semibold tracking-tight tabular-nums">
+                <CountUp to={m.value} duration={1.2} />
+                {m.suffix}
+              </div>
+              <p className="mt-2 text-sm text-muted-foreground">{m.label}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 text-sm text-muted-foreground">
+          Trust metrics on 29 labeled documents, routing on 130.{" "}
+          <a href={REPORT_URL} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-foreground">
+            Read the eval report
+          </a>
+        </p>
+      </section>
+    </>
   );
 }

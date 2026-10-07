@@ -1,0 +1,195 @@
+{
+ "doc_type": "invoice",
+ "router_confidence": 0.9514338988551213,
+ "invoice": {
+  "invoice_number": {
+   "value": "51109301",
+   "confidence": 1.0,
+   "source_location": {
+    "page": 0,
+    "bbox": [
+     0.204,
+     0.073,
+     0.323,
+     0.103
+    ]
+   },
+   "status": "extracted"
+  },
+  "invoice_date": {
+   "value": "2023-07-03",
+   "confidence": 1.0,
+   "source_location": {
+    "page": 0,
+    "bbox": [
+     0.323,
+     0.105,
+     0.387,
+     0.118
+    ]
+   },
+   "status": "extracted"
+  },
+  "due_date": {
+   "value": null,
+   "confidence": 0.5,
+   "source_location": null,
+   "status": "extracted"
+  },
+  "vendor_name": {
+   "value": "TechVision Distributors Pvt Ltd",
+   "confidence": 1.0,
+   "source_location": {
+    "page": 0,
+    "bbox": [
+     0.096,
+     0.165,
+     0.324,
+     0.179
+    ]
+   },
+   "status": "extracted"
+  },
+  "vendor_gstin": {
+   "value": "27AABCT1234F1Z5",
+   "confidence": 1.0,
+   "source_location": {
+    "page": 0,
+    "bbox": [
+     0.096,
+     0.231,
+     0.289,
+     0.243
+    ]
+   },
+   "status": "extracted"
+  },
+  "vendor_address": {
+   "value": "Plot 14, MIDC Industrial Area, Andheri East\nMumbai, Maharashtra - 400093",
+   "confidence": 1.0,
+   "source_location": {
+    "page": 0,
+    "bbox": [
+     0.095,
+     0.18,
+     0.388,
+     0.216
+    ]
+   },
+   "status": "extracted"
+  },
+  "buyer_name": {
+   "value": "Raj Electronics Pvt Ltd",
+   "confidence": 1.0,
+   "source_location": {
+    "page": 0,
+    "bbox": [
+     0.501,
+     0.163,
+     0.654,
+     0.178
+    ]
+   },
+   "status": "extracted"
+  },
+  "buyer_gstin": {
+   "value": "901-95-4704",
+   "confidence": 0.85,
+   "source_location": {
+    "page": 0,
+    "bbox": [
+     0.5,
+     0.216,
+     0.602,
+     0.229
+    ]
+   },
+   "status": "extracted"
+  },
+  "currency": {
+   "value": "INR",
+   "confidence": 1.0,
+   "source_location": {
+    "page": 0,
+    "bbox": [
+     0.523,
+     0.5,
+     0.547,
+     0.513
+    ]
+   },
+   "status": "extracted"
+  },
+  "subtotal": {
+   "value": 1676976.0,
+   "confidence": 1.0,
+   "source_location": {
+    "page": 0,
+    "bbox": [
+     0.543,
+     0.501,
+     0.628,
+     0.513
+    ]
+   },
+   "status": "extracted"
+  },
+  "total_amount": {
+   "value": 1844673.6,
+   "confidence": 1.0,
+   "source_location": {
+    "page": 0,
+    "bbox": [
+     0.764,
+     0.522,
+     0.877,
+     0.537
+    ]
+   },
+   "status": "extracted"
+  },
+  "tax": {
+   "value": {
+    "cgst": null,
+    "sgst": null,
+    "igst": null,
+    "total_tax": 167697.6
+   },
+   "confidence": 1.0,
+   "source_location": {
+    "page": 0,
+    "bbox": [
+     0.651,
+     0.501,
+     0.748,
+     0.514
+    ]
+   },
+   "status": "extracted"
+  },
+  "line_items": [
+   {
+    "description": "Garmin Fenix 7 Solar Multisport GPS",
+    "hsn_sac": null,
+    "quantity": 9.0,
+    "unit_price": 74120.0,
+    "line_total": 733788.0
+   },
+   {
+    "description": "Apple Watch Series 9 GPS 45mm\nMidnight",
+    "hsn_sac": null,
+    "quantity": 8.0,
+    "unit_price": 52083.0,
+    "line_total": 458330.4
+   },
+   {
+    "description": "Xiaomi 14 Pro 512GB White",
+    "hsn_sac": null,
+    "quantity": 8.0,
+    "unit_price": 74154.0,
+    "line_total": 652555.2
+   }
+  ]
+ },
+ "bank_statement": null
+}

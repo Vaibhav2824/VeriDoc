@@ -1,35 +1,39 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
+import { Providers } from "@/components/providers";
+import { SiteNav } from "@/components/veridoc/site-nav";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "VeriDoc — Trusted Document Intelligence",
-  description: "VLM-native extraction with calibrated confidence and abstention.",
+  title: "VeriDoc | Document extraction you can audit",
+  description:
+    "VLM document extraction where every field carries a calibrated confidence and a source location, and low-confidence fields go to a human instead of being guessed.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-gray-50 text-gray-900">
-        <nav className="border-b bg-white px-6 py-3 flex items-center gap-6 text-sm shadow-sm">
-          <Link href="/" className="font-bold text-base tracking-tight text-gray-900">
-            VeriDoc
-          </Link>
-          <Link href="/" className="text-gray-500 hover:text-gray-900 transition-colors">
-            Extract
-          </Link>
-          <Link href="/queue" className="text-gray-500 hover:text-gray-900 transition-colors">
-            Review Queue
-          </Link>
-          <Link href="/dashboard" className="text-gray-500 hover:text-gray-900 transition-colors">
-            Dashboard
-          </Link>
-        </nav>
-        <main className="flex-1 mx-auto w-full max-w-5xl px-6 py-10">{children}</main>
+    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="flex min-h-[100dvh] flex-col font-sans">
+        <Providers>
+          <SiteNav />
+          <main className="flex-1">{children}</main>
+          <footer className="border-t">
+            <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-6 text-sm text-muted-foreground sm:px-6">
+              <span>VeriDoc. Built on free tiers: GitHub Pages, Render, Supabase.</span>
+              <a
+                href="https://github.com/Vaibhav2824/VeriDoc"
+                className="transition-colors hover:text-foreground"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Source on GitHub
+              </a>
+            </div>
+          </footer>
+        </Providers>
       </body>
     </html>
   );

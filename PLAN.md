@@ -48,12 +48,12 @@ Not used: **Webflow** is a separate hosted site builder that doesn't fit Pages +
 - [x] `keepalive.yml` cron pings `/health` every 14 min (Render free sleeps after 15; 744 h/mo fits the 750 h free quota)
 
 ## Phase 3 — Static frontend on GitHub Pages
-- [ ] `next.config.ts`: `output: "export"`, `basePath`/`assetPrefix` from `NEXT_PUBLIC_BASE_PATH`, `images.unoptimized`, `trailingSlash`
-- [ ] `jobs/[id]` → `jobs/?id=` (dynamic routes can't be statically exported for unknown IDs)
-- [ ] `web/Dockerfile` → nginx serving `out/` (keeps the docker-compose on-prem path working)
-- [ ] Delete `vercel.json` (replaced by Pages)
-- [ ] `.github/workflows/pages.yml`: build `web/` with `vars.API_URL` → `NEXT_PUBLIC_API_URL` → `actions/deploy-pages`
-- [ ] CI: add `npm ci && npm run lint && npm run build` job for `web/`
+- [x] `next.config.ts`: `output: "export"`, `basePath`/`assetPrefix` from `NEXT_PUBLIC_BASE_PATH`, `images.unoptimized`, `trailingSlash`
+- [x] `jobs/[id]` → `jobs/?id=` (dynamic routes can't be statically exported for unknown IDs)
+- [x] `web/Dockerfile` → nginx serving `out/` (keeps the docker-compose on-prem path working)
+- [x] Delete `vercel.json` (replaced by Pages)
+- [x] `.github/workflows/pages.yml`: build `web/` with `vars.API_URL` → `NEXT_PUBLIC_API_URL` → `actions/deploy-pages`
+- [x] CI: add `npm ci && npm run lint && npm run build` job for `web/`
 - [ ] **You:** repo Settings → Pages → Source: GitHub Actions; Settings → Variables → `API_URL=<render url>` (used by Pages build + keepalive)
 
 ## Phase 4 — UI overhaul
@@ -61,19 +61,24 @@ Stack: shadcn/ui (`components.json` already set, base-nova), Tailwind v4, lucide
 animated components pulled from Smooth UI / Skiper UI / Unlumen UI shadcn registries via `npx shadcn add <url>`.
 Concept: "trust you can see" — every field shows its confidence and where it came from.
 
-- [ ] shadcn base: button, card, badge, table, tabs, progress, tooltip, skeleton, dialog, input, sonner, chart, separator
-- [ ] App shell: top nav (Extract / Review queue / Dashboard / Eval), theme toggle (dark default), API status pill (handles Render cold start: "waking API…")
-- [ ] Landing `/`: GSAP hero — a document "scan" animation where fields light up with confidence chips; headline numbers from `eval/REPORT.md` (animated counters); how-it-works pipeline (Router→Extractor→Verifier→Gate) with ScrollTrigger; upload dropzone
-- [ ] Job viewer `/jobs/?id=`: progress states while polling; doc preview with **bbox overlays** from `source_location` (preview kept in-browser only — never persisted, PII rule); field table with confidence chips (green ≥0.9 / amber ≥ threshold / red abstained), ungrounded flag, raw JSON tab
-- [ ] Review queue `/queue`: table with inline correction, optimistic resolve + toast, empty state
-- [ ] Dashboard `/dashboard`: KPI tiles (jobs, p95 latency, pending review, auto-processed %), charts (by status, by doc type)
-- [ ] Eval `/eval`: calibration/accuracy numbers from REPORT.md
-- [ ] Respect `prefers-reduced-motion` (GSAP + motion), keyboard focus, contrast in both themes; check at 375 px
+- [x] shadcn base: button, card, badge, table, tabs, progress, tooltip, skeleton, dialog, input, sonner, chart, separator
+- [x] App shell: top nav (Extract / Review queue / Dashboard / Eval), theme toggle (dark default), API status pill (handles Render cold start: "waking API…")
+- [x] Landing `/`: GSAP hero — a document "scan" animation where fields light up with confidence chips; headline numbers from `eval/REPORT.md` (animated counters); how-it-works pipeline (Router→Extractor→Verifier→Gate) with ScrollTrigger; upload dropzone
+- [x] Job viewer `/jobs/?id=`: progress states while polling; doc preview with **bbox overlays** from `source_location` (preview kept in-browser only — never persisted, PII rule); field table with confidence chips (green ≥0.9 / amber ≥ threshold / red abstained), ungrounded flag, raw JSON tab
+- [x] Review queue `/queue`: table with inline correction, optimistic resolve + toast, empty state
+- [x] Dashboard `/dashboard`: KPI tiles (jobs, p95 latency, pending review, auto-processed %), charts (by status, by doc type)
+- [x] ~~Eval page~~ folded into the landing metrics section (YAGNI)
+- [x] Respect `prefers-reduced-motion` (GSAP + motion), keyboard focus, contrast in both themes; check at 375 px
+
+Extra fixes found while building:
+- [x] Bboxes came back on Gemini's 0-1000 grid, not [0,1] as documented: normalized in `SourceLocation`
+- [x] Bank statements have no verifier yet: UI shows their values as "unverified" instead of hiding them
+- [x] shadcn CLI installed an unrelated npm package `cn`: removed, `lib/utils.ts` added
 
 ## Phase 5 — Harden + write-up
 - [ ] `uv run ruff check . && uv run mypy . && uv run pytest` green; `npm run build` green
 - [ ] Code review pass (correctness + security) on the diff
-- [ ] README: live demo link, architecture diagram, numbers table, setup (Supabase/Render/Pages), demo GIF
+- [x] README: live demo link, architecture diagram, numbers table, setup (Supabase/Render/Pages), demo GIF
 - [ ] CLAUDE.md status → M4 done; `graphify update .`
 - [ ] Open PR, merge, confirm Pages deploy is live
 
