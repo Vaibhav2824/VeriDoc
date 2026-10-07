@@ -54,7 +54,8 @@ Not used: **Webflow** is a separate hosted site builder that doesn't fit Pages +
 - [x] Delete `vercel.json` (replaced by Pages)
 - [x] `.github/workflows/pages.yml`: build `web/` with `vars.API_URL` → `NEXT_PUBLIC_API_URL` → `actions/deploy-pages`
 - [x] CI: add `npm ci && npm run lint && npm run build` job for `web/`
-- [ ] **You:** repo Settings → Pages → Source: GitHub Actions; Settings → Variables → `API_URL=<render url>` (used by Pages build + keepalive)
+- [x] Pages source set to GitHub Actions (done via API)
+- [ ] **You:** Settings → Variables → `API_URL=<render url>` (used by Pages build + keepalive)
 
 ## Phase 4 — UI overhaul
 Stack: shadcn/ui (`components.json` already set, base-nova), Tailwind v4, lucide, `motion`, GSAP (+ScrollTrigger),
@@ -76,13 +77,15 @@ Extra fixes found while building:
 - [x] shadcn CLI installed an unrelated npm package `cn`: removed, `lib/utils.ts` added
 
 ## Phase 5 — Harden + write-up
-- [ ] `uv run ruff check . && uv run mypy . && uv run pytest` green; `npm run build` green
-- [ ] Code review pass (correctness + security) on the diff
+- [x] `uv run ruff check . && uv run mypy . && uv run pytest` green; `npm run build` green
+- [x] Code review pass (correctness + security) on the diff
 - [x] README: live demo link, architecture diagram, numbers table, setup (Supabase/Render/Pages), demo GIF
-- [ ] CLAUDE.md status → M4 done; `graphify update .`
-- [ ] Open PR, merge, confirm Pages deploy is live
+- [x] CLAUDE.md status → M4 done; `graphify update .`
+- [x] Open PR: https://github.com/Vaibhav2824/VeriDoc/pull/1
+- [ ] Merge once CI is green, confirm Pages deploy is live
 
 ## Needs from you (can't be done by Claude: account creation + secrets)
 1. Supabase project + session-pooler connection string
 2. Render account, Blueprint deploy, secrets pasted in Render dashboard
-3. GitHub: Pages source = Actions, repo variable `API_URL`
+3. GitHub: repo variable `API_URL` (Pages source already enabled)
+4. A fresh `GROQ_API_KEY` if you want Groq (the one in `.env` is expired; Gemini works)

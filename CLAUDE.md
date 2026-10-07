@@ -5,7 +5,7 @@ extracted field carries a calibrated confidence + a source link, and the system 
 on low-confidence fields instead of hallucinating. See `PRD.md` for scope, `PROJECT_SPEC.md`
 for the full vision.
 
-**Status:** M0–M3 complete. **M4 in progress** — Frontend + deploy + dashboards.
+**Status:** M0–M4 complete (pending live Render/Supabase credentials). **M5** — harden + write-up. Deploy: web on GitHub Pages (`.github/workflows/pages.yml`), API on Render (`render.yaml`), Postgres on Supabase (RLS on all tables). See `PLAN.md`.
 
 M3 shipped (commits `ed6e002`–`b1e05ff`): regression CI gate; LangGraph Router→Extractor→Verifier→Gate→Aggregator (`services/api/graph.py`); VLM-prompt + fine-tuned router (`services/api/nodes/router.py`) with TF-IDF+LR artifact auto-loaded at startup (100% 5-fold CV, 0 tokens/call, <1 ms/doc) and Kaggle/Colab DistilBERT notebook (`training/router_finetune.ipynb`) for the heavier variant; MCP server (`services/mcp/server.py`); pgvector exemplar store + RAG wired into invoice extraction pipeline; GroqClient (`make_client()` prefers Groq); router accuracy baseline **100.0% on 130/130 docs** recorded in `eval/REPORT.md`.
 
@@ -79,7 +79,8 @@ PRD.md  PROJECT_SPEC.md  README.md  CLAUDE.md
 | Extract any doc (router auto-detects type) | `uv run python -m scripts.extract_document <path>` |
 | Import a Kaggle batch into the benchmark | `uv run python scripts/import_batch_labels.py <batch.csv>` |
 | Run MCP server | `uv run python -m services.mcp.server` |
-| Run API | `uv run uvicorn services.api.main:app --reload` *(placeholder — M4)* |
+| Run API | `uv run uvicorn services.api.main:app --reload` |
+| Web dev / build | `cd web && npm run dev` / `npm run build` (static export to `web/out`) |
 | Tests | `uv run pytest` |
 | Lint | `uv run ruff check .` |
 | Typecheck | `uv run mypy .` |
